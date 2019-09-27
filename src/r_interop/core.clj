@@ -107,7 +107,7 @@
 
 (def r->clj (comp value->clj eval-r))
 
-(defn ->clj-kw-fn
+(defn ->clj-fn-kw
   [id]
   (let [template-r-do-call "function(m) {
   do.call(%s, as.list(m))
@@ -117,7 +117,7 @@
 (defmacro def-r-kw
   "Attach a R function accepting a map for keywords arguments"
   [& [id code]]
-  `(def ~(symbol id) ~(->clj-kw-fn (or code id))))
+  `(def ~(symbol id) ~(->clj-fn-kw (or code id))))
 
 (defmacro def-r
   "Simple macros for getting object/functions"
