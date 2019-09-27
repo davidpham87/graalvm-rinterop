@@ -128,8 +128,13 @@
   (eval-r (str "help(" (symbol f) ", help_type=\"text\")")))
 
 (def-r-kw pnorm)
+(pnorm {:q 1.95 :sd 2})
+
 (def-r-kw qnorm)
+(qnorm {:p [0.975, 0.99] :sd 3})
+
 (def-r-kw dnorm)
+
 (def-r-kw plot)
 (def-r-kw summary)
 
