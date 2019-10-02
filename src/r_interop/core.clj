@@ -1,6 +1,7 @@
 (ns r-interop.core
   (:require
    [clojure.string :as str]
+   [clojure.set]
    [camel-snake-kebab.core :as csk]
    [camel-snake-kebab.extras :as cske])
   (:import (clojure.lang IFn)
@@ -114,12 +115,12 @@
 }"]
     (reify-ifn-kw (eval-r (format template-r-do-call (str id))))))
 
-(defmacro def-r-kw
+(defmacro defn-r-kw
   "Attach a R function accepting a map for keywords arguments"
   [& [id code]]
   `(def ~(symbol id) ~(->clj-kw-fn (or code id))))
 
-(defmacro def-r
+(defmacro defn-r
   "Simple macros for getting object/functions"
   [& [id code]]
   `(def ~(symbol id) (r->clj ~(str (or code id)))))
@@ -127,28 +128,52 @@
 (defmacro r-help [f]
   (eval-r (str "help(" (symbol f) ", help_type=\"text\")")))
 
-(def-r-kw pnorm)
-(pnorm {:q 1.95 :sd 2})
+;; javascript interop
+#_(defn ^Value eval-js [code]
+    (.eval ^Context ctx "js" code))
+#_(def js->clj (comp value->clj eval-js))
 
-(def-r-kw qnorm)
-(qnorm {:p [0.975, 0.99] :sd 3})
 
-(def-r-kw dnorm)
+(comment
 
-(def-r-kw plot)
-(def-r-kw summary)
+  (defn-r-kw pnorm)
+  (pnorm {:q 1.95 :sd 2})
 
-(def lm
-  (let [r-code "function(m) {
+  (defn-r-kw qnorm)
+
+  (qnorm {:p [0.975, 0.99] :sd 1})
+  (qnorm {:p [0.975, 0.99] :sd 2})
+
+  (defn-r-kw dnorm)
+  (defn-r-kw plot)
+  (defn-r sqrt)
+  (defn-r round)
+  (defn-r-kw summary)
+
+  (defn mean [xs]
+    (let [n (count xs)]
+      (/ (apply + xs) n)))
+
+  #_[-0.2 0.6 1.1 -0.9 0.1 -1.2 1.1]
+  #_[-1.7 -0.1 -0.2 0.3 0.3 -0.9 -0.03] #_[-1.0 -0.8 -2.9 1.4 0.3 -0.8 1.4]
+  (let [x [-0.2 0.6 1.1 -0.9 0.1 -1.2 1.1]
+        n (count x)]
+    (Math/abs (* (sqrt n) (mean x))))
+
+  (def lm
+    (let [r-code "function(m) {
 x.lm <- do.call(lm, as.list(m));
 list(lm = x.lm, summary = summary(x.lm))}"]
-    (reify-ifn-kw (eval-r r-code))))
+      (reify-ifn-kw (eval-r r-code))))
 
-(def x-lm (lm
-           {:formula "as.formula(Sepal.Length~Sepal.Width)"
-            :data (eval-r "iris")}))
+  (def x-lm (lm
+             {:formula "as.formula(Sepal.Length~Sepal.Width)"
+              :data (eval-r "iris")}))
 
-;; javascript interop
-(defn ^Value eval-js [code]
-  (.eval ^Context ctx "js" code))
-(def js->clj (comp value->clj eval-js))
+  (let [n 200
+        m 106
+        sigma 0.5
+        mu 0.5
+        d (* (/ (- (/ m n) mu) sigma) (sqrt n))]
+    (println (round d 4))
+    (println (- 1 (pnorm {:q d})))))
