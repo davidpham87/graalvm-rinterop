@@ -83,7 +83,7 @@
 (defn value->clj
   "Returns a Clojure (or Java) value for given polyglot Value if possible,
    otherwise throws."
-  ([^Value v opts]
+  ([^Value v {:keys [warnings? keywordize-keys?] :or {keywordize-keys? true} :as opts}]
    (cond
      (.isNull v) nil
      (.isHostObject v) (.asHostObject v)
@@ -91,17 +91,18 @@
      (.isString v) (.asString v)
      (.isNumber v) (.as v Number)
      (.canExecute v) (reify-ifn v)
-     ;; (if (get-in opts [:executable :kwargs] true) (reify-ifn-kw v) (reify-ifn v))
-     (.hasMembers v)
+
+     (and (.hasMembers v) (seq (.getMemberKeys v))) ;; bug of polyglot, sometimes the hasMembers returns an empty set
      (let [ks (.getMemberKeys v)]
        (into {} (for [k ks]
-                  [(if (:keywordize-keys? opts true) (keyword k) k)
-                   (value->clj (.getMember v k))])))
+                  [(if keywordize-keys? (keyword k) k)
+                   (value->clj (.getMember v k) opts)])))
 
-     (.hasArrayElements v) (into [] (for [i (range (.getArraySize v))]
-                                      (value->clj (.getArrayElement v i))))
+     (.hasArrayElements v)
+     (into [] (for [i (range (.getArraySize v))] (value->clj (.getArrayElement v i) opts)))
 
-     :else (do (println "Unsupported value") (str v)) ;; (throw (Exception. "Unsupported value"))
+     :else (when warnings? (println "Unsupported value:" (str v)))
+     ;; (throw (Exception. "Unsupported value"))
      ))
   ([^Value v]
    (value->clj v nil)))
@@ -128,11 +129,12 @@
 (defmacro r-help [f]
   (eval-r (str "help(" (symbol f) ", help_type=\"text\")")))
 
+(defn-r formals)
+
 ;; javascript interop
 #_(defn ^Value eval-js [code]
     (.eval ^Context ctx "js" code))
 #_(def js->clj (comp value->clj eval-js))
-
 
 (comment
 
@@ -149,6 +151,11 @@
   (defn-r sqrt)
   (defn-r round)
   (defn-r-kw summary)
+  (defn-r-kw binom-test binom.test)
+
+  (-> (pnorm {:q 16.5 :mean 20 :sd (/ 5.2 (Math/sqrt 15))}) (round 4))
+
+  (binom-test {:x 75 :n 124})
 
   (defn mean [xs]
     (let [n (count xs)]
@@ -169,6 +176,25 @@ list(lm = x.lm, summary = summary(x.lm))}"]
   (def x-lm (lm
              {:formula "as.formula(Sepal.Length~Sepal.Width)"
               :data (eval-r "iris")}))
+
+  (let [z (eval-r "formals(binom.test)")]
+    #_(.hasMembers z)
+    (-> (.getMember z "alternative") (.getMemberKeys))
+    #_(bean (.getArrayElement (.getMember z "alternative") 1)))
+
+  (value->clj (eval-r "formals(binom.test)"))
+
+  (formals "t.test")
+  (defn square [x] (* x x))
+  (defn-r sqrt)
+  (let [x 257
+        x-sd 39
+        y 260
+        y-sd 38
+        n 1000
+        t (* (sqrt 1000) (/ (- x y) (sqrt (+ (square 39) (square 38)))))]
+    (-> (* 2 (pnorm {:q t})) (round 4))
+    )
 
   (let [n 200
         m 106
