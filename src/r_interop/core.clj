@@ -57,11 +57,42 @@
 (defmacro ^:private reify-ifn-kw
   "Convenience macro for reifying IFn for executable polyglot Values."
   ([v]
-  `(reify IFn
-     (~'invoke [this#] (value->clj (execute-kw ~v)))
-     (~'invoke [this# args#]
-      (value->clj (execute-kw ~v args#) {:keywordize-keys? true}))
-     (~'applyTo [this# args#] (value->clj (apply execute-kw ~v args#))))))
+   `(reify IFn
+      (~'invoke [this#] (value->clj (execute-kw ~v)))
+      (~'invoke [this# args#]
+       (value->clj (execute-kw ~v args#) {:keywordize-keys? true}))
+      (~'applyTo [this# args#] (value->clj (apply execute-kw ~v args#))))))
+
+;; Force user to have :** only at beforelast or anywhere?
+#_(->> (partition 2 1 args)
+       (reduce (fn [m [k v]] (assoc m k v)) {})
+       :**) ;; extract keyword arguments
+(defn args->kwargs [signature & args]
+  (let [kw?  (= (last (butlast args)) :**)
+        kw (when kw? (last args))
+        args (if kw? (take (- (count args) 2) args) args)]
+    ;; need to put args into array otherwise it does not create the correct
+    ;; argument maps
+    (merge (zipmap signature args) kw)))
+
+(defmacro ^:private reify-ifn-r
+  "Convenience macro for reifying IFn for executable polyglot Values."
+  [v signature]
+  (let [invoke-arity
+        (fn [n]
+          (let [args (map #(symbol (str "arg" (inc %))) (range n))]
+            ;; TODO test edge case for final `invoke` arity w/varargs
+            (if (seq args)
+              `(~'invoke [this# ~@args]
+                (value->clj (execute-kw ~v (args->kwargs ~signature ~@args))
+                            {:keywordize-keys? true}))
+              `(~'invoke [this# ~@args]
+                (value->clj (execute ~v ~@args) {:keywordize-keys? true}))
+
+              )))]
+    `(reify IFn
+       ~@(map invoke-arity (range 22))
+       (~'applyTo [this# args#] (value->clj (apply execute-kw ~v args#))))))
 
 (defn proxy-fn
   "Returns a ProxyExecutable instance for given function, allowing it to be
@@ -94,9 +125,9 @@
 
      (and (.hasMembers v) (seq (.getMemberKeys v))) ;; bug of polyglot, sometimes the hasMembers returns an empty set
      (let [ks (.getMemberKeys v)]
-       (into {} (for [k ks]
-                  [(if keywordize-keys? (keyword k) k)
-                   (value->clj (.getMember v k) opts)])))
+       (into (array-map) (for [k ks]
+                           [(if keywordize-keys? (keyword k) k)
+                            (value->clj (.getMember v k) opts)])))
 
      (.hasArrayElements v)
      (into [] (for [i (range (.getArraySize v))] (value->clj (.getArrayElement v i) opts)))
@@ -109,27 +140,47 @@
 
 (def r->clj (comp value->clj eval-r))
 
+(defmacro defn-r-raw
+  "Simple macros for getting object/functions"
+  [& [id code]]
+  `(def ~(symbol id) (r->clj ~(str (or code id)))))
+
+(defn-r-raw formals)
+
 (defn ->clj-kw-fn
   [id]
   (let [template-r-do-call "function(m) {
   do.call(%s, as.list(m))
-}"]
-    (reify-ifn-kw (eval-r (format template-r-do-call (str id))))))
+}"
+        f (reify-ifn-kw (eval-r (format template-r-do-call (str id))))
+        args (formals (str id))]
+    (with-meta f {:args args})))
 
 (defmacro defn-r-kw
   "Attach a R function accepting a map for keywords arguments"
   [& [id code]]
   `(def ~(symbol id) ~(->clj-kw-fn (or code id))))
 
-(defmacro defn-r
-  "Simple macros for getting object/functions"
-  [& [id code]]
-  `(def ~(symbol id) (r->clj ~(str (or code id)))))
-
 (defmacro r-help [f]
   (eval-r (str "help(" (symbol f) ", help_type=\"text\")")))
 
-(defn-r formals)
+(defn ->clj-pos-kw-fn
+  [id]
+  (let [template-r-do-call "function(m) {
+  do.call(%s, as.list(m))
+}"
+        args (formals (str id))
+        f (cond
+            (seq args) (reify-ifn-r
+                        (eval-r (format template-r-do-call (str id))) (keys args))
+            :else (reify-ifn (eval-r (str id))))]
+    (with-meta f {:args args})))
+
+(defmacro defn-r
+  "Attach a R function accepting positional and keyword arguments.
+  e.g. (qnorm [0.95 0.975] :** {:sd 3})"
+  [& [id code]]
+  `(def ~(symbol id) ~(->clj-pos-kw-fn (or code id))))
 
 ;; javascript interop
 #_(defn ^Value eval-js [code]
@@ -140,22 +191,39 @@
 
   (defn-r-kw pnorm)
   (pnorm {:q 1.95 :sd 2})
+  (defn-r-kw r-list list)
 
   (defn-r-kw qnorm)
-
   (qnorm {:p [0.975, 0.99] :sd 1})
-  (qnorm {:p [0.975, 0.99] :sd 2})
+
+  (defn-r qnorm)
+  (qnorm [0.975, 0.99] 1 3)
+  (qnorm [0.95 0.975, 0.99] :** {:sd 3})
+  (qnorm :** {:p [0.975, 0.99] :sd 2})
+
+  (defn-r round)
+  (round [1 2] 2)
+  (round (qnorm [0.95 0.975, 0.99] :** {:mean 0}) 4)
+  (-> [0.95 0.975, 0.99]
+      (qnorm :** {:sd 5})
+      (round 4))
 
   (defn-r-kw dnorm)
   (defn-r-kw plot)
   (defn-r sqrt)
   (defn-r round)
+  (defn-r variance var)
+  (->  (sqrt 0.666667) (round 4))
   (defn-r-kw summary)
   (defn-r-kw binom-test binom.test)
 
   (-> (pnorm {:q 16.5 :mean 20 :sd (/ 5.2 (Math/sqrt 15))}) (round 4))
 
   (binom-test {:x 75 :n 124})
+
+  (let [A [[1 -1] [1 1]]]
+    #_(as.matrix)
+    )
 
   (defn mean [xs]
     (let [n (count xs)]
@@ -183,7 +251,13 @@ list(lm = x.lm, summary = summary(x.lm))}"]
     #_(bean (.getArrayElement (.getMember z "alternative") 1)))
 
   (value->clj (eval-r "formals(binom.test)"))
-
+  (def f (reify-ifn-kw (eval-r "function(m) {
+f <- function(a , ...) {
+   args <- list(...)
+   print(args$`...`[['b']])
+   # lapply(args, function(x) 2*x)
+}
+do.call(f, as.list(m))}")))
   (formals "t.test")
   (defn square [x] (* x x))
   (defn-r sqrt)
