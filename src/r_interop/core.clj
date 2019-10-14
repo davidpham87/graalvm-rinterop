@@ -8,7 +8,9 @@
            (org.graalvm.polyglot Context Value)
            (org.graalvm.polyglot.proxy ProxyArray ProxyExecutable ProxyObject)))
 
-;; Make sure that keywords are converted to string before sending them to ProxyObject/fromMap
+;; Make sure that keywords are converted to string before sending them to
+;; ProxyObject/fromMap
+;; Add cske symbols and automatically check variable that already exist in Clojure.
 
 (defn ->proxy-object [m]
   (->> m (cske/transform-keys name) ProxyObject/fromMap))
@@ -87,9 +89,7 @@
                 (value->clj (execute-kw ~v (args->kwargs ~signature ~@args))
                             {:keywordize-keys? true}))
               `(~'invoke [this# ~@args]
-                (value->clj (execute ~v ~@args) {:keywordize-keys? true}))
-
-              )))]
+                (value->clj (execute ~v ~@args) {:keywordize-keys? true})))))]
     `(reify IFn
        ~@(map invoke-arity (range 22))
        (~'applyTo [this# args#] (value->clj (apply execute-kw ~v args#))))))
@@ -161,20 +161,23 @@
   [& [id code]]
   `(def ~(symbol id) ~(->clj-kw-fn (or code id))))
 
-(defmacro r-help [f]
-  (eval-r (str "help(" (symbol f) ", help_type=\"text\")")))
+(defn r-help [f]
+  (-> (with-out-str
+        (eval-r (str "capture.output(help(" (symbol f) ", help_type=\"text\"))")))
+      (clojure.string/replace #"_" "")))
 
 (defn ->clj-pos-kw-fn
   [id]
   (let [template-r-do-call "function(m) {
   do.call(%s, as.list(m))
 }"
+        docstring (r-help id)
         args (formals (str id))
         f (cond
             (seq args) (reify-ifn-r
                         (eval-r (format template-r-do-call (str id))) (keys args))
             :else (reify-ifn (eval-r (str id))))]
-    (with-meta f {:args args})))
+    (with-meta f {:doc docstring :argslists (list args)})))
 
 (defmacro defn-r
   "Attach a R function accepting positional and keyword arguments.
@@ -188,12 +191,24 @@
 #_(def js->clj (comp value->clj eval-js))
 
 (comment
+  (def s (->
+          (with-out-str
+            (eval-r "capture.output(help(qnorm, help_type ='text'))"))
+          (clojure.string/replace #"_" "")))
 
-  (defn-r-kw pnorm)
-  (pnorm {:q 1.95 :sd 2})
-  (defn-r-kw r-list list)
+  (def s-clearn
+    (with-out-str
+      (println (clojure.string/replace s  #"_" ""))))
 
-  (defn-r-kw qnorm)
+
+  (eval-r "s <- capture.output(help(qnorm), type='m')")
+  (defn-r pnorm)
+  (-> pnorm meta :doc println)
+  (-> pnorm meta :argslists)
+  (pnorm :** {:q 1.95 :sd 2})
+  (defn-r r-list list)
+
+  (defn-r qnorm)
   (qnorm {:p [0.975, 0.99] :sd 1})
 
   (defn-r qnorm)
@@ -203,27 +218,30 @@
 
   (defn-r round)
   (round [1 2] 2)
-  (round (qnorm [0.95 0.975, 0.99] :** {:mean 0}) 4)
-  (-> [0.95 0.975, 0.99]
-      (qnorm :** {:sd 5})
-      (round 4))
+  (->
+   (qnorm [0.95 0.975, 0.99] :** {:mean 0})
+   (round 4))
 
-  (defn-r-kw dnorm)
-  (defn-r-kw plot)
+  (defn-r qnorm)
+  (defn-r round)
+  (-> [0.95 0.975, 0.99]
+      (qnorm :** {:sd 2})
+      (round 2))
+  [3.29 3.92 4.65]
+
+  (defn-r dnorm)
+  (defn-r plot)
   (defn-r sqrt)
   (defn-r round)
   (defn-r variance var)
   (->  (sqrt 0.666667) (round 4))
-  (defn-r-kw summary)
-  (defn-r-kw binom-test binom.test)
+  (defn-r summary)
+  (defn-r binom-test binom.test)
 
-  (-> (pnorm {:q 16.5 :mean 20 :sd (/ 5.2 (Math/sqrt 15))}) (round 4))
+  (-> (pnorm :** {:q 16.5 :mean 20 :sd (/ 5.2 (Math/sqrt 15))})
+      (round 4))
 
-  (binom-test {:x 75 :n 124})
-
-  (let [A [[1 -1] [1 1]]]
-    #_(as.matrix)
-    )
+  (binom-test :** {:x 75 :n 124})
 
   (defn mean [xs]
     (let [n (count xs)]
