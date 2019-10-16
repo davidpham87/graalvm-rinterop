@@ -178,7 +178,7 @@
             (seq args) (reify-ifn-r
                         (eval-r (format template-r-do-call (str id))) (keys args))
             :else (reify-ifn (eval-r (str id))))]
-    (with-meta f {:doc docstring :argslists (list args)})))
+    (with-meta f {:name-r id :doc docstring :argslists (list args)})))
 
 (defmacro defn-r
   "Attach a R function accepting positional and keyword arguments.
@@ -195,6 +195,29 @@
 (defn elipsis->kw [f args]
   (zipmap (keys (first (argslists f))) args))
 
+(def dir-package-raw
+  (value->clj
+   (eval-r "function(package_name) as.character(unlist(lsf.str(paste0('package:', package_name))))")))
+
+(defn ->clj-function-name [s]
+  (csk/->kebab-case-string (str/replace s #"\." "-")))
+
+(defn dir-package
+  "Provide the r function names inside an R package" [package]
+  (->> (dir-package-raw package)
+       (filter #(re-matches #"[A-Za-z][A-Za-z\\.\\_].*" %))))
+
+(def forbidden-functions #{"eval"})
+
+(defn add-package-to-this-ns [package excludes]
+  (let [fs (dir-package package)
+        clj+fs-ids (->> fs
+                        #_(remove forbidden-functions)
+                        (mapv #(vector (->clj-function-name %) %)))]
+    (doseq  [[clj-id r-id] clj+fs-ids]
+      (println clj-id r-id)
+      (eval (list 'def (symbol clj-id) (->clj-pos-kw-fn r-id))))))
+
 ;; javascript interop
 #_(defn ^Value eval-js [code]
     (.eval ^Context ctx "js" code))
@@ -210,8 +233,6 @@
     (with-out-str
       (println (clojure.string/replace s  #"_" ""))))
 
-
-  (eval-r "s <- capture.output(help(qnorm), type='m')")
   (defn-r pnorm)
   (-> pnorm meta :doc println)
   (-> pnorm meta :argslists)
@@ -301,4 +322,5 @@ do.call(f, as.list(m))}")))
         d (* (/ (- (/ m n) mu) sigma) (sqrt n))]
     (println (round d 4))
     (println (- 1 (pnorm {:q d}))))
+
   )
