@@ -30,11 +30,11 @@
   ([ms ks]
    (into (sorted-map) (for [k ks] [k (mapv #(get % k) ms)]))))
 
-(defn- execute
+(defn execute
   [^Value execable & args]
   (.execute execable (object-array args)))
 
-(defn- execute-kw
+(defn execute-kw
   ([^Value execable] (.execute execable))
   ([^Value execable args]
    (let [args (into-array Object [(->proxy-object args)])]
@@ -42,7 +42,7 @@
 
 (declare value->clj)
 
-(defmacro ^:private reify-ifn
+(defmacro reify-ifn
   "Convenience macro for reifying IFn for executable polyglot Values."
   [v]
   (let [invoke-arity
@@ -56,7 +56,7 @@
        ~@(map invoke-arity (range 22))
        (~'applyTo [this# args#] (value->clj (apply execute ~v args#))))))
 
-(defmacro ^:private reify-ifn-kw
+(defmacro reify-ifn-kw
   "Convenience macro for reifying IFn for executable polyglot Values."
   ([v]
    `(reify IFn
@@ -77,7 +77,7 @@
     ;; argument maps
     (merge (zipmap signature args) kw)))
 
-(defmacro ^:private reify-ifn-r
+(defmacro reify-ifn-r
   "Convenience macro for reifying IFn for executable polyglot Values."
   [v signature]
   (let [invoke-arity
@@ -92,7 +92,8 @@
                 (value->clj (execute ~v ~@args) {:keywordize-keys? true})))))]
     `(reify IFn
        ~@(map invoke-arity (range 22))
-       (~'applyTo [this# args#] (value->clj (apply execute-kw ~v args#))))))
+       (~'applyTo [this# args#]
+        (value->clj (execute-kw ~v (zipmap ~signature args#)))))))
 
 (defn proxy-fn
   "Returns a ProxyExecutable instance for given function, allowing it to be
@@ -185,6 +186,15 @@
   [& [id code]]
   `(def ~(symbol id) ~(->clj-pos-kw-fn (or code id))))
 
+(defn doc [f]
+  (-> f meta :doc println))
+
+(defn argslists [f]
+  (-> f meta :argslists))
+
+(defn elipsis->kw [f args]
+  (zipmap (keys (first (argslists f))) args))
+
 ;; javascript interop
 #_(defn ^Value eval-js [code]
     (.eval ^Context ctx "js" code))
@@ -247,8 +257,6 @@
     (let [n (count xs)]
       (/ (apply + xs) n)))
 
-  #_[-0.2 0.6 1.1 -0.9 0.1 -1.2 1.1]
-  #_[-1.7 -0.1 -0.2 0.3 0.3 -0.9 -0.03] #_[-1.0 -0.8 -2.9 1.4 0.3 -0.8 1.4]
   (let [x [-0.2 0.6 1.1 -0.9 0.1 -1.2 1.1]
         n (count x)]
     (Math/abs (* (sqrt n) (mean x))))
@@ -264,9 +272,7 @@ list(lm = x.lm, summary = summary(x.lm))}"]
               :data (eval-r "iris")}))
 
   (let [z (eval-r "formals(binom.test)")]
-    #_(.hasMembers z)
-    (-> (.getMember z "alternative") (.getMemberKeys))
-    #_(bean (.getArrayElement (.getMember z "alternative") 1)))
+    (-> (.getMember z "alternative") (.getMemberKeys)))
 
   (value->clj (eval-r "formals(binom.test)"))
   (def f (reify-ifn-kw (eval-r "function(m) {
@@ -294,4 +300,5 @@ do.call(f, as.list(m))}")))
         mu 0.5
         d (* (/ (- (/ m n) mu) sigma) (sqrt n))]
     (println (round d 4))
-    (println (- 1 (pnorm {:q d})))))
+    (println (- 1 (pnorm {:q d}))))
+  )
