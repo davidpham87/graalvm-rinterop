@@ -160,7 +160,7 @@
 (defmacro defn-r-kw
   "Attach a R function accepting a map for keywords arguments"
   [& [id code]]
-  `(def ~(symbol id) ~(->clj-fn-kw (or code id))))
+  `(def ~(symbol id) ~(->clj-kw-fn (or code id))))
 
 (defn r-help [f]
   (-> (with-out-str
@@ -208,15 +208,20 @@
        (filter #(re-matches #"[A-Za-z][A-Za-z\\.\\_].*" %))))
 
 (def forbidden-functions #{"eval"})
+(def setter?  #(.endsWith % "<-"))
 
-(defn add-package-to-this-ns [package excludes]
-  (let [fs (dir-package package)
-        clj+fs-ids (->> fs
-                        #_(remove forbidden-functions)
-                        (mapv #(vector (->clj-function-name %) %)))]
-    (doseq  [[clj-id r-id] clj+fs-ids]
-      (println clj-id r-id)
-      (eval (list 'def (symbol clj-id) (->clj-pos-kw-fn r-id))))))
+;; TOOD(how to manage setters?)
+(defn add-package-to-this-ns
+  ([packages] (add-package-to-this-ns packages #{}))
+  ([package excludes]
+   (let [fs (dir-package package)
+         clj+fs-ids (->> fs
+                         (remove setter?)
+                         (mapv #(vector (->clj-function-name %) %)))
+         clj+setters-ids (filter setter? fs)]
+     (doseq  [[clj-id r-id] clj+fs-ids]
+       (println clj-id r-id)
+       (eval (list 'def (symbol clj-id) (->clj-pos-kw-fn r-id)))))))
 
 ;; javascript interop
 #_(defn ^Value eval-js [code]
@@ -322,5 +327,11 @@ do.call(f, as.list(m))}")))
         d (* (/ (- (/ m n) mu) sigma) (sqrt n))]
     (println (round d 4))
     (println (- 1 (pnorm {:q d}))))
-
+  (defn-r mean)
+  (defn-r round)
+  (defn-r sd)
+  (let [x [0.5 1.8 -2.3 0.9]]
+    #_(sd x)
+    (round (sqrt (- (mean (map square x))
+                    (square (mean x)))) 4))
   )
