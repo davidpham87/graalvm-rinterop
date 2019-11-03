@@ -2,6 +2,7 @@
   (:require
    [clojure.string :as str]
    [clojure.set]
+   [clojure.pprint]
    [camel-snake-kebab.core :as csk]
    [camel-snake-kebab.extras :as cske])
   (:import (clojure.lang IFn)
@@ -172,13 +173,14 @@
   (let [template-r-do-call "function(m) {
   do.call(%s, as.list(m))
 }"
-        docstring (r-help id)
+        ; docstring (r-help id)
         args (formals (str id))
         f (cond
             (seq args) (reify-ifn-r
                         (eval-r (format template-r-do-call (str id))) (keys args))
             :else (reify-ifn (eval-r (str id))))]
-    (with-meta f {:name-r id :doc docstring :argslists (list args)})))
+    f
+    #_(with-meta f {:name-r id :doc docstring :argslists (list args)})))
 
 (defmacro defn-r
   "Attach a R function accepting positional and keyword arguments.
@@ -207,8 +209,11 @@
   (->> (dir-package-raw package)
        (filter #(re-matches #"[A-Za-z][A-Za-z\\.\\_].*" %))))
 
-(def forbidden-functions #{"eval"})
-(def setter?  #(.endsWith % "<-"))
+(def r-unevaled-functions
+  #{ ;; base R, functions but are special construct
+    "eval" "for" "if" "function" "exception" "repeat" "reduce" "range"
+    "remove" "next"})
+(def setter?  #(.contains % "<-"))
 
 ;; TOOD(how to manage setters?)
 (defn add-package-to-this-ns
@@ -216,12 +221,17 @@
   ([package excludes]
    (let [fs (dir-package package)
          clj+fs-ids (->> fs
-                         (remove setter?)
+                         (remove #(or (setter? %) (excludes %)))
                          (mapv #(vector (->clj-function-name %) %)))
          clj+setters-ids (filter setter? fs)]
      (doseq  [[clj-id r-id] clj+fs-ids]
-       (println clj-id r-id)
-       (eval (list 'def (symbol clj-id) (->clj-pos-kw-fn r-id)))))))
+       #_(println clj-id r-id)
+       (let [docstring (r-help r-id)
+             args (formals (str r-id))]
+         (clojure.pprint/pprint
+          (list 'def (symbol clj-id)
+                {:name-r r-id :doc docstring :argslists (list args)}
+                `(->clj-pos-kw-fn ~r-id))))))))
 
 ;; javascript interop
 #_(defn ^Value eval-js [code]
