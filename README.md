@@ -1,4 +1,4 @@
- # R_interop
+# R_interop
 
 A simple example to help the interaction with R and Clojure in GraalVM
 
@@ -8,6 +8,25 @@ Install GraalVM first. See this
 [guide](https://gist.github.com/ricardozanini/fa65e485251913e1467837b1c5a8ed28)
 for a how to. Note that `alternatives` is actually `update-alternatives` on
 most linux distribution.
+
+### Install FastR
+
+If you created the symbolic link `/usr/lib/jvm/graalvm` to target the content
+of the graalvm tar file, then
+
+``` shell
+sudo /usr/lib/jvm/graalvm/bin/gu install R
+```
+
+A local `~/R` directory should be created to install packages and I would
+strongly recommend to create an alias under `~/bin`to `FastR` in order to not
+messup with your usual `R`.
+
+``` shell
+ln -s /usr/lib/jvm/graalvm/bin/R ~/bin/FastR
+```
+
+# Clojure
 
 On the Clojure part:
 
