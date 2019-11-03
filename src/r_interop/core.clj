@@ -125,11 +125,13 @@
      (.isNumber v) (.as v Number)
      (.canExecute v) (reify-ifn v)
 
-     (and (.hasMembers v) (seq (.getMemberKeys v))) ;; bug of polyglot, sometimes the hasMembers returns an empty set
+     (and (.hasMembers v) (seq (.getMemberKeys v))) ;; bug of polyglot, sometimes the hasMembers returns an empty set and the members might be duplicates
      (let [ks (.getMemberKeys v)]
-       (into (array-map) (for [k ks]
-                           [(if keywordize-keys? (keyword k) k)
-                            (value->clj (.getMember v k) opts)])))
+       (into
+        (array-map)
+        (for [k ks]
+          [(if keywordize-keys? (keyword (if (seq k) k "empty-key")) k) ;; some keys are empty string...
+           (value->clj (.getMember v k) opts)])))
 
      (.hasArrayElements v)
      (into [] (for [i (range (.getArraySize v))] (value->clj (.getArrayElement v i) opts)))
@@ -143,7 +145,15 @@
 (def r->clj (comp value->clj eval-r))
 
 (defmacro defn-r-raw
-  "Simple macros for getting object/functions"
+  "Define R function bindings with simple positional argument calls.
+
+  ``` clojure
+  (defn-r-raw qnorm 'qnorm)
+  (qnorm [0.95 0.975] 0 3)
+  ```
+
+  Contrasts with defn-r which support kwargs call as well.
+  "
   [& [id code]]
   `(def ~(symbol id) (r->clj ~(str (or code id)))))
 
@@ -159,11 +169,19 @@
     (with-meta f {:args args})))
 
 (defmacro defn-r-kw
-  "Attach a R function accepting a map for keywords arguments"
+  "Attach a R function accepting a map for keywords arguments.
+
+  ``` clojure
+  (defn-r-kw qnorm qnorm)
+  (qnorm {:p [0.95 0.975] :sd 3})
+  ```
+  "
   [& [id code]]
   `(def ~(symbol id) ~(->clj-kw-fn (or code id))))
 
-(defn r-help [f]
+(defn r-help
+  "Display R help from the R function name"
+  [f]
   (-> (with-out-str
         (eval-r (str "capture.output(help(" (symbol f) ", help_type=\"text\"))")))
       (clojure.string/replace #"_" "")))
@@ -173,65 +191,171 @@
   (let [template-r-do-call "function(m) {
   do.call(%s, as.list(m))
 }"
-        ; docstring (r-help id)
         args (formals (str id))
         f (cond
             (seq args) (reify-ifn-r
                         (eval-r (format template-r-do-call (str id))) (keys args))
             :else (reify-ifn (eval-r (str id))))]
-    f
-    #_(with-meta f {:name-r id :doc docstring :argslists (list args)})))
+    (with-meta f {:name-r id :argslists (list args)})))
+
 
 (defmacro defn-r
-  "Attach a R function accepting positional and keyword arguments.
-  e.g. (qnorm [0.95 0.975] :** {:sd 3})"
+  "Attach a R function accepting positional and keyword arguments as maps.
+  e.g. `(qnorm [0.95 0.975] :** {:sd 3})`.
+  The double start keyword (`:**`) must be in the before last position and the optionals arguments at the end.
+  The kwargs map supports the key `:...` to add variadic arguments.
+  "
   [& [id code]]
   `(def ~(symbol id) ~(->clj-pos-kw-fn (or code id))))
 
-(defn doc [f]
-  (-> f meta :doc println))
+(defn rdoc
+  "Retrieve help from a r function."
+  [f]
+  (-> f meta :name-r r-help))
 
-(defn argslists [f]
+(defn argslists
+  "Show argument list of a the function."
+  [f]
   (-> f meta :argslists))
 
-(defn elipsis->kw [f args]
+(defn elipsis->kw
+  "Converts a list of arguments of a function to their keyword equivalent.
+  e.g.
+  ```
+  (r-interop.core/elipsis->kw qnorm [[0.95 0.975] 0 3]) => {:p [0.95 0.975], :mean 0, :sd 3}
+  ```
+  "
+  [f args]
   (zipmap (keys (first (argslists f))) args))
 
 (def dir-package-raw
+  "Retrieve members of a package"
   (value->clj
    (eval-r "function(package_name) as.character(unlist(lsf.str(paste0('package:', package_name))))")))
 
-(defn ->clj-function-name [s]
+(defn ->clj-function-name
+  "Converts r function name to Clojure function names.
+  This is not totally reliable because PascalCase or dot-case (e.g. data.frame)
+  are not totally enforced, see stats::ARMAacf."
+  [s]
   (csk/->kebab-case-string (str/replace s #"\." "-")))
 
 (defn dir-package
-  "Provide the r function names inside an R package" [package]
+  "Provide the r function names inside an R package"
+  [package]
   (->> (dir-package-raw package)
        (filter #(re-matches #"[A-Za-z][A-Za-z\\.\\_].*" %))))
 
-(def r-unevaled-functions
-  #{ ;; base R, functions but are special construct
-    "eval" "for" "if" "function" "exception" "repeat" "reduce" "range"
-    "remove" "next"})
-(def setter?  #(.contains % "<-"))
+(def setter?
+  "R defines setters functions through the symbol `<-` in the function
+  name. This library decided to not support this feature because we can't
+  convert them with formals.'"
+  #(.contains % "<-"))
 
-;; TOOD(how to manage setters?)
-(defn add-package-to-this-ns
-  ([packages] (add-package-to-this-ns packages #{}))
+(defn check-package-names
+  "Checks the name in the packages to verify for non automatic name conversion
+  and avoid any collisions."
+  ([package] (check-package-names package #{}))
   ([package excludes]
    (let [fs (dir-package package)
          clj+fs-ids (->> fs
                          (remove #(or (setter? %) (excludes %)))
-                         (mapv #(vector (->clj-function-name %) %)))
-         clj+setters-ids (filter setter? fs)]
+                         (mapv #(vector (->clj-function-name %) %)))]
+     (mapv #(zipmap [:clj :r] %) clj+fs-ids))))
+
+(defn generate-package-bindings
+  ([package] (generate-package-bindings package #{}))
+  ([package excludes]
+   (let [fs (dir-package package)
+         clj+fs-ids (->> fs
+                         (remove #(or (setter? %) (excludes %)))
+                         (mapv #(vector (->clj-function-name %) %)))]
      (doseq  [[clj-id r-id] clj+fs-ids]
-       #_(println clj-id r-id)
-       (let [docstring (r-help r-id)
+       (let [;; docstring (r-help r-id)
              args (formals (str r-id))]
+         (println "")
+         ;; ugly way of doing it, but we need to generate code as string.
          (clojure.pprint/pprint
           (list 'def (symbol clj-id)
-                {:name-r r-id :doc docstring :argslists (list args)}
+                (symbol "^") {:name-r r-id :doc "" :argslists (list args)}
                 `(->clj-pos-kw-fn ~r-id))))))))
+
+(defn dump-package-bindings
+  ([filename package] (dump-package-bindings filename package #{}))
+  ([filename package excludes]
+   (let [s (-> (with-out-str
+                 (generate-package-bindings package excludes))
+               (clojure.string/replace #"\^\n\s*" "^")
+               (clojure.string/replace #"def\n" "def"))]
+     (spit filename s :append true))))
+
+(defn create-package-bindings
+  "Create package namespaces"
+  [{:keys [package excluded-fns aliases]}]
+  (let [namespace-name (str "r-interop.packages." (->clj-function-name package))
+        filepath
+        (str "r_interop/packages/"
+             (str/replace (->clj-function-name package) #"-" "_") ".clj")
+        output-file (str "src/" filepath)
+        newline #(spit output-file "\n" :append true)]
+    (spit output-file
+          (str "(ns " namespace-name "\n (:require [r-interop.core :refer (defn-r)]))"))
+    (newline)
+    (newline)
+    (spit output-file (clojure.string/join "\n" (map str aliases)) :append true)
+    (newline)
+    (dump-package-bindings output-file package excluded-fns)))
+
+;; In order to call R functions, we need to convert Clojure variables to R
+;; representation.,
+
+(defmacro reify-ifn-polyglot
+  "Convenience macro for reifying IFn for executable polyglot Values."
+  [v]
+  (let [invoke-arity
+        (fn [n]
+          (let [args (map #(symbol (str "arg" (inc %))) (range n))]
+            (if (seq args)
+              ;; TODO test edge case for final `invoke` arity w/varargs
+              `(~'invoke [this# ~@args] (execute ~v ~@args))
+              `(~'invoke [this#] (execute ~v)))))]
+    `(reify IFn
+       ~@(map invoke-arity (range 22))
+       (~'applyTo [this# args#] (apply execute ~v args#)))))
+
+(defmacro reify-ifn-r-polyglot
+  "Convenience macro for reifying IFn for executable polyglot Values but does not
+  convert the final result."
+  [v signature]
+  (let [invoke-arity
+        (fn [n]
+          (let [args (map #(symbol (str "arg" (inc %))) (range n))]
+            ;; TODO test edge case for final `invoke` arity w/varargs
+            (if (seq args)
+              `(~'invoke [this# ~@args]
+                (execute-kw ~v (args->kwargs ~signature ~@args)))
+              `(~'invoke [this# ~@args]
+                (execute ~v ~@args)))))]
+    `(reify IFn
+       ~@(map invoke-arity (range 22))
+       (~'applyTo [this# args#]
+        (execute-kw ~v (zipmap ~signature args#))))))
+
+(defn ->clj-pos-kw-fn-polyglot
+  [id]
+  (let [template-r-do-call "function(m) {
+  do.call(%s, as.list(m))
+}"
+        args (formals (str id))
+        f (cond
+            (seq args) (reify-ifn-r-polyglot
+                        (eval-r (format template-r-do-call (str id))) (keys args))
+            :else (reify-ifn-polyglot (eval-r (str id))))]
+    (with-meta f {:name-r id :argslists (list args)})))
+
+(def ->r-list (comp (->clj-pos-kw-fn-polyglot 'list) ->proxy-object))
+(def ->r-data-frame (comp (->clj-pos-kw-fn-polyglot 'as.data.frame) ->proxy-object))
+(def ->r-matrix (comp (->clj-pos-kw-fn-polyglot 'as.matrix) ->proxy-object))
 
 ;; javascript interop
 #_(defn ^Value eval-js [code]

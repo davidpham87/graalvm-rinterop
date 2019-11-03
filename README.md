@@ -53,6 +53,9 @@ On the Clojure part:
 
 - Matrix dimensions are sometimes not respected (see the `lm`) example.
 - Classes are not kept after conversion.
+- Clojure rational numbers (e.g 3/2) should be avoided as they are not properly
+  converted into R representation.
+
 
 ## License
 
