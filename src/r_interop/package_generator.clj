@@ -1,11 +1,14 @@
 (ns r-interop.package-generator
   (:require
    [r-interop.core :refer (create-package-bindings)]
-   [r-interop.gen-packages.base ]
+   [r-interop.gen-packages.base]
    [r-interop.gen-packages.stats]))
 
 (create-package-bindings r-interop.gen-packages.base/config)
 (create-package-bindings r-interop.gen-packages.stats/config)
+(create-package-bindings r-interop.gen-packages.grDevices/config)
+(create-package-bindings r-interop.gen-packages.boot/config)
+(create-package-bindings r-interop.gen-packages.splines/config)
 
 (comment
   (clojure.pprint/pprint

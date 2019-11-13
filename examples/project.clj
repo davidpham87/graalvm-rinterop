@@ -1,13 +1,15 @@
-(defproject r-interop "0.1.0-SNAPSHOT"
+(defproject r-interop-example "0.1.0-SNAPSHOT"
 
-  :description "Interop between R and Clojure with GraalVM"
+  :description "Example of using r-interop"
 
-  :url "https://github.com/davidpham87/graalvm-rinterop"
+  :url "https://github.com/davidpham87/graalvm-rinterop/example"
 
   :license {:name "EPL-2.0 OR GPL-2.0-or-later WITH Classpath-exception-2.0"
             :url "https://www.eclipse.org/legal/epl-2.0/"}
 
-  :source-paths ["src" "test"]
+  :source-paths ["src" "test" "../src" "assets"]
+
+  :resource-paths ["assets"]
 
   :dependencies [[org.clojure/clojure "1.10.0"]
                  [camel-snake-kebab "0.4.0"]
@@ -19,4 +21,5 @@
   :repl {:dependencies [[nrepl "0.6.0"]
                         [cider/cider-nrepl "0.23.0-SNAPSHOT"]]
          :plugins [[cider/cider-nrepl "0.23.0-SNAPSHOT"]]}
-  :repl-options {:init-ns r-interop.core})
+  ;; :repl-options {:init-ns r-interop.core}
+  )

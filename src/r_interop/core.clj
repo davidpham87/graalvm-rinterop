@@ -291,10 +291,14 @@
 
 (defn create-package-bindings
   "Create package namespaces"
-  [{:keys [package excluded-fns aliases]}]
-  (let [namespace-name (str "r-interop.packages." (->clj-function-name package))
+  [{:keys [package excluded-fns aliases load? root-ns root-filepath]
+    :or {excluded-fns #{}
+         root-ns "r-interop.packages"
+         root-filepath "r_interop/packages"}}]
+  (when load? (eval-r (str "library(" package ")")))
+  (let [namespace-name (str root-ns "." (->clj-function-name package))
         filepath
-        (str "r_interop/packages/"
+        (str root-filepath "/"
              (str/replace (->clj-function-name package) #"-" "_") ".clj")
         output-file (str "src/" filepath)
         newline #(spit output-file "\n" :append true)]
