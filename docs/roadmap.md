@@ -20,6 +20,10 @@ All packages are here.
 
 https://stat.ethz.ch/R-manual/R-devel/library/
 
+## Use R namespace facility and don't use library
+
+Example `boot::boot`.
+
 ## Write about bugs
 
 ### Not preserving dimensions

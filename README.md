@@ -2,6 +2,12 @@
 
 A simple example to help the interaction with R and Clojure in GraalVM
 
+# Status
+
+Clearly alpha. The goal is to keep the function call mechanism but creating a
+better interop story with R objects (`lm` or `ggplot`). That being said, the
+bindings to R should work and  stay stable.
+
 ## Usage
 
 Install GraalVM first. See this
@@ -33,20 +39,30 @@ On the Clojure part:
 ``` clojure
 ;; inside core.clj
 
+(require '[r-interop.core :as rc])
+
 ;; define the rnorm function in clojure linked to the R rnorm function
-(defn-r rnorm)
+(rc/defn-r rnorm)
 
 ;; positional call to the rnorm function (n=10, mean=2, sd=3)
 (rnorm 10 2 3)
 
 ;; Same as above for the qnorm, but accepts a maps of arguments
-(defn-r qnorm)
+(rc/defn-r qnorm)
 ;; usual 0.95 and 0.975 quantile
 (qnorm :** {:p [0.95, 0.975]})
 
 ;; Same as above with standard deviation of 2,
 ;; observe we did not specify (which then takes the default value 0)
 (qnorm :** {:p [0.95, 0.975] :sd 2})
+
+;; you don't need to define all the R function like that
+;; I created these packages and it easy to create your own with rc/create-package-bindings
+
+(require '[r-interop.packages.base :as r-base])
+(require '[r-interop.packages.stats :as st])
+(rc/argslists st/qnorm)
+
 ```
 
 ## Caveat
