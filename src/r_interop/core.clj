@@ -125,7 +125,8 @@
      (.isNumber v) (.as v Number)
      (.canExecute v) (reify-ifn v)
 
-     (and (.hasMembers v) (seq (.getMemberKeys v))) ;; bug of polyglot, sometimes the hasMembers returns an empty set and the members might be duplicates, wtf?!
+     ;; bug of polyglot, sometimes the hasMembers returns an empty set and the members might be duplicates, wtf?!
+     (and (.hasMembers v) #_(seq (.getMemberKeys v)))
      (let [ks (.getMemberKeys v)]
        (into
         (array-map)
@@ -196,6 +197,53 @@
             (seq args) (reify-ifn-r
                         (eval-r (format template-r-do-call (str id))) (keys args))
             :else (reify-ifn (eval-r (str id))))]
+    (with-meta f {:name-r id :argslists (list args)})))
+
+;; In order to call R functions, we need to convert Clojure variables to R
+;; representation.
+(defmacro reify-ifn-polyglot
+  "Convenience macro for reifying IFn for executable polyglot Values."
+  [v]
+  (let [invoke-arity
+        (fn [n]
+          (let [args (map #(symbol (str "arg" (inc %))) (range n))]
+            (if (seq args)
+              ;; TODO test edge case for final `invoke` arity w/varargs
+              `(~'invoke [this# ~@args] (execute ~v ~@args))
+              `(~'invoke [this#] (execute ~v)))))]
+    `(reify IFn
+       ~@(map invoke-arity (range 22))
+       (~'applyTo [this# args#] (apply execute ~v args#)))))
+
+(defmacro reify-ifn-r-polyglot
+  "Convenience macro for reifying IFn for executable polyglot Values but does not
+  convert the final result."
+  [v signature]
+  (let [invoke-arity
+        (fn [n]
+          (let [args (map #(symbol (str "arg" (inc %))) (range n))]
+            ;; TODO test edge case for final `invoke` arity w/varargs
+            (if (seq args)
+              `(~'invoke [this# ~@args]
+                (execute-kw ~v (args->kwargs ~signature ~@args)))
+              `(~'invoke [this# ~@args]
+                (execute ~v ~@args)))))]
+    `(reify IFn
+       ~@(map invoke-arity (range 22))
+       (~'applyTo [this# args#]
+        (execute-kw ~v (zipmap ~signature args#))))))
+
+(defn ->clj-pos-kw-fn-polyglot
+  [id]
+  (let [template-r-do-call "function(m) {
+  do.call(%s, as.list(m))
+}"
+        args (formals (str id))
+        f (cond
+            (seq args) (reify-ifn-r-polyglot
+                        (eval-r (format template-r-do-call (str id))) (keys args))
+            ;; use only the positional arguments, if no arguments from formals
+            :else (reify-ifn-polyglot (eval-r (str id))))]
     (with-meta f {:name-r id :argslists (list args)})))
 
 
@@ -278,7 +326,7 @@
          (clojure.pprint/pprint
           (list 'def (symbol clj-id)
                 (symbol "^") {:name-r r-id :doc "" :argslists (list args)}
-                `(->clj-pos-kw-fn ~(str package "::" r-id)))))))))
+                `(->clj-pos-kw-fn ~r-id))))))))
 
 (defn dump-package-bindings
   ([filename package] (dump-package-bindings filename package #{}))
@@ -303,59 +351,14 @@
         output-file (str "src/" filepath)
         newline #(spit output-file "\n" :append true)]
     (spit output-file
-          (str "(ns " namespace-name "\n (:require [r-interop.core :refer (defn-r)]))"))
+          (str "(ns " namespace-name "\n (:require [r-interop.core :refer (defn-r eval-r)]))"))
     (newline)
     (newline)
+    (when load?
+      (spit output-file (str "(eval-r \"library(" package ")\")") :append true))
     (spit output-file (clojure.string/join "\n" (map str aliases)) :append true)
     (newline)
     (dump-package-bindings output-file package excluded-fns)))
-
-;; In order to call R functions, we need to convert Clojure variables to R
-;; representation.
-(defmacro reify-ifn-polyglot
-  "Convenience macro for reifying IFn for executable polyglot Values."
-  [v]
-  (let [invoke-arity
-        (fn [n]
-          (let [args (map #(symbol (str "arg" (inc %))) (range n))]
-            (if (seq args)
-              ;; TODO test edge case for final `invoke` arity w/varargs
-              `(~'invoke [this# ~@args] (execute ~v ~@args))
-              `(~'invoke [this#] (execute ~v)))))]
-    `(reify IFn
-       ~@(map invoke-arity (range 22))
-       (~'applyTo [this# args#] (apply execute ~v args#)))))
-
-(defmacro reify-ifn-r-polyglot
-  "Convenience macro for reifying IFn for executable polyglot Values but does not
-  convert the final result."
-  [v signature]
-  (let [invoke-arity
-        (fn [n]
-          (let [args (map #(symbol (str "arg" (inc %))) (range n))]
-            ;; TODO test edge case for final `invoke` arity w/varargs
-            (if (seq args)
-              `(~'invoke [this# ~@args]
-                (execute-kw ~v (args->kwargs ~signature ~@args)))
-              `(~'invoke [this# ~@args]
-                (execute ~v ~@args)))))]
-    `(reify IFn
-       ~@(map invoke-arity (range 22))
-       (~'applyTo [this# args#]
-        (execute-kw ~v (zipmap ~signature args#))))))
-
-(defn ->clj-pos-kw-fn-polyglot
-  [id]
-  (let [template-r-do-call "function(m) {
-  do.call(%s, as.list(m))
-}"
-        args (formals (str id))
-        f (cond
-            (seq args) (reify-ifn-r-polyglot
-                        (eval-r (format template-r-do-call (str id))) (keys args))
-            ;; use only the positional arguments, if no arguments from formals
-            :else (reify-ifn-polyglot (eval-r (str id))))]
-    (with-meta f {:name-r id :argslists (list args)})))
 
 (def ->r-list (comp (->clj-pos-kw-fn-polyglot 'list) ->proxy-object))
 (def ->r-data-frame (comp (->clj-pos-kw-fn-polyglot 'as.data.frame) ->proxy-object))

@@ -1,5 +1,5 @@
 (ns r-interop.packages.stats
- (:require [r-interop.core :refer (defn-r)]))
+ (:require [r-interop.core :refer (defn-r eval-r)]))
 
 (defn-r acf->ar acf2AR)
 (defn-r arma->ma ARMAtoMA)
@@ -28,7 +28,7 @@
   :argslists
   ({:x nil,
     :lag.max nil,
-    :type [nil "correlation" "covariance" "partial"],
+    :type {},
     :plot true,
     :na.action nil,
     :demean true,
@@ -54,8 +54,7 @@
 (def addmargins
  ^{:name-r "addmargins",
   :doc "",
-  :argslists
-  ({:A nil, :margin [nil [nil nil]], :FUN nil, :quiet false})}
+  :argslists ({:A nil, :margin {}, :FUN nil, :quiet false})}
  (r-interop.core/->clj-pos-kw-fn "addmargins"))
 
 (def aggregate
@@ -77,7 +76,7 @@
     :nfrequency 1,
     :FUN nil,
     :ndeltat 1,
-    :ts.eps [nil "ts.eps"],
+    :ts.eps {},
     :... nil})}
  (r-interop.core/->clj-pos-kw-fn "aggregate.ts"))
 
@@ -146,9 +145,9 @@
   ({:x nil,
     :aic true,
     :order.max nil,
-    :method [nil "yule-walker" "burg" "ols" "mle" "yw"],
+    :method {},
     :na.action nil,
-    :series [nil [nil nil]],
+    :series {},
     :... nil})}
  (r-interop.core/->clj-pos-kw-fn "ar"))
 
@@ -192,17 +191,17 @@
   :doc "",
   :argslists
   ({:init nil,
-    :SSinit [nil "Gardner1980" "Rossignol2011"],
-    :method [nil "CSS-ML" "ML" "CSS"],
+    :SSinit {},
+    :method {},
     :xreg nil,
     :include.mean true,
-    :seasonal {:empty-key nil, :order [nil 0 0 0], :period [nil]},
+    :seasonal {:empty-key nil, :order {}, :period [nil]},
     :n.cond nil,
-    :order [nil 0 0 0],
+    :order {},
     :x nil,
     :kappa 1000000,
     :fixed nil,
-    :optim.control [nil],
+    :optim.control {},
     :transform.pars true,
     :optim.method "BFGS"})}
  (r-interop.core/->clj-pos-kw-fn "arima"))
@@ -214,9 +213,9 @@
   ({:model nil,
     :n nil,
     :rand.gen nil,
-    :innov [nil nil nil],
+    :innov {},
     :n.start [nil],
-    :start.innov [nil nil nil],
+    :start.innov {},
     :... nil})}
  (r-interop.core/->clj-pos-kw-fn "arima.sim"))
 
@@ -225,16 +224,16 @@
   :doc "",
   :argslists
   ({:init nil,
-    :method [nil "ML" "CSS"],
+    :method {},
     :xreg nil,
     :include.mean true,
-    :seasonal {:empty-key nil, :order [nil 0 0 0], :period [nil]},
+    :seasonal {:empty-key nil, :order {}, :period [nil]},
     :n.cond nil,
     :delta 0.01,
-    :order [nil 0 0 0],
+    :order {},
     :x nil,
     :fixed nil,
-    :optim.control [nil],
+    :optim.control {},
     :transform.pars true})}
  (r-interop.core/->clj-pos-kw-fn "arima0"))
 
@@ -255,9 +254,7 @@
  (r-interop.core/->clj-pos-kw-fn "as.dist"))
 
 (def as-formula
- ^{:name-r "as.formula",
-  :doc "",
-  :argslists ({:object nil, :env [nil]})}
+ ^{:name-r "as.formula", :doc "", :argslists ({:object nil, :env {}})}
  (r-interop.core/->clj-pos-kw-fn "as.formula"))
 
 (def as-hclust
@@ -296,11 +293,7 @@
  ^{:name-r "binom.test",
   :doc "",
   :argslists
-  ({:x nil,
-    :n nil,
-    :p 0.5,
-    :alternative [nil "two.sided" "less" "greater"],
-    :conf.level 0.95})}
+  ({:x nil, :n nil, :p 0.5, :alternative {}, :conf.level 0.95})}
  (r-interop.core/->clj-pos-kw-fn "binom.test"))
 
 (def binomial
@@ -314,19 +307,13 @@
 (def box-test
  ^{:name-r "Box.test",
   :doc "",
-  :argslists
-  ({:x nil, :lag 1, :type [nil "Box-Pierce" "Ljung-Box"], :fitdf 0})}
+  :argslists ({:x nil, :lag 1, :type {}, :fitdf 0})}
  (r-interop.core/->clj-pos-kw-fn "Box.test"))
 
 (def bw-bcv
  ^{:name-r "bw.bcv",
   :doc "",
-  :argslists
-  ({:x nil,
-    :nb 1000,
-    :lower [nil 0.1 nil],
-    :upper nil,
-    :tol [nil 0.1 nil]})}
+  :argslists ({:x nil, :nb 1000, :lower {}, :upper nil, :tol {}})}
  (r-interop.core/->clj-pos-kw-fn "bw.bcv"))
 
 (def bw-nrd
@@ -341,23 +328,13 @@
  ^{:name-r "bw.SJ",
   :doc "",
   :argslists
-  ({:x nil,
-    :nb 1000,
-    :lower [nil 0.1 nil],
-    :upper nil,
-    :method [nil "ste" "dpi"],
-    :tol [nil 0.1 nil]})}
+  ({:x nil, :nb 1000, :lower {}, :upper nil, :method {}, :tol {}})}
  (r-interop.core/->clj-pos-kw-fn "bw.SJ"))
 
 (def bw-ucv
  ^{:name-r "bw.ucv",
   :doc "",
-  :argslists
-  ({:x nil,
-    :nb 1000,
-    :lower [nil 0.1 nil],
-    :upper nil,
-    :tol [nil 0.1 nil]})}
+  :argslists ({:x nil, :nb 1000, :lower {}, :upper nil, :tol {}})}
  (r-interop.core/->clj-pos-kw-fn "bw.ucv"))
 
 (def cancor
@@ -377,7 +354,7 @@
   ({:x nil,
     :y nil,
     :lag.max nil,
-    :type [nil "correlation" "covariance"],
+    :type {},
     :plot true,
     :na.action nil,
     :... nil})}
@@ -390,7 +367,7 @@
   ({:x nil,
     :y nil,
     :correct true,
-    :p [nil [nil 1 [nil nil]] [nil nil]],
+    :p {},
     :rescale.p false,
     :simulate.p.value false,
     :B 2000})}
@@ -400,12 +377,7 @@
  ^{:name-r "cmdscale",
   :doc "",
   :argslists
-  ({:d nil,
-    :k 2,
-    :eig false,
-    :add false,
-    :x.ret false,
-    :list. [nil [nil nil nil] nil]})}
+  ({:d nil, :k 2, :eig false, :add false, :x.ret false, :list. {}})}
  (r-interop.core/->clj-pos-kw-fn "cmdscale"))
 
 (def coef
@@ -445,13 +417,13 @@
   :doc "",
   :argslists
   ({:outer.eps 1.0E-5,
-    :method [nil [nil nil] "Nelder-Mead" "BFGS"],
+    :method {},
     :ci nil,
     :theta nil,
     :hessian false,
     :ui nil,
     :... nil,
-    :control [nil],
+    :control {},
     :f nil,
     :mu 1.0E-4,
     :grad nil,
@@ -467,8 +439,7 @@
 (def contr-poly
  ^{:name-r "contr.poly",
   :doc "",
-  :argslists
-  ({:n nil, :scores [nil 1 nil], :contrasts true, :sparse false})}
+  :argslists ({:n nil, :scores {}, :contrasts true, :sparse false})}
  (r-interop.core/->clj-pos-kw-fn "contr.poly"))
 
 (def contr-sas
@@ -498,11 +469,7 @@
 (def convolve
  ^{:name-r "convolve",
   :doc "",
-  :argslists
-  ({:x nil,
-    :y nil,
-    :conj true,
-    :type [nil "circular" "open" "filter"]})}
+  :argslists ({:x nil, :y nil, :conj true, :type {}})}
  (r-interop.core/->clj-pos-kw-fn "convolve"))
 
 (def cooks-distance
@@ -518,11 +485,7 @@
 (def cor
  ^{:name-r "cor",
   :doc "",
-  :argslists
-  ({:x nil,
-    :y nil,
-    :use "everything",
-    :method [nil "pearson" "kendall" "spearman"]})}
+  :argslists ({:x nil, :y nil, :use "everything", :method {}})}
  (r-interop.core/->clj-pos-kw-fn "cor"))
 
 (def cor-test
@@ -532,41 +495,26 @@
 (def cov
  ^{:name-r "cov",
   :doc "",
-  :argslists
-  ({:x nil,
-    :y nil,
-    :use "everything",
-    :method [nil "pearson" "kendall" "spearman"]})}
+  :argslists ({:x nil, :y nil, :use "everything", :method {}})}
  (r-interop.core/->clj-pos-kw-fn "cov"))
 
 (def cov-wt
  ^{:name-r "cov.wt",
   :doc "",
-  :argslists
-  ({:x nil,
-    :wt [nil [nil 1 [nil nil]] [nil nil]],
-    :cor false,
-    :center true,
-    :method [nil "unbiased" "ML"]})}
+  :argslists ({:x nil, :wt {}, :cor false, :center true, :method {}})}
  (r-interop.core/->clj-pos-kw-fn "cov.wt"))
 
 (def covratio
  ^{:name-r "covratio",
   :doc "",
   :argslists
-  ({:model nil,
-    :infl {:empty-key nil, :do.coef false},
-    :res [nil nil]})}
+  ({:model nil, :infl {:empty-key nil, :do.coef false}, :res {}})}
  (r-interop.core/->clj-pos-kw-fn "covratio"))
 
 (def cpgram
  ^{:name-r "cpgram",
   :doc "",
-  :argslists
-  ({:ts nil,
-    :taper 0.1,
-    :main [nil "Series: " [nil [nil nil]]],
-    :ci.col "blue"})}
+  :argslists ({:ts nil, :taper 0.1, :main {}, :ci.col "blue"})}
  (r-interop.core/->clj-pos-kw-fn "cpgram"))
 
 (def cutree
@@ -604,8 +552,7 @@
 (def decompose
  ^{:name-r "decompose",
   :doc "",
-  :argslists
-  ({:x nil, :type [nil "additive" "multiplicative"], :filter nil})}
+  :argslists ({:x nil, :type {}, :filter nil})}
  (r-interop.core/->clj-pos-kw-fn "decompose"))
 
 (def delete-response
@@ -639,15 +586,7 @@
     :window nil,
     :from nil,
     :... nil,
-    :kernel
-    [nil
-     "gaussian"
-     "epanechnikov"
-     "rectangular"
-     "triangular"
-     "biweight"
-     "cosine"
-     "optcosine"],
+    :kernel {},
     :bw "nrd0",
     :x nil,
     :cut 3,
@@ -696,16 +635,13 @@
  ^{:name-r "dffits",
   :doc "",
   :argslists
-  ({:model nil,
-    :infl {:empty-key nil, :do.coef false},
-    :res [nil nil]})}
+  ({:model nil, :infl {:empty-key nil, :do.coef false}, :res {}})}
  (r-interop.core/->clj-pos-kw-fn "dffits"))
 
 (def dgamma
  ^{:name-r "dgamma",
   :doc "",
-  :argslists
-  ({:x nil, :shape nil, :rate 1, :scale [nil 1 nil], :log false})}
+  :argslists ({:x nil, :shape nil, :rate 1, :scale {}, :log false})}
  (r-interop.core/->clj-pos-kw-fn "dgamma"))
 
 (def dgeom
@@ -852,11 +788,7 @@
 (def expand-model-frame
  ^{:name-r "expand.model.frame",
   :doc "",
-  :argslists
-  ({:model nil,
-    :extras nil,
-    :envir [nil [nil nil]],
-    :na.expand false})}
+  :argslists ({:model nil, :extras nil, :envir {}, :na.expand false})}
  (r-interop.core/->clj-pos-kw-fn "expand.model.frame"))
 
 (def extract-aic
@@ -878,7 +810,7 @@
     :... nil,
     :control nil,
     :covmat nil,
-    :scores [nil "none" "regression" "Bartlett"],
+    :scores {},
     :x nil,
     :data nil})}
  (r-interop.core/->clj-pos-kw-fn "factanal"))
@@ -903,7 +835,7 @@
   :argslists
   ({:x nil,
     :filter nil,
-    :method [nil "convolution" "recursive"],
+    :method {},
     :sides 2,
     :circular false,
     :init nil})}
@@ -922,7 +854,7 @@
     :or 1,
     :conf.level 0.95,
     :B 2000,
-    :control [nil],
+    :control {},
     :x nil,
     :hybridPars {:empty-key nil, :expect 5, :percent 80, :Emin 1}})}
  (r-interop.core/->clj-pos-kw-fn "fisher.test"))
@@ -1002,7 +934,7 @@
     :start nil,
     :weights nil,
     :... nil,
-    :control [nil nil],
+    :control {},
     :formula nil,
     :x false,
     :data nil,
@@ -1021,14 +953,14 @@
   :argslists
   ({:y nil,
     :singular.ok true,
-    :family [nil],
+    :family {},
     :intercept true,
     :etastart nil,
     :mustart nil,
-    :offset [nil 0 nil],
+    :offset {},
     :start nil,
-    :weights [nil 1 nil],
-    :control [nil],
+    :weights {},
+    :control {},
     :x nil})}
  (r-interop.core/->clj-pos-kw-fn "glm.fit"))
 
@@ -1056,25 +988,25 @@
   :argslists
   ({:symm false,
     :na.rm true,
-    :Colv [nil nil "Rowv" nil],
+    :Colv {},
     :ColSideColors nil,
     :ylab nil,
-    :scale [nil "row" "column" "none"],
-    :cexRow [nil 0.2 [nil 1 [nil nil]]],
-    :reorderfun [nil {:d nil, :w nil} [nil nil nil] nil],
+    :scale {},
+    :cexRow {},
+    :reorderfun {},
     :labRow nil,
-    :verbose [nil "verbose"],
+    :verbose {},
     :RowSideColors nil,
     :add.expr nil,
-    :revC [nil nil "Rowv"],
+    :revC {},
     :xlab nil,
     :distfun nil,
     :... nil,
     :labCol nil,
-    :margins [nil 5 5],
+    :margins {},
     :hclustfun nil,
     :x nil,
-    :cexCol [nil 0.2 [nil 1 [nil nil]]],
+    :cexCol {},
     :Rowv nil,
     :main nil,
     :keep.dendro false})}
@@ -1088,13 +1020,13 @@
     :s.start nil,
     :b.start nil,
     :start.periods 2,
-    :seasonal [nil "additive" "multiplicative"],
+    :seasonal {},
     :optim.start {:empty-key nil, :alpha 0.3, :beta 0.1, :gamma 0.1},
     :gamma nil,
     :alpha nil,
     :x nil,
     :l.start nil,
-    :optim.control [nil]})}
+    :optim.control {}})}
  (r-interop.core/->clj-pos-kw-fn "HoltWinters"))
 
 (def influence
@@ -1118,7 +1050,7 @@
     :lower nil,
     :subdivisions 100,
     :f nil,
-    :rel.tol [nil [nil nil nil] 0.25]})}
+    :rel.tol {}})}
  (r-interop.core/->clj-pos-kw-fn "integrate"))
 
 (def interaction-plot
@@ -1127,21 +1059,21 @@
   :argslists
   ({:response nil,
     :ylim {:empty-key nil, :na.rm true},
-    :trace.label [nil [nil nil]],
+    :trace.label {},
     :fun nil,
-    :xaxt [nil "xaxt"],
+    :xaxt {},
     :ylab nil,
-    :lty [nil nil 1],
+    :lty {},
     :xtick false,
     :axes true,
     :xpd nil,
-    :leg.bg [nil "bg"],
+    :leg.bg {},
     :legend true,
-    :type [nil "l" "p" "b" "o" "c"],
-    :xlab [nil [nil nil]],
+    :type {},
+    :xlab {},
     :... nil,
     :col 1,
-    :pch [nil [nil 1 9] 0 nil],
+    :pch {},
     :fixed false,
     :trace.factor nil,
     :x.factor nil,
@@ -1226,7 +1158,7 @@
     :centers nil,
     :iter.max 10,
     :nstart 1,
-    :algorithm [nil "Hartigan-Wong" "Lloyd" "Forgy" "MacQueen"],
+    :algorithm {},
     :trace false})}
  (r-interop.core/->clj-pos-kw-fn "kmeans"))
 
@@ -1241,12 +1173,7 @@
 (def ks-test
  ^{:name-r "ks.test",
   :doc "",
-  :argslists
-  ({:x nil,
-    :y nil,
-    :... nil,
-    :alternative [nil "two.sided" "less" "greater"],
-    :exact nil})}
+  :argslists ({:x nil, :y nil, :... nil, :alternative {}, :exact nil})}
  (r-interop.core/->clj-pos-kw-fn "ks.test"))
 
 (def ksmooth
@@ -1255,10 +1182,10 @@
   :argslists
   ({:x nil,
     :y nil,
-    :kernel [nil "box" "normal"],
+    :kernel {},
     :bandwidth 0.5,
-    :range.x [nil nil],
-    :n.points [nil 100 [nil nil]],
+    :range.x {},
+    :n.points {},
     :x.points nil})}
  (r-interop.core/->clj-pos-kw-fn "ksmooth"))
 
@@ -1270,10 +1197,10 @@
  ^{:name-r "lag.plot",
   :doc "",
   :argslists
-  ({:set.lags [nil 1 nil],
+  ({:set.lags {},
     :labels nil,
     :diag.col "gray",
-    :do.lines [nil [nil nil 150]],
+    :do.lines {},
     :layout nil,
     :type "p",
     :... nil,
@@ -1351,15 +1278,15 @@
  ^{:name-r "loess",
   :doc "",
   :argslists
-  ({:family [nil "gaussian" "symmetric"],
+  ({:family {},
     :subset nil,
     :enp.target nil,
-    :method [nil "loess" "model.frame"],
+    :method {},
     :drop.square false,
     :na.action nil,
     :weights nil,
     :... nil,
-    :control [nil nil],
+    :control {},
     :degree 2,
     :formula nil,
     :parametric false,
@@ -1373,9 +1300,9 @@
  ^{:name-r "loess.control",
   :doc "",
   :argslists
-  ({:surface [nil "interpolate" "direct"],
-    :statistics [nil "approximate" "exact" "none"],
-    :trace.hat [nil "exact" "approximate"],
+  ({:surface {},
+    :statistics {},
+    :trace.hat {},
     :cell 0.2,
     :iterations 4,
     :iterTrace false,
@@ -1388,9 +1315,9 @@
   :argslists
   ({:x nil,
     :y nil,
-    :span [nil 2 3],
+    :span {},
     :degree 1,
-    :family [nil "symmetric" "gaussian"],
+    :family {},
     :evaluation 50,
     :... nil})}
  (r-interop.core/->clj-pos-kw-fn "loess.smooth"))
@@ -1405,7 +1332,7 @@
   :argslists
   ({:table nil,
     :margin nil,
-    :start [nil 1 [nil nil]],
+    :start {},
     :fit false,
     :eps 0.1,
     :iter 20,
@@ -1416,12 +1343,7 @@
 (def lowess
  ^{:name-r "lowess",
   :doc "",
-  :argslists
-  ({:x nil,
-    :y nil,
-    :f [nil 2 3],
-    :iter 3,
-    :delta [nil 0.01 [nil [nil nil]]]})}
+  :argslists ({:x nil, :y nil, :f {}, :iter 3, :delta {}})}
  (r-interop.core/->clj-pos-kw-fn "lowess"))
 
 (def ls-diag
@@ -1451,7 +1373,7 @@
   :doc "",
   :argslists
   ({:x nil,
-    :center [nil nil],
+    :center {},
     :constant 1.4826,
     :na.rm false,
     :low false,
@@ -1477,8 +1399,8 @@
     :theta nil,
     :Delta nil,
     :kappa 1000000,
-    :SSinit [nil "Gardner1980" "Rossignol2011"],
-    :tol [nil nil nil]})}
+    :SSinit {},
+    :tol {}})}
  (r-interop.core/->clj-pos-kw-fn "makeARIMA"))
 
 (def makepredictcall
@@ -1498,7 +1420,7 @@
   ({:x nil,
     :y nil,
     :z nil,
-    :alternative [nil "two.sided" "less" "greater"],
+    :alternative {},
     :correct true,
     :exact false,
     :conf.level 0.95})}
@@ -1570,11 +1492,7 @@
  ^{:name-r "model.matrix.default",
   :doc "",
   :argslists
-  ({:object nil,
-    :data [nil nil],
-    :contrasts.arg nil,
-    :xlev nil,
-    :... nil})}
+  ({:object nil, :data {}, :contrasts.arg nil, :xlev nil, :... nil})}
  (r-interop.core/->clj-pos-kw-fn "model.matrix.default"))
 
 (def model-matrix-lm
@@ -1656,21 +1574,18 @@
  (r-interop.core/->clj-pos-kw-fn "naresid"))
 
 (def nextn
- ^{:name-r "nextn",
-  :doc "",
-  :argslists ({:n nil, :factors [nil 2 3 5]})}
+ ^{:name-r "nextn", :doc "", :argslists ({:n nil, :factors {}})}
  (r-interop.core/->clj-pos-kw-fn "nextn"))
 
 (def nlm
  ^{:name-r "nlm",
   :doc "",
   :argslists
-  ({:stepmax
-    [nil [nil 1000 [nil [nil [nil [nil [nil nil nil]] 2]]]] 1000],
+  ({:stepmax {},
     :steptol 1.0E-6,
     :check.analyticals true,
     :gradtol 1.0E-6,
-    :typsize [nil 1 [nil nil]],
+    :typsize {},
     :ndigit 12,
     :hessian false,
     :... nil,
@@ -1690,8 +1605,8 @@
     :start nil,
     :hessian nil,
     :... nil,
-    :control [nil],
-    :lower [nil ##Inf],
+    :control {},
+    :lower {},
     :gradient nil,
     :objective nil})}
  (r-interop.core/->clj-pos-kw-fn "nlminb"))
@@ -1701,17 +1616,17 @@
   :doc "",
   :argslists
   ({:upper ##Inf,
-    :algorithm [nil "default" "plinear" "port"],
+    :algorithm {},
     :subset nil,
     :trace false,
     :na.action nil,
     :start nil,
     :weights nil,
     :... nil,
-    :control [nil],
-    :lower [nil ##Inf],
+    :control {},
+    :lower {},
     :formula nil,
-    :data [nil],
+    :data {},
     :model false})}
  (r-interop.core/->clj-pos-kw-fn "nls"))
 
@@ -1721,7 +1636,7 @@
   :argslists
   ({:maxiter 50,
     :tol 1.0E-5,
-    :minFactor [nil 1 1024],
+    :minFactor {},
     :printEval false,
     :warnOnly false})}
  (r-interop.core/->clj-pos-kw-fn "nls.control"))
@@ -1733,7 +1648,7 @@
 (def numeric-deriv
  ^{:name-r "numericDeriv",
   :doc "",
-  :argslists ({:expr nil, :theta nil, :rho [nil], :dir 1})}
+  :argslists ({:expr nil, :theta nil, :rho {}, :dir 1})}
  (r-interop.core/->clj-pos-kw-fn "numericDeriv"))
 
 (def offset
@@ -1758,18 +1673,18 @@
   ({:upper ##Inf,
     :fn nil,
     :par nil,
-    :method [nil "Nelder-Mead" "BFGS" "CG" "L-BFGS-B" "SANN" "Brent"],
+    :method {},
     :hessian false,
     :gr nil,
     :... nil,
-    :control [nil],
-    :lower [nil ##Inf]})}
+    :control {},
+    :lower {}})}
  (r-interop.core/->clj-pos-kw-fn "optim"))
 
 (def optim-hess
  ^{:name-r "optimHess",
   :doc "",
-  :argslists ({:par nil, :fn nil, :gr nil, :... nil, :control [nil]})}
+  :argslists ({:par nil, :fn nil, :gr nil, :... nil, :control {}})}
  (r-interop.core/->clj-pos-kw-fn "optimHess"))
 
 (def optimise
@@ -1779,10 +1694,10 @@
   ({:f nil,
     :interval nil,
     :... nil,
-    :lower [nil nil],
-    :upper [nil nil],
+    :lower {},
+    :upper {},
     :maximum false,
-    :tol [nil [nil nil nil] 0.25]})}
+    :tol {}})}
  (r-interop.core/->clj-pos-kw-fn "optimise"))
 
 (def optimize
@@ -1792,10 +1707,10 @@
   ({:f nil,
     :interval nil,
     :... nil,
-    :lower [nil nil],
-    :upper [nil nil],
+    :lower {},
+    :upper {},
     :maximum false,
-    :tol [nil [nil nil nil] 0.25]})}
+    :tol {}})}
  (r-interop.core/->clj-pos-kw-fn "optimize"))
 
 (def order-dendrogram
@@ -1805,7 +1720,7 @@
 (def p-adjust
  ^{:name-r "p.adjust",
   :doc "",
-  :argslists ({:p nil, :method nil, :n [nil nil]})}
+  :argslists ({:p nil, :method nil, :n {}})}
  (r-interop.core/->clj-pos-kw-fn "p.adjust"))
 
 (def pacf
@@ -1828,9 +1743,9 @@
   ({:x nil,
     :g nil,
     :p.adjust.method nil,
-    :pool.sd [nil nil],
+    :pool.sd {},
     :paired false,
-    :alternative [nil "two.sided" "less" "greater"],
+    :alternative {},
     :... nil})}
  (r-interop.core/->clj-pos-kw-fn "pairwise.t.test"))
 
@@ -1912,7 +1827,7 @@
   ({:q nil,
     :shape nil,
     :rate 1,
-    :scale [nil 1 nil],
+    :scale {},
     :lower.tail true,
     :log.p false})}
  (r-interop.core/->clj-pos-kw-fn "pgamma"))
@@ -1981,7 +1896,7 @@
  ^{:name-r "plot.spec.coherency",
   :doc "",
   :argslists
-  ({:ylim [nil 0 1],
+  ({:ylim {},
     :ci.col "blue",
     :ylab "squared coherency",
     :ci 0.95,
@@ -1997,7 +1912,7 @@
  ^{:name-r "plot.spec.phase",
   :doc "",
   :argslists
-  ({:ylim [nil [nil nil] nil],
+  ({:ylim {},
     :ci.col "blue",
     :ylab "phase",
     :ci 0.95,
@@ -2014,24 +1929,24 @@
   :doc "",
   :argslists
   ({:col.points nil,
-    :ylim [nil [nil nil nil]],
+    :ylim {},
     :ylab "f(x)",
-    :lty [nil "lty"],
+    :lty {},
     :col.vert nil,
-    :cex.points [nil "cex"],
+    :cex.points {},
     :verticals true,
     :xlim nil,
     :xlab "x",
     :col.hor nil,
     :... nil,
-    :col [nil "col"],
-    :pch [nil "pch"],
+    :col {},
+    :pch {},
     :x nil,
     :xval nil,
     :add false,
     :main nil,
-    :lwd [nil "lwd"],
-    :do.points [nil [nil nil 1000]]})}
+    :lwd {},
+    :do.points {}})}
  (r-interop.core/->clj-pos-kw-fn "plot.stepfun"))
 
 (def plot-ts
@@ -2040,11 +1955,11 @@
   :argslists
   ({:y nil,
     :xy.labels nil,
-    :mar.multi [nil 0 5.1 0 [nil nil 5.1 2.1]],
-    :oma.multi [nil 6 0 5 0],
+    :mar.multi {},
+    :oma.multi {},
     :axes true,
     :nc nil,
-    :plot.type [nil "multiple" "single"],
+    :plot.type {},
     :panel nil,
     :xy.lines nil,
     :... nil,
@@ -2078,12 +1993,7 @@
 (def poisson-test
  ^{:name-r "poisson.test",
   :doc "",
-  :argslists
-  ({:x nil,
-    :T 1,
-    :r 1,
-    :alternative [nil "two.sided" "less" "greater"],
-    :conf.level 0.95})}
+  :argslists ({:x nil, :T 1, :r 1, :alternative {}, :conf.level 0.95})}
  (r-interop.core/->clj-pos-kw-fn "poisson.test"))
 
 (def poly
@@ -2129,9 +2039,9 @@
     :p2 nil,
     :sig.level 0.05,
     :power nil,
-    :alternative [nil "two.sided" "one.sided"],
+    :alternative {},
     :strict false,
-    :tol [nil [nil nil nil] 0.25]})}
+    :tol {}})}
  (r-interop.core/->clj-pos-kw-fn "power.prop.test"))
 
 (def power-t-test
@@ -2139,10 +2049,10 @@
   :doc "",
   :argslists
   ({:strict false,
-    :tol [nil [nil nil nil] 0.25],
-    :alternative [nil "two.sided" "one.sided"],
+    :tol {},
+    :alternative {},
     :n nil,
-    :type [nil "two.sample" "one.sample" "paired"],
+    :type {},
     :power nil,
     :sig.level 0.05,
     :delta nil,
@@ -2154,9 +2064,7 @@
  (r-interop.core/->clj-pos-kw-fn "PP.test"))
 
 (def ppoints
- ^{:name-r "ppoints",
-  :doc "",
-  :argslists ({:n nil, :a [nil [nil nil 10] [nil 3 8] [nil 1 2]]})}
+ ^{:name-r "ppoints", :doc "", :argslists ({:n nil, :a {}})}
  (r-interop.core/->clj-pos-kw-fn "ppoints"))
 
 (def ppois
@@ -2183,7 +2091,7 @@
   :argslists
   ({:object nil,
     :newdata nil,
-    :type [nil "link" "response" "terms"],
+    :type {},
     :se.fit false,
     :dispersion nil,
     :terms nil,
@@ -2200,14 +2108,14 @@
     :na.action nil,
     :weights 1,
     :df ##Inf,
-    :type [nil "response" "terms"],
+    :type {},
     :level 0.95,
     :newdata nil,
     :... nil,
-    :interval [nil "none" "confidence" "prediction"],
+    :interval {},
     :se.fit false,
     :object nil,
-    :pred.var [nil nil nil]})}
+    :pred.var {}})}
  (r-interop.core/->clj-pos-kw-fn "predict.lm"))
 
 (def preplot
@@ -2222,23 +2130,20 @@
  ^{:name-r "printCoefmat",
   :doc "",
   :argslists
-  ({:signif.stars [nil "show.signif.stars"],
+  ({:signif.stars {},
     :signif.legend nil,
-    :digits [nil 3 [nil [nil "digits"] 2]],
+    :digits {},
     :P.values nil,
-    :zap.ind [nil],
+    :zap.ind {},
     :quote false,
     :... nil,
-    :has.Pvalue
-    [nil
-     [nil [nil nil 4] [nil [nil nil [nil nil]]]]
-     [nil [nil [nil nil nil] 1 3] [nil "Pr(" "p-v"]]],
+    :has.Pvalue {},
     :right true,
-    :cs.ind [nil 1 nil],
-    :dig.tst [nil 1 [nil 5 [nil nil 1]]],
+    :cs.ind {},
+    :dig.tst {},
     :x nil,
-    :tst.ind [nil nil 1],
-    :eps.Pvalue [nil nil nil],
+    :tst.ind {},
+    :eps.Pvalue {},
     :na.print "NA"})}
  (r-interop.core/->clj-pos-kw-fn "printCoefmat"))
 
@@ -2261,7 +2166,7 @@
   ({:x nil,
     :n nil,
     :p nil,
-    :alternative [nil "two.sided" "less" "greater"],
+    :alternative {},
     :conf.level 0.95,
     :correct true})}
  (r-interop.core/->clj-pos-kw-fn "prop.test"))
@@ -2269,7 +2174,7 @@
 (def prop-trend-test
  ^{:name-r "prop.trend.test",
   :doc "",
-  :argslists ({:x nil, :n nil, :score [nil nil]})}
+  :argslists ({:x nil, :n nil, :score {}})}
  (r-interop.core/->clj-pos-kw-fn "prop.trend.test"))
 
 (def psignrank
@@ -2382,7 +2287,7 @@
   ({:p nil,
     :shape nil,
     :rate 1,
-    :scale [nil 1 nil],
+    :scale {},
     :lower.tail true,
     :log.p false})}
  (r-interop.core/->clj-pos-kw-fn "qgamma"))
@@ -2446,7 +2351,7 @@
   ({:y nil,
     :datax false,
     :distribution nil,
-    :probs [nil 0.25 0.75],
+    :probs {},
     :qtype 7,
     :... nil})}
  (r-interop.core/->clj-pos-kw-fn "qqline"))
@@ -2459,12 +2364,7 @@
  ^{:name-r "qqplot",
   :doc "",
   :argslists
-  ({:x nil,
-    :y nil,
-    :plot.it true,
-    :xlab [nil [nil nil]],
-    :ylab [nil [nil nil]],
-    :... nil})}
+  ({:x nil, :y nil, :plot.it true, :xlab {}, :ylab {}, :... nil})}
  (r-interop.core/->clj-pos-kw-fn "qqplot"))
 
 (def qsignrank
@@ -2610,15 +2510,11 @@
   :argslists
   ({:idvar "id",
     :sep ".",
-    :times [nil [nil nil 1]],
+    :times {},
     :drop nil,
-    :ids [nil 1 [nil nil]],
+    :ids {},
     :new.row.names nil,
-    :split
-    [nil
-     [nil nil ""]
-     [nil {:empty-key nil, :regexp "[A-Za-z][0-9]", :include true}]
-     [nil {:empty-key nil, :regexp nil, :include false, :fixed true}]],
+    :split {},
     :varying nil,
     :v.names nil,
     :timevar "time",
@@ -2637,19 +2533,13 @@
 (def residuals-glm
  ^{:name-r "residuals.glm",
   :doc "",
-  :argslists
-  ({:object nil,
-    :type [nil "deviance" "pearson" "working" "response" "partial"],
-    :... nil})}
+  :argslists ({:object nil, :type {}, :... nil})}
  (r-interop.core/->clj-pos-kw-fn "residuals.glm"))
 
 (def residuals-lm
  ^{:name-r "residuals.lm",
   :doc "",
-  :argslists
-  ({:object nil,
-    :type [nil "working" "response" "deviance" "pearson" "partial"],
-    :... nil})}
+  :argslists ({:object nil, :type {}, :... nil})}
  (r-interop.core/->clj-pos-kw-fn "residuals.lm"))
 
 (def rexp
@@ -2665,7 +2555,7 @@
 (def rgamma
  ^{:name-r "rgamma",
   :doc "",
-  :argslists ({:n nil, :shape nil, :rate 1, :scale [nil 1 nil]})}
+  :argslists ({:n nil, :shape nil, :rate 1, :scale {}})}
  (r-interop.core/->clj-pos-kw-fn "rgamma"))
 
 (def rgeom
@@ -2734,11 +2624,7 @@
  ^{:name-r "runmed",
   :doc "",
   :argslists
-  ({:x nil,
-    :k nil,
-    :endrule [nil "median" "keep" "constant"],
-    :algorithm nil,
-    :print.level 0})}
+  ({:x nil, :k nil, :endrule {}, :algorithm nil, :print.level 0})}
  (r-interop.core/->clj-pos-kw-fn "runmed"))
 
 (def rweibull
@@ -2763,15 +2649,15 @@
   :argslists
   ({:y nil,
     :ylim {:empty-key nil, :na.rm true},
-    :lpars [nil],
-    :family [nil "symmetric" "gaussian"],
+    :lpars {},
+    :family {},
     :ylab nil,
     :evaluation 50,
     :xlab nil,
     :... nil,
     :degree 1,
     :x nil,
-    :span [nil 2 3]})}
+    :span {}})}
  (r-interop.core/->clj-pos-kw-fn "scatter.smooth"))
 
 (def screeplot
@@ -2815,11 +2701,7 @@
  ^{:name-r "smooth",
   :doc "",
   :argslists
-  ({:x nil,
-    :kind [nil "3RS3R" "3RSS" "3RSR" "3R" "3" "S"],
-    :twiceit false,
-    :endrule [nil "Tukey" "copy"],
-    :do.ends false})}
+  ({:x nil, :kind {}, :twiceit false, :endrule {}, :do.ends false})}
  (r-interop.core/->clj-pos-kw-fn "smooth"))
 
 (def smooth-spline
@@ -2829,13 +2711,13 @@
   ({:y nil,
     :penalty 1,
     :nknots nil,
-    :tol [nil 1.0E-6 [nil nil]],
+    :tol {},
     :keep.data true,
     :cv false,
     :lambda nil,
     :w nil,
     :df nil,
-    :control.spar [nil],
+    :control.spar {},
     :spar nil,
     :x nil,
     :df.offset 0,
@@ -2890,7 +2772,7 @@
 (def spectrum
  ^{:name-r "spectrum",
   :doc "",
-  :argslists ({:x nil, :... nil, :method [nil "pgram" "ar"]})}
+  :argslists ({:x nil, :... nil, :method {}})}
  (r-interop.core/->clj-pos-kw-fn "spectrum"))
 
 (def spline
@@ -2899,10 +2781,10 @@
   :argslists
   ({:x nil,
     :y nil,
-    :n [nil 3 [nil nil]],
+    :n {},
     :method "fmm",
-    :xmin [nil nil],
-    :xmax [nil nil],
+    :xmin {},
+    :xmax {},
     :xout nil,
     :ties nil})}
  (r-interop.core/->clj-pos-kw-fn "spline"))
@@ -2910,11 +2792,7 @@
 (def splinefun
  ^{:name-r "splinefun",
   :doc "",
-  :argslists
-  ({:x nil,
-    :y nil,
-    :method [nil "fmm" "periodic" "natural" "monoH.FC" "hyman"],
-    :ties nil})}
+  :argslists ({:x nil, :y nil, :method {}, :ties nil})}
  (r-interop.core/->clj-pos-kw-fn "splinefun"))
 
 (def splinefun-h
@@ -2933,11 +2811,7 @@
  ^{:name-r "stat.anova",
   :doc "",
   :argslists
-  ({:table nil,
-    :test [nil "Rao" "LRT" "Chisq" "F" "Cp"],
-    :scale nil,
-    :df.scale nil,
-    :n nil})}
+  ({:table nil, :test {}, :scale nil, :df.scale nil, :n nil})}
  (r-interop.core/->clj-pos-kw-fn "stat.anova"))
 
 (def step
@@ -2951,34 +2825,33 @@
     :k 2,
     :... nil,
     :object nil,
-    :direction [nil "both" "backward" "forward"],
+    :direction {},
     :keep nil})}
  (r-interop.core/->clj-pos-kw-fn "step"))
 
 (def stepfun
  ^{:name-r "stepfun",
   :doc "",
-  :argslists
-  ({:x nil, :y nil, :f [nil nil], :ties "ordered", :right false})}
+  :argslists ({:x nil, :y nil, :f {}, :ties "ordered", :right false})}
  (r-interop.core/->clj-pos-kw-fn "stepfun"))
 
 (def stl
  ^{:name-r "stl",
   :doc "",
   :argslists
-  ({:l.window [nil nil],
-    :s.jump [nil [nil nil 10]],
+  ({:l.window {},
+    :s.jump {},
     :na.action nil,
     :s.window nil,
     :t.window nil,
-    :inner [nil nil 1 2],
+    :inner {},
     :robust false,
-    :t.jump [nil [nil nil 10]],
-    :l.jump [nil [nil nil 10]],
+    :t.jump {},
+    :l.jump {},
     :x nil,
     :l.degree nil,
     :s.degree 0,
-    :outer [nil nil 15 0],
+    :outer {},
     :t.degree 1})}
  (r-interop.core/->clj-pos-kw-fn "stl"))
 
@@ -2986,11 +2859,7 @@
  ^{:name-r "StructTS",
   :doc "",
   :argslists
-  ({:x nil,
-    :type [nil "level" "trend" "BSM"],
-    :init nil,
-    :fixed nil,
-    :optim.control nil})}
+  ({:x nil, :type {}, :init nil, :fixed nil, :optim.control nil})}
  (r-interop.core/->clj-pos-kw-fn "StructTS"))
 
 (def summary-aov
@@ -3027,11 +2896,7 @@
  ^{:name-r "summary.manova",
   :doc "",
   :argslists
-  ({:object nil,
-    :test [nil "Pillai" "Wilks" "Hotelling-Lawley" "Roy"],
-    :intercept false,
-    :tol 1.0E-7,
-    :... nil})}
+  ({:object nil, :test {}, :intercept false, :tol 1.0E-7, :... nil})}
  (r-interop.core/->clj-pos-kw-fn "summary.manova"))
 
 (def summary-stepfun
@@ -3046,7 +2911,7 @@
   :argslists
   ({:x nil,
     :y nil,
-    :wt [nil 1 nil],
+    :wt {},
     :span "cv",
     :periodic false,
     :bass 0,
@@ -3058,17 +2923,17 @@
   :doc "",
   :argslists
   ({:abbr.colnames nil,
-    :corr [nil [nil nil] nil],
-    :lower.triangular [nil [nil nil [nil nil]] [nil nil]],
-    :numeric.x [nil nil],
-    :legend [nil [nil nil] 3],
-    :diag.lower.tri [nil nil [nil [nil nil]]],
-    :cutpoints [nil 0.3 0.6 0.8 0.9 0.95],
+    :corr {},
+    :lower.triangular {},
+    :numeric.x {},
+    :legend {},
+    :diag.lower.tri {},
+    :cutpoints {},
     :na "?",
-    :show.max [nil nil "1"],
+    :show.max {},
     :show.min nil,
     :x nil,
-    :symbols [nil nil [nil " " "." "," "+" "*" "B"] [nil "." "|"]],
+    :symbols {},
     :eps 1.0E-5})}
  (r-interop.core/->clj-pos-kw-fn "symnum"))
 
@@ -3084,7 +2949,7 @@
     :ylim "common",
     :plot true,
     :smooth nil,
-    :envir [nil [nil nil]],
+    :envir {},
     :terms nil,
     :col.se "orange",
     :ylabs nil,
@@ -3092,19 +2957,19 @@
     :partial.resid false,
     :transform.x false,
     :col.term 2,
-    :span.smth [nil 2 3],
+    :span.smth {},
     :xlabs nil,
     :use.factor.levels true,
     :... nil,
     :cex 1,
     :lty.se 2,
     :se false,
-    :pch [nil "pch"],
+    :pch {},
     :lty.smth 2,
     :lwd.se 1,
     :lwd.term 1.5,
     :main nil,
-    :ask [nil [nil] [nil nil nil]],
+    :ask {},
     :rug false,
     :data nil,
     :model nil})}
@@ -3143,13 +3008,12 @@
   :argslists
   ({:data [nil],
     :start 1,
-    :end [nil],
+    :end {},
     :frequency 1,
     :deltat 1,
-    :ts.eps [nil "ts.eps"],
-    :class [nil [nil nil 1] [nil "mts" "ts" "matrix"] "ts"],
-    :names
-    [nil [nil [nil [nil nil]]] [nil nil] [nil "Series" [nil nil]]]})}
+    :ts.eps {},
+    :class {},
+    :names {}})}
  (r-interop.core/->clj-pos-kw-fn "ts"))
 
 (def ts-intersect
@@ -3159,7 +3023,7 @@
  (r-interop.core/->clj-pos-kw-fn "ts.intersect"))
 
 (def ts-plot
- ^{:name-r "ts.plot", :doc "", :argslists ({:... nil, :gpars [nil]})}
+ ^{:name-r "ts.plot", :doc "", :argslists ({:... nil, :gpars {}})}
  (r-interop.core/->clj-pos-kw-fn "ts.plot"))
 
 (def ts-union
@@ -3191,17 +3055,17 @@
  ^{:name-r "uniroot",
   :doc "",
   :argslists
-  ({:upper [nil nil],
-    :extendInt [nil "no" "yes" "downX" "upX"],
-    :tol [nil [nil nil nil] 0.25],
+  ({:upper {},
+    :extendInt {},
+    :tol {},
     :trace 0,
-    :f.upper [nil nil nil],
+    :f.upper {},
     :... nil,
-    :lower [nil nil],
+    :lower {},
     :maxiter 1000,
     :check.conv false,
     :f nil,
-    :f.lower [nil nil nil],
+    :f.lower {},
     :interval nil})}
  (r-interop.core/->clj-pos-kw-fn "uniroot"))
 
@@ -3279,7 +3143,7 @@
     :file "",
     :quote true,
     :append false,
-    :digits [nil "digits"],
+    :digits {},
     :... nil})}
  (r-interop.core/->clj-pos-kw-fn "write.ftable"))
 
@@ -3287,12 +3151,12 @@
  ^{:name-r "xtabs",
   :doc "",
   :argslists
-  ({:formula [nil nil],
-    :data [nil],
+  ({:formula {},
+    :data {},
     :subset nil,
     :sparse false,
     :na.action nil,
     :addNA false,
-    :exclude [nil [nil nil] [nil [nil] [##NaN]]],
+    :exclude {},
     :drop.unused.levels false})}
  (r-interop.core/->clj-pos-kw-fn "xtabs"))

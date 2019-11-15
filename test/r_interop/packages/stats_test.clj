@@ -3,7 +3,9 @@
    [clojure.test :refer (deftest testing is)]
    [r-interop.core :as rc :refer (defn-r)]
    [r-interop.packages.base :as r-base :refer (lchoose)]
-   [r-interop.packages.stats :as st]))
+   [r-interop.packages.stats :as st]
+   [r-interop.packages.splines :as splines]
+   ))
 
 (defn-r round)
 
@@ -19,14 +21,10 @@
         data [y beta cst tau]]
     {:y y :beta beta :cst cst :tau tau}))
 
-
-(st/glm :** {:data (rc/->r-data-frame data) :formula "as.formula(Y ~ offset(cst) + beta + tau')"})
-
-(rc/eval-r "lapply(as.list(clj_data), print)")
-
+(st/glm :** {:data (rc/->r-data-frame data) :formula "as.formula(y ~ offset(cst) + beta + tau)"})
+(st/lm :** {:data (rc/->r-data-frame data) :formula "as.formula(y ~ offset(cst) + beta + tau)"})
 
 (comment
-
   " Y <- c(rep(0,35),1,2,0,6,8,16,43)
   beta <- 42:1
   cst <- lchoose(42, beta)

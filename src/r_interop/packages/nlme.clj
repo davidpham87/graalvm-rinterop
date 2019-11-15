@@ -1,17 +1,17 @@
 (ns r-interop.packages.nlme
- (:require [r-interop.core :refer (defn-r)]))
+ (:require [r-interop.core :refer (defn-r eval-r)]))
 
-(defn-r lde-sys-mat LDEsysMat)
+(eval-r "library(nlme)")(defn-r lde-sys-mat LDEsysMat)
 
 (def acf
  ^{:name-r "ACF",
   :doc "",
   :argslists ({:object nil, :maxLag nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::ACF"))
+ (r-interop.core/->clj-pos-kw-fn "ACF"))
 
 (def all-coef
  ^{:name-r "allCoef", :doc "", :argslists ({:... nil, :extract nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::allCoef"))
+ (r-interop.core/->clj-pos-kw-fn "allCoef"))
 
 (def anova-lme
  ^{:name-r "anova.lme",
@@ -20,22 +20,20 @@
   ({:object nil,
     :... nil,
     :test true,
-    :type [nil "sequential" "marginal"],
+    :type {},
     :adjustSigma true,
     :Terms nil,
     :L nil,
     :verbose false})}
- (r-interop.core/->clj-pos-kw-fn "nlme::anova.lme"))
+ (r-interop.core/->clj-pos-kw-fn "anova.lme"))
 
 (def as-one-formula
- ^{:name-r "asOneFormula",
-  :doc "",
-  :argslists ({:... nil, :omit [nil "." "pi"]})}
- (r-interop.core/->clj-pos-kw-fn "nlme::asOneFormula"))
+ ^{:name-r "asOneFormula", :doc "", :argslists ({:... nil, :omit {}})}
+ (r-interop.core/->clj-pos-kw-fn "asOneFormula"))
 
 (def as-table
  ^{:name-r "asTable", :doc "", :argslists ({:object nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::asTable"))
+ (r-interop.core/->clj-pos-kw-fn "asTable"))
 
 (def aug-pred
  ^{:name-r "augPred",
@@ -43,27 +41,27 @@
   :argslists
   ({:object nil,
     :primary nil,
-    :minimum [nil nil],
-    :maximum [nil nil],
+    :minimum {},
+    :maximum {},
     :length.out 51,
     :... nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::augPred"))
+ (r-interop.core/->clj-pos-kw-fn "augPred"))
 
 (def balanced-grouped
  ^{:name-r "balancedGrouped",
   :doc "",
   :argslists ({:form nil, :data nil, :labels nil, :units nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::balancedGrouped"))
+ (r-interop.core/->clj-pos-kw-fn "balancedGrouped"))
 
 (def collapse
  ^{:name-r "collapse", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::collapse"))
+ (r-interop.core/->clj-pos-kw-fn "collapse"))
 
 (def compare-fits
  ^{:name-r "compareFits",
   :doc "",
-  :argslists ({:object1 nil, :object2 nil, :which [nil 1 [nil nil]]})}
- (r-interop.core/->clj-pos-kw-fn "nlme::compareFits"))
+  :argslists ({:object1 nil, :object2 nil, :which {}})}
+ (r-interop.core/->clj-pos-kw-fn "compareFits"))
 
 (def compare-pred
  ^{:name-r "comparePred",
@@ -72,158 +70,128 @@
   ({:object1 nil,
     :object2 nil,
     :primary nil,
-    :minimum [nil nil],
-    :maximum [nil nil],
+    :minimum {},
+    :maximum {},
     :length.out 51,
     :level nil,
     :... nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::comparePred"))
+ (r-interop.core/->clj-pos-kw-fn "comparePred"))
 
 (def cor-ar-1
  ^{:name-r "corAR1",
   :doc "",
-  :argslists ({:value 0, :form [nil 1], :fixed false})}
- (r-interop.core/->clj-pos-kw-fn "nlme::corAR1"))
+  :argslists ({:value 0, :form {}, :fixed false})}
+ (r-interop.core/->clj-pos-kw-fn "corAR1"))
 
 (def cor-arma
  ^{:name-r "corARMA",
   :doc "",
-  :argslists
-  ({:value [nil [nil nil nil]],
-    :form [nil 1],
-    :p 0,
-    :q 0,
-    :fixed false})}
- (r-interop.core/->clj-pos-kw-fn "nlme::corARMA"))
+  :argslists ({:value {}, :form {}, :p 0, :q 0, :fixed false})}
+ (r-interop.core/->clj-pos-kw-fn "corARMA"))
 
 (def cor-car-1
  ^{:name-r "corCAR1",
   :doc "",
-  :argslists ({:value 0.2, :form [nil 1], :fixed false})}
- (r-interop.core/->clj-pos-kw-fn "nlme::corCAR1"))
+  :argslists ({:value 0.2, :form {}, :fixed false})}
+ (r-interop.core/->clj-pos-kw-fn "corCAR1"))
 
 (def cor-comp-symm
  ^{:name-r "corCompSymm",
   :doc "",
-  :argslists ({:value 0, :form [nil 1], :fixed false})}
- (r-interop.core/->clj-pos-kw-fn "nlme::corCompSymm"))
+  :argslists ({:value 0, :form {}, :fixed false})}
+ (r-interop.core/->clj-pos-kw-fn "corCompSymm"))
 
 (def cor-exp
  ^{:name-r "corExp",
   :doc "",
   :argslists
-  ({:value [nil 0],
-    :form [nil 1],
-    :nugget false,
-    :metric [nil "euclidean" "maximum" "manhattan"],
-    :fixed false})}
- (r-interop.core/->clj-pos-kw-fn "nlme::corExp"))
+  ({:value {}, :form {}, :nugget false, :metric {}, :fixed false})}
+ (r-interop.core/->clj-pos-kw-fn "corExp"))
 
 (def cor-factor
  ^{:name-r "corFactor", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::corFactor"))
+ (r-interop.core/->clj-pos-kw-fn "corFactor"))
 
 (def cor-gaus
  ^{:name-r "corGaus",
   :doc "",
   :argslists
-  ({:value [nil 0],
-    :form [nil 1],
-    :nugget false,
-    :metric [nil "euclidean" "maximum" "manhattan"],
-    :fixed false})}
- (r-interop.core/->clj-pos-kw-fn "nlme::corGaus"))
+  ({:value {}, :form {}, :nugget false, :metric {}, :fixed false})}
+ (r-interop.core/->clj-pos-kw-fn "corGaus"))
 
 (def cor-ident
  ^{:name-r "corIdent", :doc "", :argslists ({:form nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::corIdent"))
+ (r-interop.core/->clj-pos-kw-fn "corIdent"))
 
 (def cor-lin
  ^{:name-r "corLin",
   :doc "",
   :argslists
-  ({:value [nil 0],
-    :form [nil 1],
-    :nugget false,
-    :metric [nil "euclidean" "maximum" "manhattan"],
-    :fixed false})}
- (r-interop.core/->clj-pos-kw-fn "nlme::corLin"))
+  ({:value {}, :form {}, :nugget false, :metric {}, :fixed false})}
+ (r-interop.core/->clj-pos-kw-fn "corLin"))
 
 (def cor-matrix
  ^{:name-r "corMatrix", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::corMatrix"))
+ (r-interop.core/->clj-pos-kw-fn "corMatrix"))
 
 (def cor-natural
  ^{:name-r "corNatural",
   :doc "",
-  :argslists ({:value [nil 0], :form [nil 1], :fixed false})}
- (r-interop.core/->clj-pos-kw-fn "nlme::corNatural"))
+  :argslists ({:value {}, :form {}, :fixed false})}
+ (r-interop.core/->clj-pos-kw-fn "corNatural"))
 
 (def cor-ratio
  ^{:name-r "corRatio",
   :doc "",
   :argslists
-  ({:value [nil 0],
-    :form [nil 1],
-    :nugget false,
-    :metric [nil "euclidean" "maximum" "manhattan"],
-    :fixed false})}
- (r-interop.core/->clj-pos-kw-fn "nlme::corRatio"))
+  ({:value {}, :form {}, :nugget false, :metric {}, :fixed false})}
+ (r-interop.core/->clj-pos-kw-fn "corRatio"))
 
 (def cor-spatial
  ^{:name-r "corSpatial",
   :doc "",
   :argslists
-  ({:value [nil 0],
-    :form [nil 1],
+  ({:value {},
+    :form {},
     :nugget false,
-    :type
-    [nil "spherical" "exponential" "gaussian" "linear" "rational"],
-    :metric [nil "euclidean" "maximum" "manhattan"],
+    :type {},
+    :metric {},
     :fixed false})}
- (r-interop.core/->clj-pos-kw-fn "nlme::corSpatial"))
+ (r-interop.core/->clj-pos-kw-fn "corSpatial"))
 
 (def cor-spher
  ^{:name-r "corSpher",
   :doc "",
   :argslists
-  ({:value [nil 0],
-    :form [nil 1],
-    :nugget false,
-    :metric [nil "euclidean" "maximum" "manhattan"],
-    :fixed false})}
- (r-interop.core/->clj-pos-kw-fn "nlme::corSpher"))
+  ({:value {}, :form {}, :nugget false, :metric {}, :fixed false})}
+ (r-interop.core/->clj-pos-kw-fn "corSpher"))
 
 (def cor-symm
  ^{:name-r "corSymm",
   :doc "",
-  :argslists ({:value [nil 0], :form [nil 1], :fixed false})}
- (r-interop.core/->clj-pos-kw-fn "nlme::corSymm"))
+  :argslists ({:value {}, :form {}, :fixed false})}
+ (r-interop.core/->clj-pos-kw-fn "corSymm"))
 
 (def dim
  ^{:name-r "Dim", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::Dim"))
+ (r-interop.core/->clj-pos-kw-fn "Dim"))
 
 (def fd-hess
  ^{:name-r "fdHess",
   :doc "",
   :argslists
-  ({:pars nil,
-    :fun nil,
-    :... nil,
-    :.relStep [nil [nil nil nil] [nil [nil 1 3]]],
-    :minAbsPar 0})}
- (r-interop.core/->clj-pos-kw-fn "nlme::fdHess"))
+  ({:pars nil, :fun nil, :... nil, :.relStep {}, :minAbsPar 0})}
+ (r-interop.core/->clj-pos-kw-fn "fdHess"))
 
 (def fixed-effects
  ^{:name-r "fixed.effects",
   :doc "",
   :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::fixed.effects"))
+ (r-interop.core/->clj-pos-kw-fn "fixed.effects"))
 
 (def fixef
  ^{:name-r "fixef", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::fixef"))
+ (r-interop.core/->clj-pos-kw-fn "fixef"))
 
 (def gapply
  ^{:name-r "gapply",
@@ -232,67 +200,65 @@
   ({:object nil,
     :which nil,
     :FUN nil,
-    :form [nil nil],
+    :form {},
     :level nil,
-    :groups [nil nil nil nil],
+    :groups {},
     :... nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::gapply"))
+ (r-interop.core/->clj-pos-kw-fn "gapply"))
 
 (def get-covariate
  ^{:name-r "getCovariate",
   :doc "",
-  :argslists ({:object nil, :form [nil nil], :data nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::getCovariate"))
+  :argslists ({:object nil, :form {}, :data nil})}
+ (r-interop.core/->clj-pos-kw-fn "getCovariate"))
 
 (def get-covariate-formula
  ^{:name-r "getCovariateFormula", :doc "", :argslists ({:object nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::getCovariateFormula"))
+ (r-interop.core/->clj-pos-kw-fn "getCovariateFormula"))
 
 (def get-data
  ^{:name-r "getData", :doc "", :argslists ({:object nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::getData"))
+ (r-interop.core/->clj-pos-kw-fn "getData"))
 
 (def get-groups
  ^{:name-r "getGroups",
   :doc "",
   :argslists
-  ({:object nil, :form [nil nil], :level nil, :data nil, :sep "/"})}
- (r-interop.core/->clj-pos-kw-fn "nlme::getGroups"))
+  ({:object nil, :form {}, :level nil, :data nil, :sep "/"})}
+ (r-interop.core/->clj-pos-kw-fn "getGroups"))
 
 (def get-groups-formula
  ^{:name-r "getGroupsFormula",
   :doc "",
   :argslists ({:object nil, :asList false, :sep "/"})}
- (r-interop.core/->clj-pos-kw-fn "nlme::getGroupsFormula"))
+ (r-interop.core/->clj-pos-kw-fn "getGroupsFormula"))
 
 (def get-response
- ^{:name-r "getResponse",
-  :doc "",
-  :argslists ({:object nil, :form [nil nil]})}
- (r-interop.core/->clj-pos-kw-fn "nlme::getResponse"))
+ ^{:name-r "getResponse", :doc "", :argslists ({:object nil, :form {}})}
+ (r-interop.core/->clj-pos-kw-fn "getResponse"))
 
 (def get-response-formula
  ^{:name-r "getResponseFormula", :doc "", :argslists ({:object nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::getResponseFormula"))
+ (r-interop.core/->clj-pos-kw-fn "getResponseFormula"))
 
 (def get-var-cov
  ^{:name-r "getVarCov", :doc "", :argslists ({:obj nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::getVarCov"))
+ (r-interop.core/->clj-pos-kw-fn "getVarCov"))
 
 (def gls
  ^{:name-r "gls",
   :doc "",
   :argslists
   ({:subset nil,
-    :method [nil "REML" "ML"],
+    :method {},
     :correlation nil,
     :na.action nil,
     :weights nil,
     :verbose false,
-    :control [nil],
-    :data [nil [nil]],
+    :control {},
+    :data {},
     :model nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::gls"))
+ (r-interop.core/->clj-pos-kw-fn "gls"))
 
 (def gls-ap-var
  ^{:name-r "glsApVar",
@@ -300,11 +266,11 @@
   :argslists
   ({:glsSt nil,
     :sigma nil,
-    :conLin [nil nil "conLin"],
-    :.relStep [nil [nil nil nil] [nil [nil 1 3]]],
+    :conLin {},
+    :.relStep {},
     :minAbsPar 0,
     :natural true})}
- (r-interop.core/->clj-pos-kw-fn "nlme::glsApVar"))
+ (r-interop.core/->clj-pos-kw-fn "glsApVar"))
 
 (def gls-control
  ^{:name-r "glsControl",
@@ -322,24 +288,24 @@
     :minAbsParApVar 0.05,
     :msVerbose false,
     :optimMethod "BFGS",
-    :.relStep [nil [nil nil nil] [nil [nil 1 3]]],
-    :opt [nil "nlminb" "optim"]})}
- (r-interop.core/->clj-pos-kw-fn "nlme::glsControl"))
+    :.relStep {},
+    :opt {}})}
+ (r-interop.core/->clj-pos-kw-fn "glsControl"))
 
 (def gls-estimate
  ^{:name-r "glsEstimate",
   :doc "",
   :argslists
   ({:object nil,
-    :conLin [nil nil "conLin"],
+    :conLin {},
     :control {:empty-key nil, :singular.ok false}})}
- (r-interop.core/->clj-pos-kw-fn "nlme::glsEstimate"))
+ (r-interop.core/->clj-pos-kw-fn "glsEstimate"))
 
 (def gls-struct
  ^{:name-r "glsStruct",
   :doc "",
   :argslists ({:corStruct nil, :varStruct nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::glsStruct"))
+ (r-interop.core/->clj-pos-kw-fn "glsStruct"))
 
 (def gnls
  ^{:name-r "gnls",
@@ -353,10 +319,10 @@
     :weights nil,
     :params nil,
     :verbose false,
-    :control [nil],
-    :data [nil [nil]],
+    :control {},
+    :data {},
     :model nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::gnls"))
+ (r-interop.core/->clj-pos-kw-fn "gnls"))
 
 (def gnls-control
  ^{:name-r "gnlsControl",
@@ -375,65 +341,65 @@
     :minAbsParApVar 0.05,
     :msVerbose false,
     :optimMethod "BFGS",
-    :.relStep [nil [nil nil nil] [nil [nil 1 3]]],
-    :opt [nil "nlminb" "optim"]})}
- (r-interop.core/->clj-pos-kw-fn "nlme::gnlsControl"))
+    :.relStep {},
+    :opt {}})}
+ (r-interop.core/->clj-pos-kw-fn "gnlsControl"))
 
 (def gnls-struct
  ^{:name-r "gnlsStruct",
   :doc "",
   :argslists ({:corStruct nil, :varStruct nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::gnlsStruct"))
+ (r-interop.core/->clj-pos-kw-fn "gnlsStruct"))
 
 (def grouped-data
  ^{:name-r "groupedData",
   :doc "",
   :argslists
   ({:formula nil,
-    :data [nil 1],
+    :data {},
     :order.groups true,
-    :FUN [nil {:x nil} {:empty-key nil, :na.rm true} nil],
+    :FUN {},
     :outer nil,
     :inner nil,
     :labels nil,
     :units nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::groupedData"))
+ (r-interop.core/->clj-pos-kw-fn "groupedData"))
 
 (def gsummary
  ^{:name-r "gsummary",
   :doc "",
   :argslists
   ({:object nil,
-    :FUN [nil {:x nil} {:empty-key nil, :na.rm true} nil],
+    :FUN {},
     :omitGroupingFactor false,
-    :form [nil nil],
+    :form {},
     :level nil,
-    :groups [nil nil nil nil],
+    :groups {},
     :invariantsOnly false,
     :... nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::gsummary"))
+ (r-interop.core/->clj-pos-kw-fn "gsummary"))
 
 (def initialize
  ^{:name-r "Initialize",
   :doc "",
   :argslists ({:object nil, :data nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::Initialize"))
+ (r-interop.core/->clj-pos-kw-fn "Initialize"))
 
 (def intervals
  ^{:name-r "intervals",
   :doc "",
   :argslists ({:object nil, :level 0.95, :... nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::intervals"))
+ (r-interop.core/->clj-pos-kw-fn "intervals"))
 
 (def is-balanced
  ^{:name-r "isBalanced",
   :doc "",
   :argslists ({:object nil, :countOnly false, :level nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::isBalanced"))
+ (r-interop.core/->clj-pos-kw-fn "isBalanced"))
 
 (def is-initialized
  ^{:name-r "isInitialized", :doc "", :argslists ({:object nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::isInitialized"))
+ (r-interop.core/->clj-pos-kw-fn "isInitialized"))
 
 (def lme
  ^{:name-r "lme",
@@ -441,16 +407,16 @@
   :argslists
   ({:keep.data true,
     :subset nil,
-    :method [nil "REML" "ML"],
+    :method {},
     :correlation nil,
     :contrasts nil,
     :na.action nil,
     :weights nil,
-    :control [nil],
+    :control {},
     :random nil,
     :fixed nil,
-    :data [nil [nil]]})}
- (r-interop.core/->clj-pos-kw-fn "nlme::lme"))
+    :data {}})}
+ (r-interop.core/->clj-pos-kw-fn "lme"))
 
 (def lme-formula
  ^{:name-r "lme.formula",
@@ -458,16 +424,16 @@
   :argslists
   ({:keep.data true,
     :subset nil,
-    :method [nil "REML" "ML"],
+    :method {},
     :correlation nil,
     :contrasts nil,
     :na.action nil,
     :weights nil,
-    :control [nil],
-    :random [nil [nil [nil [nil nil [nil 2]]]]],
+    :control {},
+    :random {},
     :fixed nil,
-    :data [nil [nil]]})}
- (r-interop.core/->clj-pos-kw-fn "nlme::lme.formula"))
+    :data {}})}
+ (r-interop.core/->clj-pos-kw-fn "lme.formula"))
 
 (def lme-lm-list
  ^{:name-r "lme.lmList",
@@ -475,16 +441,16 @@
   :argslists
   ({:keep.data true,
     :subset nil,
-    :method [nil "REML" "ML"],
+    :method {},
     :correlation nil,
     :contrasts nil,
     :na.action nil,
     :weights nil,
-    :control [nil],
+    :control {},
     :random nil,
     :fixed nil,
-    :data [nil [nil]]})}
- (r-interop.core/->clj-pos-kw-fn "nlme::lme.lmList"))
+    :data {}})}
+ (r-interop.core/->clj-pos-kw-fn "lme.lmList"))
 
 (def lme-control
  ^{:name-r "lmeControl",
@@ -504,16 +470,16 @@
     :minAbsParApVar 0.05,
     :msVerbose false,
     :optimMethod "BFGS",
-    :.relStep [nil [nil nil nil] [nil [nil 1 3]]],
-    :opt [nil "nlminb" "optim"],
+    :.relStep {},
+    :opt {},
     :gradHess true})}
- (r-interop.core/->clj-pos-kw-fn "nlme::lmeControl"))
+ (r-interop.core/->clj-pos-kw-fn "lmeControl"))
 
 (def lme-struct
  ^{:name-r "lmeStruct",
   :doc "",
   :argslists ({:reStruct nil, :corStruct nil, :varStruct nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::lmeStruct"))
+ (r-interop.core/->clj-pos-kw-fn "lmeStruct"))
 
 (def lm-list
  ^{:name-r "lmList",
@@ -526,7 +492,7 @@
     :na.action nil,
     :pool true,
     :warn.lm true})}
- (r-interop.core/->clj-pos-kw-fn "nlme::lmList"))
+ (r-interop.core/->clj-pos-kw-fn "lmList"))
 
 (def lm-list-formula
  ^{:name-r "lmList.formula",
@@ -539,33 +505,33 @@
     :na.action nil,
     :pool true,
     :warn.lm true})}
- (r-interop.core/->clj-pos-kw-fn "nlme::lmList.formula"))
+ (r-interop.core/->clj-pos-kw-fn "lmList.formula"))
 
 (def log-det
  ^{:name-r "logDet", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::logDet"))
+ (r-interop.core/->clj-pos-kw-fn "logDet"))
 
 (def names
  ^{:name-r "Names", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::Names"))
+ (r-interop.core/->clj-pos-kw-fn "Names"))
 
 (def need-update
  ^{:name-r "needUpdate", :doc "", :argslists ({:object nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::needUpdate"))
+ (r-interop.core/->clj-pos-kw-fn "needUpdate"))
 
 (def nf-grouped-data
  ^{:name-r "nfGroupedData",
   :doc "",
   :argslists
   ({:formula nil,
-    :data [nil 1],
+    :data {},
     :order.groups true,
-    :FUN [nil {:x nil} {:empty-key nil, :na.rm true} nil],
+    :FUN {},
     :outer nil,
     :inner nil,
     :labels nil,
     :units nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::nfGroupedData"))
+ (r-interop.core/->clj-pos-kw-fn "nfGroupedData"))
 
 (def nlme
  ^{:name-r "nlme",
@@ -573,19 +539,19 @@
   :argslists
   ({:naPattern nil,
     :subset nil,
-    :method [nil "ML" "REML"],
+    :method {},
     :correlation nil,
     :na.action nil,
     :start nil,
     :weights nil,
     :verbose false,
-    :control [nil],
+    :control {},
     :random nil,
     :groups nil,
     :fixed nil,
-    :data [nil [nil]],
+    :data {},
     :model nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::nlme"))
+ (r-interop.core/->clj-pos-kw-fn "nlme"))
 
 (def nlme-formula
  ^{:name-r "nlme.formula",
@@ -593,19 +559,19 @@
   :argslists
   ({:naPattern nil,
     :subset nil,
-    :method [nil "ML" "REML"],
+    :method {},
     :correlation nil,
     :na.action nil,
     :start nil,
     :weights nil,
     :verbose false,
-    :control [nil],
+    :control {},
     :random nil,
     :groups nil,
     :fixed nil,
-    :data [nil [nil]],
+    :data {},
     :model nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::nlme.formula"))
+ (r-interop.core/->clj-pos-kw-fn "nlme.formula"))
 
 (def nlme-nls-list
  ^{:name-r "nlme.nlsList",
@@ -613,19 +579,19 @@
   :argslists
   ({:naPattern nil,
     :subset nil,
-    :method [nil "ML" "REML"],
+    :method {},
     :correlation nil,
     :na.action nil,
     :start nil,
     :weights nil,
     :verbose false,
-    :control [nil],
+    :control {},
     :random nil,
     :groups nil,
     :fixed nil,
-    :data [nil [nil]],
+    :data {},
     :model nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::nlme.nlsList"))
+ (r-interop.core/->clj-pos-kw-fn "nlme.nlsList"))
 
 (def nlme-control
  ^{:name-r "nlmeControl",
@@ -647,16 +613,16 @@
     :msWarnNoConv true,
     :pnlsTol 0.001,
     :msVerbose false,
-    :.relStep [nil [nil nil nil] [nil [nil 1 3]]],
-    :opt [nil "nlminb" "nlm"],
+    :.relStep {},
+    :opt {},
     :gradHess true})}
- (r-interop.core/->clj-pos-kw-fn "nlme::nlmeControl"))
+ (r-interop.core/->clj-pos-kw-fn "nlmeControl"))
 
 (def nlme-struct
  ^{:name-r "nlmeStruct",
   :doc "",
   :argslists ({:reStruct nil, :corStruct nil, :varStruct nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::nlmeStruct"))
+ (r-interop.core/->clj-pos-kw-fn "nlmeStruct"))
 
 (def nls-list
  ^{:name-r "nlsList",
@@ -671,7 +637,7 @@
     :control nil,
     :data nil,
     :model nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::nlsList"))
+ (r-interop.core/->clj-pos-kw-fn "nlsList"))
 
 (def nls-list-formula
  ^{:name-r "nlsList.formula",
@@ -686,39 +652,34 @@
     :control nil,
     :data nil,
     :model nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::nlsList.formula"))
+ (r-interop.core/->clj-pos-kw-fn "nlsList.formula"))
 
 (def nm-grouped-data
  ^{:name-r "nmGroupedData",
   :doc "",
   :argslists
   ({:formula nil,
-    :data [nil 1],
+    :data {},
     :order.groups true,
-    :FUN [nil {:x nil} {:empty-key nil, :na.rm true} nil],
+    :FUN {},
     :outer nil,
     :inner nil,
     :labels nil,
     :units nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::nmGroupedData"))
+ (r-interop.core/->clj-pos-kw-fn "nmGroupedData"))
 
 (def pd-blocked
  ^{:name-r "pdBlocked",
   :doc "",
   :argslists
-  ({:value [nil 0],
-    :form nil,
-    :nam nil,
-    :data [nil [nil]],
-    :pdClass "pdSymm"})}
- (r-interop.core/->clj-pos-kw-fn "nlme::pdBlocked"))
+  ({:value {}, :form nil, :nam nil, :data {}, :pdClass "pdSymm"})}
+ (r-interop.core/->clj-pos-kw-fn "pdBlocked"))
 
 (def pd-comp-symm
  ^{:name-r "pdCompSymm",
   :doc "",
-  :argslists
-  ({:value [nil 0], :form nil, :nam nil, :data [nil [nil]]})}
- (r-interop.core/->clj-pos-kw-fn "nlme::pdCompSymm"))
+  :argslists ({:value {}, :form nil, :nam nil, :data {}})}
+ (r-interop.core/->clj-pos-kw-fn "pdCompSymm"))
 
 (def pd-construct
  ^{:name-r "pdConstruct",
@@ -730,85 +691,78 @@
     :nam nil,
     :data nil,
     :... nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::pdConstruct"))
+ (r-interop.core/->clj-pos-kw-fn "pdConstruct"))
 
 (def pd-diag
  ^{:name-r "pdDiag",
   :doc "",
-  :argslists
-  ({:value [nil 0], :form nil, :nam nil, :data [nil [nil]]})}
- (r-interop.core/->clj-pos-kw-fn "nlme::pdDiag"))
+  :argslists ({:value {}, :form nil, :nam nil, :data {}})}
+ (r-interop.core/->clj-pos-kw-fn "pdDiag"))
 
 (def pd-factor
  ^{:name-r "pdFactor", :doc "", :argslists ({:object nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::pdFactor"))
+ (r-interop.core/->clj-pos-kw-fn "pdFactor"))
 
 (def pd-ident
  ^{:name-r "pdIdent",
   :doc "",
-  :argslists
-  ({:value [nil 0], :form nil, :nam nil, :data [nil [nil]]})}
- (r-interop.core/->clj-pos-kw-fn "nlme::pdIdent"))
+  :argslists ({:value {}, :form nil, :nam nil, :data {}})}
+ (r-interop.core/->clj-pos-kw-fn "pdIdent"))
 
 (def pd-log-chol
  ^{:name-r "pdLogChol",
   :doc "",
-  :argslists ({:value [nil 0], :form nil, :nam nil, :data [nil]})}
- (r-interop.core/->clj-pos-kw-fn "nlme::pdLogChol"))
+  :argslists ({:value {}, :form nil, :nam nil, :data {}})}
+ (r-interop.core/->clj-pos-kw-fn "pdLogChol"))
 
 (def pd-mat
  ^{:name-r "pdMat",
   :doc "",
   :argslists
-  ({:value [nil 0],
-    :form nil,
-    :nam nil,
-    :data [nil [nil]],
-    :pdClass "pdSymm"})}
- (r-interop.core/->clj-pos-kw-fn "nlme::pdMat"))
+  ({:value {}, :form nil, :nam nil, :data {}, :pdClass "pdSymm"})}
+ (r-interop.core/->clj-pos-kw-fn "pdMat"))
 
 (def pd-matrix
  ^{:name-r "pdMatrix",
   :doc "",
   :argslists ({:object nil, :factor false})}
- (r-interop.core/->clj-pos-kw-fn "nlme::pdMatrix"))
+ (r-interop.core/->clj-pos-kw-fn "pdMatrix"))
 
 (def pd-natural
  ^{:name-r "pdNatural",
   :doc "",
-  :argslists
-  ({:value [nil 0], :form nil, :nam nil, :data [nil [nil]]})}
- (r-interop.core/->clj-pos-kw-fn "nlme::pdNatural"))
+  :argslists ({:value {}, :form nil, :nam nil, :data {}})}
+ (r-interop.core/->clj-pos-kw-fn "pdNatural"))
 
 (def pd-symm
  ^{:name-r "pdSymm",
   :doc "",
-  :argslists ({:value [nil 0], :form nil, :nam nil, :data [nil]})}
- (r-interop.core/->clj-pos-kw-fn "nlme::pdSymm"))
+  :argslists ({:value {}, :form nil, :nam nil, :data {}})}
+ (r-interop.core/->clj-pos-kw-fn "pdSymm"))
 
 (def pheno-model
  ^{:name-r "phenoModel",
   :doc "",
   :argslists ({:Subject nil, :time nil, :dose nil, :lCl nil, :lV nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::phenoModel"))
+ (r-interop.core/->clj-pos-kw-fn "phenoModel"))
 
 (def plot-lme
  ^{:name-r "plot.lme",
   :doc "",
   :argslists
   ({:x nil,
-    :form [nil {:empty-key nil, :type "pearson"} [nil nil]],
+    :form {},
     :abline nil,
     :id nil,
     :idLabels nil,
-    :idResType [nil "pearson" "normalized"],
+    :idResType {},
     :grid nil,
     :... nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::plot.lme"))
+ (r-interop.core/->clj-pos-kw-fn "plot.lme"))
 
 (def pooled-sd
  ^{:name-r "pooledSD", :doc "", :argslists ({:object nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::pooledSD"))
+ (r-interop.core/->clj-pos-kw-fn "pooledSD"))
 
 (def quin-model
  ^{:name-r "quinModel",
@@ -822,33 +776,30 @@
     :lV nil,
     :lKa nil,
     :lCl nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::quinModel"))
+ (r-interop.core/->clj-pos-kw-fn "quinModel"))
 
 (def random-effects
  ^{:name-r "random.effects",
   :doc "",
   :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::random.effects"))
+ (r-interop.core/->clj-pos-kw-fn "random.effects"))
 
 (def ranef
  ^{:name-r "ranef", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::ranef"))
+ (r-interop.core/->clj-pos-kw-fn "ranef"))
 
 (def recalc
  ^{:name-r "recalc",
   :doc "",
   :argslists ({:object nil, :conLin nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::recalc"))
+ (r-interop.core/->clj-pos-kw-fn "recalc"))
 
 (def re-struct
  ^{:name-r "reStruct",
   :doc "",
   :argslists
-  ({:object nil,
-    :pdClass "pdLogChol",
-    :REML false,
-    :data [nil [nil]]})}
- (r-interop.core/->clj-pos-kw-fn "nlme::reStruct"))
+  ({:object nil, :pdClass "pdLogChol", :REML false, :data {}})}
+ (r-interop.core/->clj-pos-kw-fn "reStruct"))
 
 (def simulate-lme
  ^{:name-r "simulate.lme",
@@ -856,70 +807,66 @@
   :argslists
   ({:object nil,
     :nsim 1,
-    :seed [nil [nil 1 0 [nil nil nil]]],
+    :seed {},
     :m2 nil,
-    :method [nil "REML" "ML"],
-    :niterEM [nil 40 200],
+    :method {},
+    :niterEM {},
     :useGen nil,
     :... nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::simulate.lme"))
+ (r-interop.core/->clj-pos-kw-fn "simulate.lme"))
 
 (def split-formula
  ^{:name-r "splitFormula", :doc "", :argslists ({:form nil, :sep "/"})}
- (r-interop.core/->clj-pos-kw-fn "nlme::splitFormula"))
+ (r-interop.core/->clj-pos-kw-fn "splitFormula"))
 
 (def var-comb
  ^{:name-r "varComb", :doc "", :argslists ({:... nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::varComb"))
+ (r-interop.core/->clj-pos-kw-fn "varComb"))
 
 (def var-const-power
  ^{:name-r "varConstPower",
   :doc "",
-  :argslists
-  ({:const [nil 0],
-    :power [nil 0],
-    :form [nil [nil nil]],
-    :fixed nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::varConstPower"))
+  :argslists ({:const {}, :power {}, :form {}, :fixed nil})}
+ (r-interop.core/->clj-pos-kw-fn "varConstPower"))
 
 (def var-corr
  ^{:name-r "VarCorr",
   :doc "",
   :argslists ({:x nil, :sigma 1, :... nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::VarCorr"))
+ (r-interop.core/->clj-pos-kw-fn "VarCorr"))
 
 (def var-exp
  ^{:name-r "varExp",
   :doc "",
-  :argslists ({:value [nil 0], :form [nil [nil nil]], :fixed nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::varExp"))
+  :argslists ({:value {}, :form {}, :fixed nil})}
+ (r-interop.core/->clj-pos-kw-fn "varExp"))
 
 (def var-fixed
- ^{:name-r "varFixed", :doc "", :argslists ({:value [nil 1]})}
- (r-interop.core/->clj-pos-kw-fn "nlme::varFixed"))
+ ^{:name-r "varFixed", :doc "", :argslists ({:value {}})}
+ (r-interop.core/->clj-pos-kw-fn "varFixed"))
 
 (def var-func
  ^{:name-r "varFunc", :doc "", :argslists ({:object nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::varFunc"))
+ (r-interop.core/->clj-pos-kw-fn "varFunc"))
 
 (def var-ident
  ^{:name-r "varIdent",
   :doc "",
-  :argslists ({:value [nil 0], :form [nil 1], :fixed nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::varIdent"))
+  :argslists ({:value {}, :form {}, :fixed nil})}
+ (r-interop.core/->clj-pos-kw-fn "varIdent"))
 
 (def variogram
  ^{:name-r "Variogram",
   :doc "",
   :argslists ({:object nil, :distance nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::Variogram"))
+ (r-interop.core/->clj-pos-kw-fn "Variogram"))
 
 (def var-power
  ^{:name-r "varPower",
   :doc "",
-  :argslists ({:value [nil 0], :form [nil [nil nil]], :fixed nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::varPower"))
+  :argslists ({:value {}, :form {}, :fixed nil})}
+ (r-interop.core/->clj-pos-kw-fn "varPower"))
 
 (def var-weights
  ^{:name-r "varWeights", :doc "", :argslists ({:object nil})}
- (r-interop.core/->clj-pos-kw-fn "nlme::varWeights"))
+ (r-interop.core/->clj-pos-kw-fn "varWeights"))

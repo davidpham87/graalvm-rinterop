@@ -1,7 +1,7 @@
 (ns r-interop.packages.boot
- (:require [r-interop.core :refer (defn-r)]))
+ (:require [r-interop.core :refer (defn-r eval-r)]))
 
-
+(eval-r "library(boot)")
 
 (def abc-ci
  ^{:name-r "abc.ci",
@@ -10,11 +10,11 @@
   ({:data nil,
     :statistic nil,
     :index 1,
-    :strata [nil 1 nil],
+    :strata {},
     :conf 0.95,
-    :eps [nil 0.001 nil],
+    :eps {},
     :... nil})}
- (r-interop.core/->clj-pos-kw-fn "boot::abc.ci"))
+ (r-interop.core/->clj-pos-kw-fn "abc.ci"))
 
 (def boot
  ^{:name-r "boot",
@@ -23,45 +23,45 @@
   ({:L nil,
     :statistic nil,
     :mle nil,
-    :ran.gen [nil {:d nil, :p nil} nil nil],
+    :ran.gen {},
     :cl nil,
     :R nil,
-    :parallel [nil "no" "multicore" "snow"],
+    :parallel {},
     :m 0,
     :simple false,
     :weights nil,
-    :stype [nil "i" "f" "w"],
-    :ncpus [nil "boot.ncpus" 1],
+    :stype {},
+    :ncpus {},
     :... nil,
-    :strata [nil 1 nil],
+    :strata {},
     :sim "ordinary",
     :data nil})}
- (r-interop.core/->clj-pos-kw-fn "boot::boot"))
+ (r-interop.core/->clj-pos-kw-fn "boot"))
 
 (def boot-array
  ^{:name-r "boot.array",
   :doc "",
   :argslists ({:boot.out nil, :indices false})}
- (r-interop.core/->clj-pos-kw-fn "boot::boot.array"))
+ (r-interop.core/->clj-pos-kw-fn "boot.array"))
 
 (def boot-ci
  ^{:name-r "boot.ci",
   :doc "",
   :argslists
   ({:L nil,
-    :index [nil 1 [nil 2 [nil [nil nil nil]]]],
+    :index {},
     :t0 nil,
     :boot.out nil,
     :type "all",
     :var.t nil,
-    :hdot [nil {:t nil} [nil 1 [nil nil]] nil],
-    :h [nil {:t nil} nil nil],
+    :hdot {},
+    :h {},
     :... nil,
-    :hinv [nil {:t nil} nil nil],
+    :hinv {},
     :var.t0 nil,
     :t nil,
     :conf 0.95})}
- (r-interop.core/->clj-pos-kw-fn "boot::boot.ci"))
+ (r-interop.core/->clj-pos-kw-fn "boot.ci"))
 
 (def censboot
  ^{:name-r "censboot",
@@ -70,17 +70,17 @@
   ({:statistic nil,
     :cl nil,
     :R nil,
-    :index [nil 1 2],
-    :parallel [nil "no" "multicore" "snow"],
-    :ncpus [nil "boot.ncpus" 1],
+    :index {},
+    :parallel {},
+    :ncpus {},
     :... nil,
     :F.surv nil,
     :G.surv nil,
     :cox nil,
-    :strata [nil 1 nil 2],
+    :strata {},
     :sim "ordinary",
     :data nil})}
- (r-interop.core/->clj-pos-kw-fn "boot::censboot"))
+ (r-interop.core/->clj-pos-kw-fn "censboot"))
 
 (def control
  ^{:name-r "control",
@@ -95,52 +95,35 @@
     :alpha nil,
     :t nil,
     :distn nil})}
- (r-interop.core/->clj-pos-kw-fn "boot::control"))
+ (r-interop.core/->clj-pos-kw-fn "control"))
 
 (def corr
- ^{:name-r "corr",
-  :doc "",
-  :argslists ({:d nil, :w [nil [nil 1 [nil nil]] [nil nil]]})}
- (r-interop.core/->clj-pos-kw-fn "boot::corr"))
+ ^{:name-r "corr", :doc "", :argslists ({:d nil, :w {}})}
+ (r-interop.core/->clj-pos-kw-fn "corr"))
 
 (def cum-3
  ^{:name-r "cum3",
   :doc "",
   :argslists ({:a nil, :b nil, :c nil, :unbiased true})}
- (r-interop.core/->clj-pos-kw-fn "boot::cum3"))
+ (r-interop.core/->clj-pos-kw-fn "cum3"))
 
 (def cv-glm
  ^{:name-r "cv.glm",
   :doc "",
-  :argslists
-  ({:data nil,
-    :glmfit nil,
-    :cost
-    [nil {:y nil, :yhat nil} [nil [nil [nil [nil nil nil]] 2]] nil],
-    :K nil})}
- (r-interop.core/->clj-pos-kw-fn "boot::cv.glm"))
+  :argslists ({:data nil, :glmfit nil, :cost {}, :K nil})}
+ (r-interop.core/->clj-pos-kw-fn "cv.glm"))
 
 (def eef-profile
  ^{:name-r "EEF.profile",
   :doc "",
-  :argslists
-  ({:y nil,
-    :tmin [nil [nil nil] 0.1],
-    :tmax [nil [nil nil] 0.1],
-    :n.t 25,
-    :u [nil {:y nil, :t nil} [nil nil nil] nil]})}
- (r-interop.core/->clj-pos-kw-fn "boot::EEF.profile"))
+  :argslists ({:y nil, :tmin {}, :tmax {}, :n.t 25, :u {}})}
+ (r-interop.core/->clj-pos-kw-fn "EEF.profile"))
 
 (def el-profile
  ^{:name-r "EL.profile",
   :doc "",
-  :argslists
-  ({:y nil,
-    :tmin [nil [nil nil] 0.1],
-    :tmax [nil [nil nil] 0.1],
-    :n.t 25,
-    :u [nil {:y nil, :t nil} [nil nil nil] nil]})}
- (r-interop.core/->clj-pos-kw-fn "boot::EL.profile"))
+  :argslists ({:y nil, :tmin {}, :tmax {}, :n.t 25, :u {}})}
+ (r-interop.core/->clj-pos-kw-fn "EL.profile"))
 
 (def empinf
  ^{:name-r "empinf",
@@ -153,60 +136,49 @@
     :stype nil,
     :... nil,
     :t nil,
-    :strata [nil 1 nil],
+    :strata {},
     :eps 0.001,
     :data nil})}
- (r-interop.core/->clj-pos-kw-fn "boot::empinf"))
+ (r-interop.core/->clj-pos-kw-fn "empinf"))
 
 (def envelope
  ^{:name-r "envelope",
   :doc "",
-  :argslists
-  ({:boot.out nil, :mat nil, :level 0.95, :index [nil 1 [nil nil]]})}
- (r-interop.core/->clj-pos-kw-fn "boot::envelope"))
+  :argslists ({:boot.out nil, :mat nil, :level 0.95, :index {}})}
+ (r-interop.core/->clj-pos-kw-fn "envelope"))
 
 (def exp-tilt
  ^{:name-r "exp.tilt",
   :doc "",
-  :argslists
-  ({:L nil,
-    :theta nil,
-    :t0 0,
-    :lambda nil,
-    :strata [nil 1 [nil nil]]})}
- (r-interop.core/->clj-pos-kw-fn "boot::exp.tilt"))
+  :argslists ({:L nil, :theta nil, :t0 0, :lambda nil, :strata {}})}
+ (r-interop.core/->clj-pos-kw-fn "exp.tilt"))
 
 (def freq-array
  ^{:name-r "freq.array", :doc "", :argslists ({:i.array nil})}
- (r-interop.core/->clj-pos-kw-fn "boot::freq.array"))
+ (r-interop.core/->clj-pos-kw-fn "freq.array"))
 
 (def glm-diag
  ^{:name-r "glm.diag", :doc "", :argslists ({:glmfit nil})}
- (r-interop.core/->clj-pos-kw-fn "boot::glm.diag"))
+ (r-interop.core/->clj-pos-kw-fn "glm.diag"))
 
 (def glm-diag-plots
  ^{:name-r "glm.diag.plots",
   :doc "",
   :argslists
   ({:glmfit nil,
-    :glmdiag [nil nil],
+    :glmdiag {},
     :subset nil,
     :iden false,
     :labels nil,
     :ret false})}
- (r-interop.core/->clj-pos-kw-fn "boot::glm.diag.plots"))
+ (r-interop.core/->clj-pos-kw-fn "glm.diag.plots"))
 
 (def imp-moments
  ^{:name-r "imp.moments",
   :doc "",
   :argslists
-  ({:boot.out nil,
-    :index 1,
-    :t [nil [nil nil nil] nil nil],
-    :w nil,
-    :def true,
-    :q nil})}
- (r-interop.core/->clj-pos-kw-fn "boot::imp.moments"))
+  ({:boot.out nil, :index 1, :t {}, :w nil, :def true, :q nil})}
+ (r-interop.core/->clj-pos-kw-fn "imp.moments"))
 
 (def imp-prob
  ^{:name-r "imp.prob",
@@ -214,12 +186,12 @@
   :argslists
   ({:boot.out nil,
     :index 1,
-    :t0 [nil [nil nil nil] nil],
-    :t [nil [nil nil nil] nil nil],
+    :t0 {},
+    :t {},
     :w nil,
     :def true,
     :q nil})}
- (r-interop.core/->clj-pos-kw-fn "boot::imp.prob"))
+ (r-interop.core/->clj-pos-kw-fn "imp.prob"))
 
 (def imp-quantile
  ^{:name-r "imp.quantile",
@@ -228,21 +200,21 @@
   ({:boot.out nil,
     :alpha nil,
     :index 1,
-    :t [nil [nil nil nil] nil nil],
+    :t {},
     :w nil,
     :def true,
     :q nil})}
- (r-interop.core/->clj-pos-kw-fn "boot::imp.quantile"))
+ (r-interop.core/->clj-pos-kw-fn "imp.quantile"))
 
 (def imp-weights
  ^{:name-r "imp.weights",
   :doc "",
   :argslists ({:boot.out nil, :def true, :q nil})}
- (r-interop.core/->clj-pos-kw-fn "boot::imp.weights"))
+ (r-interop.core/->clj-pos-kw-fn "imp.weights"))
 
 (def inv-logit
  ^{:name-r "inv.logit", :doc "", :argslists ({:x nil})}
- (r-interop.core/->clj-pos-kw-fn "boot::inv.logit"))
+ (r-interop.core/->clj-pos-kw-fn "inv.logit"))
 
 (def jack-after-boot
  ^{:name-r "jack.after.boot",
@@ -258,11 +230,11 @@
     :alpha nil,
     :t nil,
     :main ""})}
- (r-interop.core/->clj-pos-kw-fn "boot::jack.after.boot"))
+ (r-interop.core/->clj-pos-kw-fn "jack.after.boot"))
 
 (def lik-ci
  ^{:name-r "lik.CI", :doc "", :argslists ({:like nil, :lim nil})}
- (r-interop.core/->clj-pos-kw-fn "boot::lik.CI"))
+ (r-interop.core/->clj-pos-kw-fn "lik.CI"))
 
 (def linear-approx
  ^{:name-r "linear.approx",
@@ -275,17 +247,17 @@
     :t0 nil,
     :t nil,
     :... nil})}
- (r-interop.core/->clj-pos-kw-fn "boot::linear.approx"))
+ (r-interop.core/->clj-pos-kw-fn "linear.approx"))
 
 (def logit
  ^{:name-r "logit", :doc "", :argslists ({:p nil})}
- (r-interop.core/->clj-pos-kw-fn "boot::logit"))
+ (r-interop.core/->clj-pos-kw-fn "logit"))
 
 (def nested-corr
  ^{:name-r "nested.corr",
   :doc "",
   :argslists ({:data nil, :w nil, :t0 nil, :M nil})}
- (r-interop.core/->clj-pos-kw-fn "boot::nested.corr"))
+ (r-interop.core/->clj-pos-kw-fn "nested.corr"))
 
 (def norm-ci
  ^{:name-r "norm.ci",
@@ -295,20 +267,20 @@
     :index 1,
     :t0 nil,
     :boot.out nil,
-    :hdot [nil {:t nil} 1 nil],
-    :h [nil {:t nil} nil nil],
-    :hinv [nil {:t nil} nil nil],
+    :hdot {},
+    :h {},
+    :hinv {},
     :var.t0 nil,
     :t nil,
     :conf 0.95})}
- (r-interop.core/->clj-pos-kw-fn "boot::norm.ci"))
+ (r-interop.core/->clj-pos-kw-fn "norm.ci"))
 
 (def saddle
  ^{:name-r "saddle",
   :doc "",
   :argslists
   ({:d1 1,
-    :init [nil 0.1 nil],
+    :init {},
     :A nil,
     :LR false,
     :K2 nil,
@@ -316,16 +288,16 @@
     :wdist "m",
     :K.adj nil,
     :d nil,
-    :mu [nil 0.5 nil],
+    :mu {},
     :strata nil,
     :u nil})}
- (r-interop.core/->clj-pos-kw-fn "boot::saddle"))
+ (r-interop.core/->clj-pos-kw-fn "saddle"))
 
 (def saddle-distn
  ^{:name-r "saddle.distn",
   :doc "",
   :argslists
-  ({:init [nil 0.1 nil],
+  ({:init {},
     :A nil,
     :t0 nil,
     :LR false,
@@ -335,10 +307,10 @@
     :... nil,
     :alpha nil,
     :t nil,
-    :mu [nil 0.5 nil],
+    :mu {},
     :strata nil,
     :u nil})}
- (r-interop.core/->clj-pos-kw-fn "boot::saddle.distn"))
+ (r-interop.core/->clj-pos-kw-fn "saddle.distn"))
 
 (def simplex
  ^{:name-r "simplex",
@@ -349,23 +321,19 @@
     :A2 nil,
     :A3 nil,
     :maxi false,
-    :n.iter [nil nil [nil 2 nil]],
+    :n.iter {},
     :b3 nil,
     :A1 nil,
     :a nil,
     :eps 1.0E-10})}
- (r-interop.core/->clj-pos-kw-fn "boot::simplex"))
+ (r-interop.core/->clj-pos-kw-fn "simplex"))
 
 (def smooth-f
  ^{:name-r "smooth.f",
   :doc "",
   :argslists
-  ({:theta nil,
-    :boot.out nil,
-    :index 1,
-    :t [nil [nil nil nil] nil nil],
-    :width 0.5})}
- (r-interop.core/->clj-pos-kw-fn "boot::smooth.f"))
+  ({:theta nil, :boot.out nil, :index 1, :t {}, :width 0.5})}
+ (r-interop.core/->clj-pos-kw-fn "smooth.f"))
 
 (def tilt-boot
  ^{:name-r "tilt.boot",
@@ -380,33 +348,33 @@
     :stype "i",
     :theta nil,
     :... nil,
-    :alpha [nil 0.025 0.975],
-    :strata [nil 1 nil],
+    :alpha {},
+    :strata {},
     :sim "ordinary",
     :data nil})}
- (r-interop.core/->clj-pos-kw-fn "boot::tilt.boot"))
+ (r-interop.core/->clj-pos-kw-fn "tilt.boot"))
 
 (def tsboot
  ^{:name-r "tsboot",
   :doc "",
   :argslists
   ({:statistic nil,
-    :ran.gen [nil {:tser nil, :n.sim nil, :args nil} nil nil],
+    :ran.gen {},
     :cl nil,
     :R nil,
-    :parallel [nil "no" "multicore" "snow"],
+    :parallel {},
     :norm true,
     :l nil,
-    :ncpus [nil "boot.ncpus" 1],
+    :ncpus {},
     :tseries nil,
     :... nil,
     :orig.t true,
     :ran.args nil,
-    :n.sim [nil nil],
+    :n.sim {},
     :endcorr true,
     :sim "model"})}
- (r-interop.core/->clj-pos-kw-fn "boot::tsboot"))
+ (r-interop.core/->clj-pos-kw-fn "tsboot"))
 
 (def var-linear
  ^{:name-r "var.linear", :doc "", :argslists ({:L nil, :strata nil})}
- (r-interop.core/->clj-pos-kw-fn "boot::var.linear"))
+ (r-interop.core/->clj-pos-kw-fn "var.linear"))
