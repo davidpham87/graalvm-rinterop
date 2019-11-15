@@ -6,5 +6,4 @@
     (defn-r dev-copy->pdf dev.copy2pdf)
     (defn-r dev->bitmap dev2bitmap)
     (defn-r rgb->hsv rgb2hsv)))
-
 (def config {:package "grDevices" :excluded-fns excluded-fns :aliases manual-aliases})

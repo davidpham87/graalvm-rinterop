@@ -65,6 +65,15 @@ On the Clojure part:
 
 ```
 
+## Naming in r_interop.packages.*
+
+All R word split `like.this`, `snake_case`, `camelCase`, `PascalCase` are
+converted to lisp `kebab-case`. The conversion is automatic, but some control
+is performed to not split terms that belong together (e.g. `SVD`).
+
+Moreover, all conversion function including a `2` are replaced with `->`
+(e.g. `cov2cor` is converted to `cov->cor`).
+
 ## Caveat
 
 - Matrix dimensions are sometimes not respected (see the `lm`) example.

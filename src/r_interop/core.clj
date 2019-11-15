@@ -278,7 +278,9 @@
          (clojure.pprint/pprint
           (list 'def (symbol clj-id)
                 (symbol "^") {:name-r r-id :doc "" :argslists (list args)}
-                `(->clj-pos-kw-fn ~r-id))))))))
+                `(->clj-pos-kw-fn ~(str package "::" r-id)))))))))
+
+#_r-id
 
 (defn dump-package-bindings
   ([filename package] (dump-package-bindings filename package #{}))
@@ -308,9 +310,9 @@
     (newline)
     ;; might useful for load? library
     #_(when load?
-      (spit output-file (str "(eval-r library(" package "))"))
-      (newline)
-      (newline))
+        (spit output-file (str "(eval-r library(" package "))"))
+        (newline)
+        (newline))
     (spit output-file (clojure.string/join "\n" (map str aliases)) :append true)
     (newline)
     (dump-package-bindings output-file package excluded-fns)))
