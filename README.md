@@ -52,7 +52,8 @@ On the Clojure part:
 ## Caveat
 
 - Matrix dimensions are sometimes not respected (see the `lm`) example.
-- Classes are not kept after conversion.
+- Classes are not kept after conversion. [big issue, write R snippets to keep
+  the class of the object, killing the whole python interop].
 - Clojure rational numbers (e.g 3/2) should be avoided as they are not properly
   converted into R representation.
 

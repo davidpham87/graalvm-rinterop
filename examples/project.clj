@@ -12,7 +12,9 @@
   :resource-paths ["assets"]
 
   :dependencies [[org.clojure/clojure "1.10.0"]
+                 [org.clojure/java.data "0.1.1"]
                  [camel-snake-kebab "0.4.0"]
+                 [org.clojure/data.csv "0.1.4"]
                  [uncomplicate/neanderthal "0.26.1"] ;; simplifies computation
                  [uncomplicate/clojurecl "0.13.0"]
                  [uncomplicate/clojurecuda "0.8.0"]]
@@ -21,5 +23,5 @@
   :repl {:dependencies [[nrepl "0.6.0"]
                         [cider/cider-nrepl "0.23.0-SNAPSHOT"]]
          :plugins [[cider/cider-nrepl "0.23.0-SNAPSHOT"]]}
-  ;; :repl-options {:init-ns r-interop.core}
+  :repl-options {:init-ns exo.class-test}
   )

@@ -1,14 +1,15 @@
 (ns exo.stats
-  (:require [r-interop.core :as rc]
-            [r-interop.packages.base :as r-base]
-            [r-interop.packages.stats :as st]
-            [uncomplicate.neanderthal.core :as core]
-            [uncomplicate.neanderthal.native :as native]
-            [uncomplicate.commons.core :refer [info with-release]]
-            ;; [uncomplicate.clojurecl.core :as opencl]
-            ;; [uncomplicate.neanderthal.opencl :as opencl]
-            [uncomplicate.clojurecuda.core :refer (with-default)]
-            [uncomplicate.neanderthal.cuda :as cuda]))
+  (:require
+   [r-interop.core :as rc]
+   [r-interop.packages.base :as r-base]
+   [r-interop.packages.stats :as st]
+   [uncomplicate.neanderthal.core :as core]
+   [uncomplicate.neanderthal.native :as native]
+   [uncomplicate.commons.core :refer [info with-release]]
+   ;; [uncomplicate.clojurecl.core :as opencl]
+   ;; [uncomplicate.neanderthal.opencl :as opencl]
+   [uncomplicate.clojurecuda.core :refer (with-default)]
+   [uncomplicate.neanderthal.cuda :as cuda]))
 
 (st/qchisq 0.975 2)
 

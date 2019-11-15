@@ -125,7 +125,7 @@
      (.isNumber v) (.as v Number)
      (.canExecute v) (reify-ifn v)
 
-     (and (.hasMembers v) (seq (.getMemberKeys v))) ;; bug of polyglot, sometimes the hasMembers returns an empty set and the members might be duplicates
+     (and (.hasMembers v) (seq (.getMemberKeys v))) ;; bug of polyglot, sometimes the hasMembers returns an empty set and the members might be duplicates, wtf?!
      (let [ks (.getMemberKeys v)]
        (into
         (array-map)
@@ -312,7 +312,7 @@
 
 ;; In order to call R functions, we need to convert Clojure variables to R
 ;; representation.,
-
+<
 (defmacro reify-ifn-polyglot
   "Convenience macro for reifying IFn for executable polyglot Values."
   [v]
@@ -354,6 +354,7 @@
         f (cond
             (seq args) (reify-ifn-r-polyglot
                         (eval-r (format template-r-do-call (str id))) (keys args))
+            ;; use only the positional arguments, if no arguments from formals
             :else (reify-ifn-polyglot (eval-r (str id))))]
     (with-meta f {:name-r id :argslists (list args)})))
 
