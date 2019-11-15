@@ -40,13 +40,13 @@ On the Clojure part:
 (rnorm 10 2 3)
 
 ;; Same as above for the qnorm, but accepts a maps of arguments
-(defn-r-kw qnorm)
+(defn-r qnorm)
 ;; usual 0.95 and 0.975 quantile
-(qnorm {:p [0.95, 0.975]})
+(qnorm :** {:p [0.95, 0.975]})
 
 ;; Same as above with standard deviation of 2,
 ;; observe we did not specify (which then takes the default value 0)
-(qnorm {:p [0.95, 0.975] :sd 2})
+(qnorm :** {:p [0.95, 0.975] :sd 2})
 ```
 
 ## Caveat
