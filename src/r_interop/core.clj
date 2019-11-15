@@ -316,8 +316,7 @@
     (dump-package-bindings output-file package excluded-fns)))
 
 ;; In order to call R functions, we need to convert Clojure variables to R
-;; representation.,
-<
+;; representation.
 (defmacro reify-ifn-polyglot
   "Convenience macro for reifying IFn for executable polyglot Values."
   [v]

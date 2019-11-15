@@ -11,9 +11,10 @@
                        :data iris-raw})]
   (def y x-lm))
 
-
 (def set-class
   (rc/reify-ifn-polyglot (rc/eval-r "function(m, cl) {
+  # print(m)
+  print(as.list(m))
   m <- as.list(m)
   class(m) <- cl
   m}")))

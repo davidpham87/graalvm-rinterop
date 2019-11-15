@@ -18,8 +18,6 @@
 ## I am new to machine learning and hoping to learn a lot,
 ## so feedback is very welcome!
 
-
-
 ## 1....Load Package
 
 list.files("../input")
