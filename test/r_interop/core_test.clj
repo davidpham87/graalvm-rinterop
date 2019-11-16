@@ -2,7 +2,7 @@
   "Test core interop functionalities"
   (:require
    [clojure.test :as ct :refer (deftest testing is)]
-   [r-interop.core :as rc :refer (eval-r defn-r value->clj)]))
+   [r-interop.core :as rc :refer (eval-r defn-r ->clj)]))
 
 (defn-r qnorm)
 (defn-r round)
@@ -21,14 +21,14 @@
 
 (deftest equivalent-calls
   (testing "Equivalent calls"
-    (is
-     (= (qnorm [0.975, 0.99] 0 3)
-        (let [m (rc/elipsis->kw qnorm [[0.975, 0.99] 0 3])]
-          ;; ugly but works
-          (qnorm :** m))
-        (apply qnorm [[0.975, 0.99] 0 3])
-        (qnorm [0.975 0.99] :** {:sd 3})
-        (qnorm :** {:p [0.975 0.99] :sd 3})))))
+    (let [qnorm-calls [(qnorm [0.975, 0.99] 0 3)
+                       (let [m (rc/elipsis->kw qnorm [[0.975, 0.99] 0 3])]
+                         ;; ugly but works
+                         (qnorm :** m))
+                       (apply qnorm [[0.975, 0.99] 0 3])
+                       (qnorm [0.975 0.99] :** {:sd 3})
+                       (qnorm :** {:p [0.975 0.99] :sd 3})]]
+      (is (apply = (mapv rc/->clj qnorm-calls))))))
 
 (deftest helpers
   (testing "Helper functions"
@@ -38,20 +38,21 @@
 
 (deftest rounding
   (testing "Rounding"
-    (is (= (round [1 2] 2) [1.0 2.0]))))
+    (is (= (-> [1 2] (round  2) ->clj) [1.0 2.0]))))
 
 ;; check thread
 (deftest threading
   (testing "Threads"
-    (is (= (->
-            (qnorm [0.95 0.975, 0.99] :** {:mean 0})
-            (round 4))
+    (is (= (-> (qnorm [0.95 0.975, 0.99] :** {:mean 0})
+               (round 4)
+               ->clj)
            [1.6449 1.96 2.3263]))
     (is (= (-> [0.95 0.975, 0.99]
                (qnorm :** {:sd 2})
-               (round 2))
+               (round 2)
+               ->clj)
            [3.29 3.92 4.65]))
-    (is (-> 100 rnorm variance))))
+    (is (-> 100 rnorm variance ->clj))))
 
 (deftest linear-models
   (testing "Creating of linear models"
@@ -61,7 +62,6 @@ x.lm <- do.call(lm, as.list(m));
 list(lm = x.lm, summary = summary(x.lm))}"]
         (rc/reify-ifn-kw (eval-r r-code))))
     (is (lm {:formula "as.formula(Sepal.Length~Sepal.Width)" :data (eval-r "iris")}))))
-
 
 (comment
   (rc/value->clj (eval-r "formals(binom.test)"))

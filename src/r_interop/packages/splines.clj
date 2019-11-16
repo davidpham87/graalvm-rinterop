@@ -7,15 +7,15 @@
  ^{:name-r "as.polySpline",
   :doc "",
   :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn "as.polySpline"))
+ (r-interop.core/->clj-pos-kw-fn-polyglot "as.polySpline"))
 
 (def as-vector
  ^{:name-r "asVector", :doc "", :argslists ({:object nil})}
- (r-interop.core/->clj-pos-kw-fn "asVector"))
+ (r-interop.core/->clj-pos-kw-fn-polyglot "asVector"))
 
 (def back-spline
  ^{:name-r "backSpline", :doc "", :argslists ({:object nil})}
- (r-interop.core/->clj-pos-kw-fn "backSpline"))
+ (r-interop.core/->clj-pos-kw-fn-polyglot "backSpline"))
 
 (def bs
  ^{:name-r "bs",
@@ -27,7 +27,7 @@
     :degree 3,
     :intercept false,
     :Boundary.knots {}})}
- (r-interop.core/->clj-pos-kw-fn "bs"))
+ (r-interop.core/->clj-pos-kw-fn-polyglot "bs"))
 
 (def interp-spline
  ^{:name-r "interpSpline",
@@ -40,7 +40,7 @@
     :ord 4,
     :na.action nil,
     :sparse false})}
- (r-interop.core/->clj-pos-kw-fn "interpSpline"))
+ (r-interop.core/->clj-pos-kw-fn-polyglot "interpSpline"))
 
 (def ns
  ^{:name-r "ns",
@@ -51,17 +51,17 @@
     :knots nil,
     :intercept false,
     :Boundary.knots {}})}
- (r-interop.core/->clj-pos-kw-fn "ns"))
+ (r-interop.core/->clj-pos-kw-fn-polyglot "ns"))
 
 (def periodic-spline
  ^{:name-r "periodicSpline",
   :doc "",
   :argslists ({:obj1 nil, :obj2 nil, :knots nil, :period {}, :ord 4})}
- (r-interop.core/->clj-pos-kw-fn "periodicSpline"))
+ (r-interop.core/->clj-pos-kw-fn-polyglot "periodicSpline"))
 
 (def poly-spline
  ^{:name-r "polySpline", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn "polySpline"))
+ (r-interop.core/->clj-pos-kw-fn-polyglot "polySpline"))
 
 (def spline-des
  ^{:name-r "spline.des",
@@ -73,7 +73,7 @@
     :derivs {},
     :outer.ok false,
     :sparse false})}
- (r-interop.core/->clj-pos-kw-fn "spline.des"))
+ (r-interop.core/->clj-pos-kw-fn-polyglot "spline.des"))
 
 (def spline-design
  ^{:name-r "splineDesign",
@@ -85,16 +85,16 @@
     :derivs 0,
     :outer.ok false,
     :sparse false})}
- (r-interop.core/->clj-pos-kw-fn "splineDesign"))
+ (r-interop.core/->clj-pos-kw-fn-polyglot "splineDesign"))
 
 (def spline-knots
  ^{:name-r "splineKnots", :doc "", :argslists ({:object nil})}
- (r-interop.core/->clj-pos-kw-fn "splineKnots"))
+ (r-interop.core/->clj-pos-kw-fn-polyglot "splineKnots"))
 
 (def spline-order
  ^{:name-r "splineOrder", :doc "", :argslists ({:object nil})}
- (r-interop.core/->clj-pos-kw-fn "splineOrder"))
+ (r-interop.core/->clj-pos-kw-fn-polyglot "splineOrder"))
 
 (def xy-vector
  ^{:name-r "xyVector", :doc "", :argslists ({:x nil, :y nil})}
- (r-interop.core/->clj-pos-kw-fn "xyVector"))
+ (r-interop.core/->clj-pos-kw-fn-polyglot "xyVector"))

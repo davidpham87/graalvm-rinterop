@@ -78,8 +78,25 @@
     ;; argument maps
     (merge (zipmap signature args) kw)))
 
-(defmacro reify-ifn-r
+;; In order to call R functions, we need to convert Clojure variables to R
+;; representation.
+(defmacro reify-ifn-polyglot
   "Convenience macro for reifying IFn for executable polyglot Values."
+  [v]
+  (let [invoke-arity
+        (fn [n]
+          (let [args (map #(symbol (str "arg" (inc %))) (range n))]
+            (if (seq args)
+              ;; TODO test edge case for final `invoke` arity w/varargs
+              `(~'invoke [this# ~@args] (execute ~v ~@args))
+              `(~'invoke [this#] (execute ~v)))))]
+    `(reify IFn
+       ~@(map invoke-arity (range 22))
+       (~'applyTo [this# args#] (apply execute ~v args#)))))
+
+(defmacro reify-ifn-r-polyglot
+  "Convenience macro for reifying IFn for executable polyglot Values but does not
+  convert the final result."
   [v signature]
   (let [invoke-arity
         (fn [n]
@@ -87,14 +104,44 @@
             ;; TODO test edge case for final `invoke` arity w/varargs
             (if (seq args)
               `(~'invoke [this# ~@args]
-                (value->clj (execute-kw ~v (args->kwargs ~signature ~@args))
-                            {:keywordize-keys? true}))
+                (execute-kw ~v (args->kwargs ~signature ~@args)))
               `(~'invoke [this# ~@args]
-                (value->clj (execute ~v ~@args) {:keywordize-keys? true})))))]
+                (execute ~v ~@args)))))]
     `(reify IFn
        ~@(map invoke-arity (range 22))
        (~'applyTo [this# args#]
-        (value->clj (execute-kw ~v (zipmap ~signature args#)))))))
+        (execute-kw ~v (zipmap ~signature args#))))))
+
+(defn value->clj
+  "Returns a Clojure (or Java) value for given polyglot Value if possible,
+   otherwise throws."
+  ([^Value v {:keys [warnings? keywordize-keys?] :or {keywordize-keys? true} :as opts}]
+   (cond
+     (.isNull v) nil
+     (.isHostObject v) (.asHostObject v)
+     (.isBoolean v) (.asBoolean v)
+     (.isString v) (.asString v)
+     (.isNumber v) (.as v Number)
+     (.canExecute v) (reify-ifn-polyglot v)
+
+     ;; bug of polyglot, sometimes the hasMembers returns an empty set and the members might be duplicates, wtf?!
+     (and (.hasMembers v) #_(seq (.getMemberKeys v)))
+     (let [ks (.getMemberKeys v)]
+       (into
+        (array-map)
+        (for [k ks]
+          ;; some keys are empty string, so we need to provide them
+          [(if keywordize-keys? (keyword (if (seq k) k "empty-key")) k)
+           (value->clj (.getMember v k) opts)])))
+
+     (.hasArrayElements v)
+     (into [] (for [i (range (.getArraySize v))] (value->clj (.getArrayElement v i) opts)))
+
+     :else (when warnings? (println "Unsupported value:" (str v)))
+     ;; (throw (Exception. "Unsupported value"))
+     ))
+  ([^Value v]
+   (value->clj v nil)))
 
 (defn proxy-fn
   "Returns a ProxyExecutable instance for given function, allowing it to be
@@ -113,36 +160,7 @@
   ([code {:keys [ctx] :or {ctx ctx-default}}]
    (.eval ^Context ctx "R" code)))
 
-(defn value->clj
-  "Returns a Clojure (or Java) value for given polyglot Value if possible,
-   otherwise throws."
-  ([^Value v {:keys [warnings? keywordize-keys?] :or {keywordize-keys? true} :as opts}]
-   (cond
-     (.isNull v) nil
-     (.isHostObject v) (.asHostObject v)
-     (.isBoolean v) (.asBoolean v)
-     (.isString v) (.asString v)
-     (.isNumber v) (.as v Number)
-     (.canExecute v) (reify-ifn v)
-
-     ;; bug of polyglot, sometimes the hasMembers returns an empty set and the members might be duplicates, wtf?!
-     (and (.hasMembers v) #_(seq (.getMemberKeys v)))
-     (let [ks (.getMemberKeys v)]
-       (into
-        (array-map)
-        (for [k ks]
-          [(if keywordize-keys? (keyword (if (seq k) k "empty-key")) k) ;; some keys are empty string...
-           (value->clj (.getMember v k) opts)])))
-
-     (.hasArrayElements v)
-     (into [] (for [i (range (.getArraySize v))] (value->clj (.getArrayElement v i) opts)))
-
-     :else (when warnings? (println "Unsupported value:" (str v)))
-     ;; (throw (Exception. "Unsupported value"))
-     ))
-  ([^Value v]
-   (value->clj v nil)))
-
+(def ->clj value->clj)
 (def r->clj (comp value->clj eval-r))
 
 (defmacro defn-r-raw
@@ -184,7 +202,7 @@
   "Display R help from the R function name"
   [f]
   (-> (with-out-str
-        (eval-r (str "capture.output(help(" (symbol f) ", help_type=\"text\"))")))
+        (->clj (eval-r (str "capture.output(help(" (symbol f) ", help_type=\"text\"))"))))
       (clojure.string/replace #"_" "")))
 
 (defn ->clj-pos-kw-fn
@@ -192,53 +210,7 @@
   (let [template-r-do-call "function(m) {
   do.call(%s, as.list(m))
 }"
-        args (formals (str id))
-        f (cond
-            (seq args) (reify-ifn-r
-                        (eval-r (format template-r-do-call (str id))) (keys args))
-            :else (reify-ifn (eval-r (str id))))]
-    (with-meta f {:name-r id :argslists (list args)})))
-
-;; In order to call R functions, we need to convert Clojure variables to R
-;; representation.
-(defmacro reify-ifn-polyglot
-  "Convenience macro for reifying IFn for executable polyglot Values."
-  [v]
-  (let [invoke-arity
-        (fn [n]
-          (let [args (map #(symbol (str "arg" (inc %))) (range n))]
-            (if (seq args)
-              ;; TODO test edge case for final `invoke` arity w/varargs
-              `(~'invoke [this# ~@args] (execute ~v ~@args))
-              `(~'invoke [this#] (execute ~v)))))]
-    `(reify IFn
-       ~@(map invoke-arity (range 22))
-       (~'applyTo [this# args#] (apply execute ~v args#)))))
-
-(defmacro reify-ifn-r-polyglot
-  "Convenience macro for reifying IFn for executable polyglot Values but does not
-  convert the final result."
-  [v signature]
-  (let [invoke-arity
-        (fn [n]
-          (let [args (map #(symbol (str "arg" (inc %))) (range n))]
-            ;; TODO test edge case for final `invoke` arity w/varargs
-            (if (seq args)
-              `(~'invoke [this# ~@args]
-                (execute-kw ~v (args->kwargs ~signature ~@args)))
-              `(~'invoke [this# ~@args]
-                (execute ~v ~@args)))))]
-    `(reify IFn
-       ~@(map invoke-arity (range 22))
-       (~'applyTo [this# args#]
-        (execute-kw ~v (zipmap ~signature args#))))))
-
-(defn ->clj-pos-kw-fn-polyglot
-  [id]
-  (let [template-r-do-call "function(m) {
-  do.call(%s, as.list(m))
-}"
-        args (formals (str id))
+        args (->clj (formals (str id)))
         f (cond
             (seq args) (reify-ifn-r-polyglot
                         (eval-r (format template-r-do-call (str id))) (keys args))
@@ -276,9 +248,12 @@
   [f args]
   (zipmap (keys (first (argslists f))) args))
 
+;; Facilities to create wrappers in clojure namespaces and files. See
+;; r-interop.gen-packages.mgcv and r-interop.package-generator for example.
+
 (def dir-package-raw
   "Retrieve members of a package"
-  (value->clj
+  (->clj
    (eval-r "function(package_name) as.character(unlist(lsf.str(paste0('package:', package_name))))")))
 
 (defn ->clj-function-name
@@ -291,7 +266,7 @@
 (defn dir-package
   "Provide the r function names inside an R package"
   [package]
-  (->> (dir-package-raw package)
+  (->> (dir-package-raw package) ->clj
        (filter #(re-matches #"[A-Za-z][A-Za-z\\.\\_].*" %))))
 
 (def setter?
@@ -320,7 +295,7 @@
                          (mapv #(vector (->clj-function-name %) %)))]
      (doseq  [[clj-id r-id] clj+fs-ids]
        (let [;; docstring (r-help r-id)
-             args (formals (str r-id))]
+             args (->clj (formals (str r-id)))]
          (println "")
          ;; ugly way of doing it, but we need to generate code as string.
          (clojure.pprint/pprint
@@ -338,7 +313,9 @@
      (spit filename s :append true))))
 
 (defn create-package-bindings
-  "Create package namespaces"
+  "Create package namespaces. The `root-ns` and `root-filepath` keys set the
+  resulting file location and file namespace. The `load`? key will load the
+  package through libraries in the package file."
   [{:keys [package excluded-fns aliases load? root-ns root-filepath]
     :or {excluded-fns #{}
          root-ns "r-interop.packages"
@@ -360,119 +337,22 @@
     (newline)
     (dump-package-bindings output-file package excluded-fns)))
 
-(def ->r-list (comp (->clj-pos-kw-fn-polyglot 'list) ->proxy-object))
-(def ->r-data-frame (comp (->clj-pos-kw-fn-polyglot 'as.data.frame) ->proxy-object))
-(def ->r-matrix (comp (->clj-pos-kw-fn-polyglot 'as.matrix) ->proxy-object))
+;; Convenience function for interop clojure and R.
+;; Useful for interop with regression functions expecting structures.
+
+(def ->r-list
+  "Function converting a clojure associative structure into a R list"
+  (comp (->clj-pos-kw-fn 'list) ->proxy-object))
+
+(def ->r-data-frame
+  "Function converting a clojure sequence of maps into a R dataframe. "
+  (comp (->clj-pos-kw-fn 'as.data.frame) ->proxy-object))
+
+(def ->r-matrix
+  "Conversion of clojure arrays into R matrices"
+  (comp (->clj-pos-kw-fn 'as.matrix) ->proxy-object))
 
 ;; javascript interop
 #_(defn ^Value eval-js [code]
     (.eval ^Context ctx "js" code))
 #_(def js->clj (comp value->clj eval-js))
-
-(comment
-  (def s (->
-          (with-out-str
-            (eval-r "capture.output(help(qnorm, help_type ='text'))"))
-          (clojure.string/replace #"_" "")))
-
-  (def s-clearn
-    (with-out-str
-      (println (clojure.string/replace s  #"_" ""))))
-
-  (defn-r pnorm)
-  (-> pnorm meta :doc println)
-  (-> pnorm meta :argslists)
-  (pnorm :** {:q 1.95 :sd 2})
-  (defn-r r-list list)
-
-  (defn-r qnorm)
-  (qnorm {:p [0.975, 0.99] :sd 1})
-
-  (defn-r qnorm)
-  (qnorm [0.975, 0.99] 1 3)
-  (qnorm [0.95 0.975, 0.99] :** {:sd 3})
-  (qnorm :** {:p [0.975, 0.99] :sd 2})
-
-  (defn-r round)
-  (round [1 2] 2)
-  (->
-   (qnorm [0.95 0.975, 0.99] :** {:mean 0})
-   (round 4))
-
-  (defn-r qnorm)
-  (defn-r round)
-  (-> [0.95 0.975, 0.99]
-      (qnorm :** {:sd 2})
-      (round 2))
-  [3.29 3.92 4.65]
-
-  (defn-r dnorm)
-  (defn-r plot)
-  (defn-r sqrt)
-  (defn-r round)
-  (defn-r variance var)
-  (->  (sqrt 0.666667) (round 4))
-  (defn-r summary)
-  (defn-r binom-test binom.test)
-
-  (-> (pnorm :** {:q 16.5 :mean 20 :sd (/ 5.2 (Math/sqrt 15))})
-      (round 4))
-
-  (binom-test :** {:x 75 :n 124})
-
-  (defn mean [xs]
-    (let [n (count xs)]
-      (/ (apply + xs) n)))
-
-  (let [x [-0.2 0.6 1.1 -0.9 0.1 -1.2 1.1]
-        n (count x)]
-    (Math/abs (* (sqrt n) (mean x))))
-
-  (def lm
-    (let [r-code "function(m) {
-x.lm <- do.call(lm, as.list(m));
-list(lm = x.lm, summary = summary(x.lm))}"]
-      (reify-ifn-kw (eval-r r-code))))
-
-  (def x-lm (lm
-             {:formula "as.formula(Sepal.Length~Sepal.Width)"
-              :data (eval-r "iris")}))
-
-  (let [z (eval-r "formals(binom.test)")]
-    (-> (.getMember z "alternative") (.getMemberKeys)))
-
-  (value->clj (eval-r "formals(binom.test)"))
-  (def f (reify-ifn-kw (eval-r "function(m) {
-f <- function(a , ...) {
-   args <- list(...)
-   print(args$`...`[['b']])
-   # lapply(args, function(x) 2*x)
-}
-do.call(f, as.list(m))}")))
-  (formals "t.test")
-  (defn square [x] (* x x))
-  (defn-r sqrt)
-  (let [x 257
-        x-sd 39
-        y 260
-        y-sd 38
-        n 1000
-        t (* (sqrt 1000) (/ (- x y) (sqrt (+ (square 39) (square 38)))))]
-    (-> (* 2 (pnorm {:q t})) (round 4))
-    )
-
-  (let [n 200
-        m 106
-        sigma 0.5
-        mu 0.5
-        d (* (/ (- (/ m n) mu) sigma) (sqrt n))]
-    (println (round d 4))
-    (println (- 1 (pnorm {:q d}))))
-  (defn-r mean)
-  (defn-r round)
-  (defn-r sd)
-  (let [x [0.5 1.8 -2.3 0.9]]
-    #_(sd x)
-    (round (sqrt (- (mean (map square x))
-                    (square (mean x)))) 4))
-  )

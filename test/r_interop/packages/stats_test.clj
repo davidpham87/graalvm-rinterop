@@ -4,14 +4,13 @@
    [r-interop.core :as rc :refer (defn-r)]
    [r-interop.packages.base :as r-base :refer (lchoose)]
    [r-interop.packages.stats :as st]
-   [r-interop.packages.splines :as splines]
-   ))
+   [r-interop.packages.splines :as splines]))
 
 (defn-r round)
 
 (deftest qnorm-test
   (testing "qnorm"
-    (is (= (round (st/qnorm [0.95 0.975]) 3) [1.645 1.96]))))
+    (is (= (rc/value->clj (round (st/qnorm [0.95 0.975]) 3)) [1.645 1.96]))))
 
 (def data
   (let [y (into (vec (repeat 35 0)) [1 2 0 6 8 16 43])
@@ -21,7 +20,9 @@
         data [y beta cst tau]]
     {:y y :beta beta :cst cst :tau tau}))
 
-(st/glm :** {:data (rc/->r-data-frame data) :formula "as.formula(y ~ offset(cst) + beta + tau)"})
+(let [res (st/glm :** {:data (rc/->r-data-frame data) :formula "as.formula(y ~ offset(cst) + beta + tau)"})]
+  (def x res))
+
 (st/lm :** {:data (rc/->r-data-frame data) :formula "as.formula(y ~ offset(cst) + beta + tau)"})
 
 (comment
