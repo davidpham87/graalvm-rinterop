@@ -33,40 +33,40 @@
     :na.action nil,
     :demean true,
     :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "acf"))
+ (r-interop.core/->clj-pos-kw-fn "acf"))
 
 (def acf-2-ar
  ^{:name-r "acf2AR", :doc "", :argslists ({:acf nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "acf2AR"))
+ (r-interop.core/->clj-pos-kw-fn "acf2AR"))
 
 (def add-scope
  ^{:name-r "add.scope",
   :doc "",
   :argslists ({:terms1 nil, :terms2 nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "add.scope"))
+ (r-interop.core/->clj-pos-kw-fn "add.scope"))
 
 (def add-1
  ^{:name-r "add1",
   :doc "",
   :argslists ({:object nil, :scope nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "add1"))
+ (r-interop.core/->clj-pos-kw-fn "add1"))
 
 (def addmargins
  ^{:name-r "addmargins",
   :doc "",
   :argslists ({:A nil, :margin {}, :FUN nil, :quiet false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "addmargins"))
+ (r-interop.core/->clj-pos-kw-fn "addmargins"))
 
 (def aggregate
  ^{:name-r "aggregate", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "aggregate"))
+ (r-interop.core/->clj-pos-kw-fn "aggregate"))
 
 (def aggregate-data-frame
  ^{:name-r "aggregate.data.frame",
   :doc "",
   :argslists
   ({:x nil, :by nil, :FUN nil, :... nil, :simplify true, :drop true})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "aggregate.data.frame"))
+ (r-interop.core/->clj-pos-kw-fn "aggregate.data.frame"))
 
 (def aggregate-ts
  ^{:name-r "aggregate.ts",
@@ -78,23 +78,23 @@
     :ndeltat 1,
     :ts.eps {},
     :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "aggregate.ts"))
+ (r-interop.core/->clj-pos-kw-fn "aggregate.ts"))
 
 (def aic
  ^{:name-r "AIC", :doc "", :argslists ({:object nil, :... nil, :k 2})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "AIC"))
+ (r-interop.core/->clj-pos-kw-fn "AIC"))
 
 (def alias
  ^{:name-r "alias", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "alias"))
+ (r-interop.core/->clj-pos-kw-fn "alias"))
 
 (def anova
  ^{:name-r "anova", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "anova"))
+ (r-interop.core/->clj-pos-kw-fn "anova"))
 
 (def ansari-test
  ^{:name-r "ansari.test", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "ansari.test"))
+ (r-interop.core/->clj-pos-kw-fn "ansari.test"))
 
 (def aov
  ^{:name-r "aov",
@@ -106,7 +106,7 @@
     :qr true,
     :contrasts nil,
     :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "aov"))
+ (r-interop.core/->clj-pos-kw-fn "aov"))
 
 (def approx
  ^{:name-r "approx",
@@ -122,7 +122,7 @@
     :f 0,
     :x nil,
     :yleft nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "approx"))
+ (r-interop.core/->clj-pos-kw-fn "approx"))
 
 (def approxfun
  ^{:name-r "approxfun",
@@ -136,7 +136,7 @@
     :rule 1,
     :f 0,
     :ties nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "approxfun"))
+ (r-interop.core/->clj-pos-kw-fn "approxfun"))
 
 (def ar
  ^{:name-r "ar",
@@ -149,11 +149,11 @@
     :na.action nil,
     :series {},
     :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "ar"))
+ (r-interop.core/->clj-pos-kw-fn "ar"))
 
 (def ar-burg
  ^{:name-r "ar.burg", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "ar.burg"))
+ (r-interop.core/->clj-pos-kw-fn "ar.burg"))
 
 (def ar-mle
  ^{:name-r "ar.mle",
@@ -166,7 +166,7 @@
     :demean true,
     :series nil,
     :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "ar.mle"))
+ (r-interop.core/->clj-pos-kw-fn "ar.mle"))
 
 (def ar-ols
  ^{:name-r "ar.ols",
@@ -180,11 +180,11 @@
     :intercept nil,
     :series nil,
     :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "ar.ols"))
+ (r-interop.core/->clj-pos-kw-fn "ar.ols"))
 
 (def ar-yw
  ^{:name-r "ar.yw", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "ar.yw"))
+ (r-interop.core/->clj-pos-kw-fn "ar.yw"))
 
 (def arima
  ^{:name-r "arima",
@@ -204,7 +204,7 @@
     :optim.control {},
     :transform.pars true,
     :optim.method "BFGS"})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "arima"))
+ (r-interop.core/->clj-pos-kw-fn "arima"))
 
 (def arima-sim
  ^{:name-r "arima.sim",
@@ -217,7 +217,7 @@
     :n.start [nil],
     :start.innov {},
     :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "arima.sim"))
+ (r-interop.core/->clj-pos-kw-fn "arima.sim"))
 
 (def arima-0
  ^{:name-r "arima0",
@@ -235,117 +235,117 @@
     :fixed nil,
     :optim.control {},
     :transform.pars true})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "arima0"))
+ (r-interop.core/->clj-pos-kw-fn "arima0"))
 
 (def arima-0-diag
  ^{:name-r "arima0.diag", :doc "", :argslists ({:... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "arima0.diag"))
+ (r-interop.core/->clj-pos-kw-fn "arima0.diag"))
 
 (def as-dendrogram
  ^{:name-r "as.dendrogram",
   :doc "",
   :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "as.dendrogram"))
+ (r-interop.core/->clj-pos-kw-fn "as.dendrogram"))
 
 (def as-dist
  ^{:name-r "as.dist",
   :doc "",
   :argslists ({:m nil, :diag false, :upper false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "as.dist"))
+ (r-interop.core/->clj-pos-kw-fn "as.dist"))
 
 (def as-formula
  ^{:name-r "as.formula", :doc "", :argslists ({:object nil, :env {}})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "as.formula"))
+ (r-interop.core/->clj-pos-kw-fn "as.formula"))
 
 (def as-hclust
  ^{:name-r "as.hclust", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "as.hclust"))
+ (r-interop.core/->clj-pos-kw-fn "as.hclust"))
 
 (def as-stepfun
  ^{:name-r "as.stepfun", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "as.stepfun"))
+ (r-interop.core/->clj-pos-kw-fn "as.stepfun"))
 
 (def as-ts
  ^{:name-r "as.ts", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "as.ts"))
+ (r-interop.core/->clj-pos-kw-fn "as.ts"))
 
 (def as-one-sided-formula
  ^{:name-r "asOneSidedFormula", :doc "", :argslists ({:object nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "asOneSidedFormula"))
+ (r-interop.core/->clj-pos-kw-fn "asOneSidedFormula"))
 
 (def ave
  ^{:name-r "ave", :doc "", :argslists ({:x nil, :... nil, :FUN nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "ave"))
+ (r-interop.core/->clj-pos-kw-fn "ave"))
 
 (def bandwidth-kernel
  ^{:name-r "bandwidth.kernel", :doc "", :argslists ({:k nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "bandwidth.kernel"))
+ (r-interop.core/->clj-pos-kw-fn "bandwidth.kernel"))
 
 (def bartlett-test
  ^{:name-r "bartlett.test", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "bartlett.test"))
+ (r-interop.core/->clj-pos-kw-fn "bartlett.test"))
 
 (def bic
  ^{:name-r "BIC", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "BIC"))
+ (r-interop.core/->clj-pos-kw-fn "BIC"))
 
 (def binom-test
  ^{:name-r "binom.test",
   :doc "",
   :argslists
   ({:x nil, :n nil, :p 0.5, :alternative {}, :conf.level 0.95})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "binom.test"))
+ (r-interop.core/->clj-pos-kw-fn "binom.test"))
 
 (def binomial
  ^{:name-r "binomial", :doc "", :argslists ({:link "logit"})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "binomial"))
+ (r-interop.core/->clj-pos-kw-fn "binomial"))
 
 (def biplot
  ^{:name-r "biplot", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "biplot"))
+ (r-interop.core/->clj-pos-kw-fn "biplot"))
 
 (def box-test
  ^{:name-r "Box.test",
   :doc "",
   :argslists ({:x nil, :lag 1, :type {}, :fitdf 0})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "Box.test"))
+ (r-interop.core/->clj-pos-kw-fn "Box.test"))
 
 (def bw-bcv
  ^{:name-r "bw.bcv",
   :doc "",
   :argslists ({:x nil, :nb 1000, :lower {}, :upper nil, :tol {}})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "bw.bcv"))
+ (r-interop.core/->clj-pos-kw-fn "bw.bcv"))
 
 (def bw-nrd
  ^{:name-r "bw.nrd", :doc "", :argslists ({:x nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "bw.nrd"))
+ (r-interop.core/->clj-pos-kw-fn "bw.nrd"))
 
 (def bw-nrd-0
  ^{:name-r "bw.nrd0", :doc "", :argslists ({:x nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "bw.nrd0"))
+ (r-interop.core/->clj-pos-kw-fn "bw.nrd0"))
 
 (def bw-sj
  ^{:name-r "bw.SJ",
   :doc "",
   :argslists
   ({:x nil, :nb 1000, :lower {}, :upper nil, :method {}, :tol {}})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "bw.SJ"))
+ (r-interop.core/->clj-pos-kw-fn "bw.SJ"))
 
 (def bw-ucv
  ^{:name-r "bw.ucv",
   :doc "",
   :argslists ({:x nil, :nb 1000, :lower {}, :upper nil, :tol {}})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "bw.ucv"))
+ (r-interop.core/->clj-pos-kw-fn "bw.ucv"))
 
 (def cancor
  ^{:name-r "cancor",
   :doc "",
   :argslists ({:x nil, :y nil, :xcenter true, :ycenter true})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "cancor"))
+ (r-interop.core/->clj-pos-kw-fn "cancor"))
 
 (def case-names
  ^{:name-r "case.names", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "case.names"))
+ (r-interop.core/->clj-pos-kw-fn "case.names"))
 
 (def ccf
  ^{:name-r "ccf",
@@ -358,7 +358,7 @@
     :plot true,
     :na.action nil,
     :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "ccf"))
+ (r-interop.core/->clj-pos-kw-fn "ccf"))
 
 (def chisq-test
  ^{:name-r "chisq.test",
@@ -371,46 +371,46 @@
     :rescale.p false,
     :simulate.p.value false,
     :B 2000})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "chisq.test"))
+ (r-interop.core/->clj-pos-kw-fn "chisq.test"))
 
 (def cmdscale
  ^{:name-r "cmdscale",
   :doc "",
   :argslists
   ({:d nil, :k 2, :eig false, :add false, :x.ret false, :list. {}})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "cmdscale"))
+ (r-interop.core/->clj-pos-kw-fn "cmdscale"))
 
 (def coef
  ^{:name-r "coef", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "coef"))
+ (r-interop.core/->clj-pos-kw-fn "coef"))
 
 (def coefficients
  ^{:name-r "coefficients",
   :doc "",
   :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "coefficients"))
+ (r-interop.core/->clj-pos-kw-fn "coefficients"))
 
 (def complete-cases
  ^{:name-r "complete.cases", :doc "", :argslists ({:... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "complete.cases"))
+ (r-interop.core/->clj-pos-kw-fn "complete.cases"))
 
 (def confint
  ^{:name-r "confint",
   :doc "",
   :argslists ({:object nil, :parm nil, :level 0.95, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "confint"))
+ (r-interop.core/->clj-pos-kw-fn "confint"))
 
 (def confint-default
  ^{:name-r "confint.default",
   :doc "",
   :argslists ({:object nil, :parm nil, :level 0.95, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "confint.default"))
+ (r-interop.core/->clj-pos-kw-fn "confint.default"))
 
 (def confint-lm
  ^{:name-r "confint.lm",
   :doc "",
   :argslists ({:object nil, :parm nil, :level 0.95, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "confint.lm"))
+ (r-interop.core/->clj-pos-kw-fn "confint.lm"))
 
 (def constr-optim
  ^{:name-r "constrOptim",
@@ -428,150 +428,150 @@
     :mu 1.0E-4,
     :grad nil,
     :outer.iterations 100})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "constrOptim"))
+ (r-interop.core/->clj-pos-kw-fn "constrOptim"))
 
 (def contr-helmert
  ^{:name-r "contr.helmert",
   :doc "",
   :argslists ({:n nil, :contrasts true, :sparse false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "contr.helmert"))
+ (r-interop.core/->clj-pos-kw-fn "contr.helmert"))
 
 (def contr-poly
  ^{:name-r "contr.poly",
   :doc "",
   :argslists ({:n nil, :scores {}, :contrasts true, :sparse false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "contr.poly"))
+ (r-interop.core/->clj-pos-kw-fn "contr.poly"))
 
 (def contr-sas
  ^{:name-r "contr.SAS",
   :doc "",
   :argslists ({:n nil, :contrasts true, :sparse false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "contr.SAS"))
+ (r-interop.core/->clj-pos-kw-fn "contr.SAS"))
 
 (def contr-sum
  ^{:name-r "contr.sum",
   :doc "",
   :argslists ({:n nil, :contrasts true, :sparse false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "contr.sum"))
+ (r-interop.core/->clj-pos-kw-fn "contr.sum"))
 
 (def contr-treatment
  ^{:name-r "contr.treatment",
   :doc "",
   :argslists ({:n nil, :base 1, :contrasts true, :sparse false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "contr.treatment"))
+ (r-interop.core/->clj-pos-kw-fn "contr.treatment"))
 
 (def contrasts
  ^{:name-r "contrasts",
   :doc "",
   :argslists ({:x nil, :contrasts true, :sparse false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "contrasts"))
+ (r-interop.core/->clj-pos-kw-fn "contrasts"))
 
 (def convolve
  ^{:name-r "convolve",
   :doc "",
   :argslists ({:x nil, :y nil, :conj true, :type {}})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "convolve"))
+ (r-interop.core/->clj-pos-kw-fn "convolve"))
 
 (def cooks-distance
  ^{:name-r "cooks.distance",
   :doc "",
   :argslists ({:model nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "cooks.distance"))
+ (r-interop.core/->clj-pos-kw-fn "cooks.distance"))
 
 (def cophenetic
  ^{:name-r "cophenetic", :doc "", :argslists ({:x nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "cophenetic"))
+ (r-interop.core/->clj-pos-kw-fn "cophenetic"))
 
 (def cor
  ^{:name-r "cor",
   :doc "",
   :argslists ({:x nil, :y nil, :use "everything", :method {}})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "cor"))
+ (r-interop.core/->clj-pos-kw-fn "cor"))
 
 (def cor-test
  ^{:name-r "cor.test", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "cor.test"))
+ (r-interop.core/->clj-pos-kw-fn "cor.test"))
 
 (def cov
  ^{:name-r "cov",
   :doc "",
   :argslists ({:x nil, :y nil, :use "everything", :method {}})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "cov"))
+ (r-interop.core/->clj-pos-kw-fn "cov"))
 
 (def cov-wt
  ^{:name-r "cov.wt",
   :doc "",
   :argslists ({:x nil, :wt {}, :cor false, :center true, :method {}})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "cov.wt"))
+ (r-interop.core/->clj-pos-kw-fn "cov.wt"))
 
 (def covratio
  ^{:name-r "covratio",
   :doc "",
   :argslists
   ({:model nil, :infl {:empty-key nil, :do.coef false}, :res {}})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "covratio"))
+ (r-interop.core/->clj-pos-kw-fn "covratio"))
 
 (def cpgram
  ^{:name-r "cpgram",
   :doc "",
   :argslists ({:ts nil, :taper 0.1, :main {}, :ci.col "blue"})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "cpgram"))
+ (r-interop.core/->clj-pos-kw-fn "cpgram"))
 
 (def cutree
  ^{:name-r "cutree", :doc "", :argslists ({:tree nil, :k nil, :h nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "cutree"))
+ (r-interop.core/->clj-pos-kw-fn "cutree"))
 
 (def cycle
  ^{:name-r "cycle", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "cycle"))
+ (r-interop.core/->clj-pos-kw-fn "cycle"))
 
 (def dbeta
  ^{:name-r "dbeta",
   :doc "",
   :argslists ({:x nil, :shape1 nil, :shape2 nil, :ncp 0, :log false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "dbeta"))
+ (r-interop.core/->clj-pos-kw-fn "dbeta"))
 
 (def dbinom
  ^{:name-r "dbinom",
   :doc "",
   :argslists ({:x nil, :size nil, :prob nil, :log false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "dbinom"))
+ (r-interop.core/->clj-pos-kw-fn "dbinom"))
 
 (def dcauchy
  ^{:name-r "dcauchy",
   :doc "",
   :argslists ({:x nil, :location 0, :scale 1, :log false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "dcauchy"))
+ (r-interop.core/->clj-pos-kw-fn "dcauchy"))
 
 (def dchisq
  ^{:name-r "dchisq",
   :doc "",
   :argslists ({:x nil, :df nil, :ncp 0, :log false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "dchisq"))
+ (r-interop.core/->clj-pos-kw-fn "dchisq"))
 
 (def decompose
  ^{:name-r "decompose",
   :doc "",
   :argslists ({:x nil, :type {}, :filter nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "decompose"))
+ (r-interop.core/->clj-pos-kw-fn "decompose"))
 
 (def delete-response
  ^{:name-r "delete.response", :doc "", :argslists ({:termobj nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "delete.response"))
+ (r-interop.core/->clj-pos-kw-fn "delete.response"))
 
 (def deltat
  ^{:name-r "deltat", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "deltat"))
+ (r-interop.core/->clj-pos-kw-fn "deltat"))
 
 (def dendrapply
  ^{:name-r "dendrapply",
   :doc "",
   :argslists ({:X nil, :FUN nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "dendrapply"))
+ (r-interop.core/->clj-pos-kw-fn "dendrapply"))
 
 (def density
  ^{:name-r "density", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "density"))
+ (r-interop.core/->clj-pos-kw-fn "density"))
 
 (def density-default
  ^{:name-r "density.default",
@@ -591,211 +591,211 @@
     :x nil,
     :cut 3,
     :to nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "density.default"))
+ (r-interop.core/->clj-pos-kw-fn "density.default"))
 
 (def deriv
  ^{:name-r "deriv", :doc "", :argslists ({:expr nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "deriv"))
+ (r-interop.core/->clj-pos-kw-fn "deriv"))
 
 (def deriv-3
  ^{:name-r "deriv3", :doc "", :argslists ({:expr nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "deriv3"))
+ (r-interop.core/->clj-pos-kw-fn "deriv3"))
 
 (def deviance
  ^{:name-r "deviance", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "deviance"))
+ (r-interop.core/->clj-pos-kw-fn "deviance"))
 
 (def dexp
  ^{:name-r "dexp", :doc "", :argslists ({:x nil, :rate 1, :log false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "dexp"))
+ (r-interop.core/->clj-pos-kw-fn "dexp"))
 
 (def df
  ^{:name-r "df",
   :doc "",
   :argslists ({:x nil, :df1 nil, :df2 nil, :ncp nil, :log false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "df"))
+ (r-interop.core/->clj-pos-kw-fn "df"))
 
 (def df-kernel
  ^{:name-r "df.kernel", :doc "", :argslists ({:k nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "df.kernel"))
+ (r-interop.core/->clj-pos-kw-fn "df.kernel"))
 
 (def df-residual
  ^{:name-r "df.residual", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "df.residual"))
+ (r-interop.core/->clj-pos-kw-fn "df.residual"))
 
 (def dfbeta
  ^{:name-r "dfbeta", :doc "", :argslists ({:model nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "dfbeta"))
+ (r-interop.core/->clj-pos-kw-fn "dfbeta"))
 
 (def dfbetas
  ^{:name-r "dfbetas", :doc "", :argslists ({:model nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "dfbetas"))
+ (r-interop.core/->clj-pos-kw-fn "dfbetas"))
 
 (def dffits
  ^{:name-r "dffits",
   :doc "",
   :argslists
   ({:model nil, :infl {:empty-key nil, :do.coef false}, :res {}})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "dffits"))
+ (r-interop.core/->clj-pos-kw-fn "dffits"))
 
 (def dgamma
  ^{:name-r "dgamma",
   :doc "",
   :argslists ({:x nil, :shape nil, :rate 1, :scale {}, :log false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "dgamma"))
+ (r-interop.core/->clj-pos-kw-fn "dgamma"))
 
 (def dgeom
  ^{:name-r "dgeom",
   :doc "",
   :argslists ({:x nil, :prob nil, :log false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "dgeom"))
+ (r-interop.core/->clj-pos-kw-fn "dgeom"))
 
 (def dhyper
  ^{:name-r "dhyper",
   :doc "",
   :argslists ({:x nil, :m nil, :n nil, :k nil, :log false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "dhyper"))
+ (r-interop.core/->clj-pos-kw-fn "dhyper"))
 
 (def diffinv
  ^{:name-r "diffinv", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "diffinv"))
+ (r-interop.core/->clj-pos-kw-fn "diffinv"))
 
 (def dist
  ^{:name-r "dist",
   :doc "",
   :argslists
   ({:x nil, :method "euclidean", :diag false, :upper false, :p 2})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "dist"))
+ (r-interop.core/->clj-pos-kw-fn "dist"))
 
 (def dlnorm
  ^{:name-r "dlnorm",
   :doc "",
   :argslists ({:x nil, :meanlog 0, :sdlog 1, :log false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "dlnorm"))
+ (r-interop.core/->clj-pos-kw-fn "dlnorm"))
 
 (def dlogis
  ^{:name-r "dlogis",
   :doc "",
   :argslists ({:x nil, :location 0, :scale 1, :log false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "dlogis"))
+ (r-interop.core/->clj-pos-kw-fn "dlogis"))
 
 (def dmultinom
  ^{:name-r "dmultinom",
   :doc "",
   :argslists ({:x nil, :size nil, :prob nil, :log false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "dmultinom"))
+ (r-interop.core/->clj-pos-kw-fn "dmultinom"))
 
 (def dnbinom
  ^{:name-r "dnbinom",
   :doc "",
   :argslists ({:x nil, :size nil, :prob nil, :mu nil, :log false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "dnbinom"))
+ (r-interop.core/->clj-pos-kw-fn "dnbinom"))
 
 (def dnorm
  ^{:name-r "dnorm",
   :doc "",
   :argslists ({:x nil, :mean 0, :sd 1, :log false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "dnorm"))
+ (r-interop.core/->clj-pos-kw-fn "dnorm"))
 
 (def dpois
  ^{:name-r "dpois",
   :doc "",
   :argslists ({:x nil, :lambda nil, :log false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "dpois"))
+ (r-interop.core/->clj-pos-kw-fn "dpois"))
 
 (def drop-scope
  ^{:name-r "drop.scope",
   :doc "",
   :argslists ({:terms1 nil, :terms2 nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "drop.scope"))
+ (r-interop.core/->clj-pos-kw-fn "drop.scope"))
 
 (def drop-terms
  ^{:name-r "drop.terms",
   :doc "",
   :argslists ({:termobj nil, :dropx nil, :keep.response false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "drop.terms"))
+ (r-interop.core/->clj-pos-kw-fn "drop.terms"))
 
 (def drop-1
  ^{:name-r "drop1",
   :doc "",
   :argslists ({:object nil, :scope nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "drop1"))
+ (r-interop.core/->clj-pos-kw-fn "drop1"))
 
 (def dsignrank
  ^{:name-r "dsignrank",
   :doc "",
   :argslists ({:x nil, :n nil, :log false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "dsignrank"))
+ (r-interop.core/->clj-pos-kw-fn "dsignrank"))
 
 (def dt
  ^{:name-r "dt",
   :doc "",
   :argslists ({:x nil, :df nil, :ncp nil, :log false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "dt"))
+ (r-interop.core/->clj-pos-kw-fn "dt"))
 
 (def dummy-coef
  ^{:name-r "dummy.coef", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "dummy.coef"))
+ (r-interop.core/->clj-pos-kw-fn "dummy.coef"))
 
 (def dummy-coef-lm
  ^{:name-r "dummy.coef.lm",
   :doc "",
   :argslists ({:object nil, :use.na false, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "dummy.coef.lm"))
+ (r-interop.core/->clj-pos-kw-fn "dummy.coef.lm"))
 
 (def dunif
  ^{:name-r "dunif",
   :doc "",
   :argslists ({:x nil, :min 0, :max 1, :log false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "dunif"))
+ (r-interop.core/->clj-pos-kw-fn "dunif"))
 
 (def dweibull
  ^{:name-r "dweibull",
   :doc "",
   :argslists ({:x nil, :shape nil, :scale 1, :log false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "dweibull"))
+ (r-interop.core/->clj-pos-kw-fn "dweibull"))
 
 (def dwilcox
  ^{:name-r "dwilcox",
   :doc "",
   :argslists ({:x nil, :m nil, :n nil, :log false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "dwilcox"))
+ (r-interop.core/->clj-pos-kw-fn "dwilcox"))
 
 (def ecdf
  ^{:name-r "ecdf", :doc "", :argslists ({:x nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "ecdf"))
+ (r-interop.core/->clj-pos-kw-fn "ecdf"))
 
 (def eff-aovlist
  ^{:name-r "eff.aovlist", :doc "", :argslists ({:aovlist nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "eff.aovlist"))
+ (r-interop.core/->clj-pos-kw-fn "eff.aovlist"))
 
 (def effects
  ^{:name-r "effects", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "effects"))
+ (r-interop.core/->clj-pos-kw-fn "effects"))
 
 (def embed
  ^{:name-r "embed", :doc "", :argslists ({:x nil, :dimension 1})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "embed"))
+ (r-interop.core/->clj-pos-kw-fn "embed"))
 
 (def end
  ^{:name-r "end", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "end"))
+ (r-interop.core/->clj-pos-kw-fn "end"))
 
 (def est-var
  ^{:name-r "estVar", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "estVar"))
+ (r-interop.core/->clj-pos-kw-fn "estVar"))
 
 (def expand-model-frame
  ^{:name-r "expand.model.frame",
   :doc "",
   :argslists ({:model nil, :extras nil, :envir {}, :na.expand false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "expand.model.frame"))
+ (r-interop.core/->clj-pos-kw-fn "expand.model.frame"))
 
 (def extract-aic
  ^{:name-r "extractAIC",
   :doc "",
   :argslists ({:fit nil, :scale nil, :k 2, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "extractAIC"))
+ (r-interop.core/->clj-pos-kw-fn "extractAIC"))
 
 (def factanal
  ^{:name-r "factanal",
@@ -813,21 +813,21 @@
     :scores {},
     :x nil,
     :data nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "factanal"))
+ (r-interop.core/->clj-pos-kw-fn "factanal"))
 
 (def factor-scope
  ^{:name-r "factor.scope",
   :doc "",
   :argslists ({:factor nil, :scope nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "factor.scope"))
+ (r-interop.core/->clj-pos-kw-fn "factor.scope"))
 
 (def family
  ^{:name-r "family", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "family"))
+ (r-interop.core/->clj-pos-kw-fn "family"))
 
 (def fft
  ^{:name-r "fft", :doc "", :argslists ({:z nil, :inverse false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "fft"))
+ (r-interop.core/->clj-pos-kw-fn "fft"))
 
 (def filter
  ^{:name-r "filter",
@@ -839,7 +839,7 @@
     :sides 2,
     :circular false,
     :init nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "filter"))
+ (r-interop.core/->clj-pos-kw-fn "filter"))
 
 (def fisher-test
  ^{:name-r "fisher.test",
@@ -857,65 +857,65 @@
     :control {},
     :x nil,
     :hybridPars {:empty-key nil, :expect 5, :percent 80, :Emin 1}})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "fisher.test"))
+ (r-interop.core/->clj-pos-kw-fn "fisher.test"))
 
 (def fitted
  ^{:name-r "fitted", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "fitted"))
+ (r-interop.core/->clj-pos-kw-fn "fitted"))
 
 (def fitted-values
  ^{:name-r "fitted.values",
   :doc "",
   :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "fitted.values"))
+ (r-interop.core/->clj-pos-kw-fn "fitted.values"))
 
 (def fivenum
  ^{:name-r "fivenum", :doc "", :argslists ({:x nil, :na.rm true})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "fivenum"))
+ (r-interop.core/->clj-pos-kw-fn "fivenum"))
 
 (def fligner-test
  ^{:name-r "fligner.test", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "fligner.test"))
+ (r-interop.core/->clj-pos-kw-fn "fligner.test"))
 
 (def formula
  ^{:name-r "formula", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "formula"))
+ (r-interop.core/->clj-pos-kw-fn "formula"))
 
 (def frequency
  ^{:name-r "frequency", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "frequency"))
+ (r-interop.core/->clj-pos-kw-fn "frequency"))
 
 (def friedman-test
  ^{:name-r "friedman.test", :doc "", :argslists ({:y nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "friedman.test"))
+ (r-interop.core/->clj-pos-kw-fn "friedman.test"))
 
 (def ftable
  ^{:name-r "ftable", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "ftable"))
+ (r-interop.core/->clj-pos-kw-fn "ftable"))
 
 (def gamma
  ^{:name-r "Gamma", :doc "", :argslists ({:link "inverse"})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "Gamma"))
+ (r-interop.core/->clj-pos-kw-fn "Gamma"))
 
 (def gaussian
  ^{:name-r "gaussian", :doc "", :argslists ({:link "identity"})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "gaussian"))
+ (r-interop.core/->clj-pos-kw-fn "gaussian"))
 
 (def get-all-vars
  ^{:name-r "get_all_vars",
   :doc "",
   :argslists ({:formula nil, :data nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "get_all_vars"))
+ (r-interop.core/->clj-pos-kw-fn "get_all_vars"))
 
 (def get-call
  ^{:name-r "getCall", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "getCall"))
+ (r-interop.core/->clj-pos-kw-fn "getCall"))
 
 (def get-initial
  ^{:name-r "getInitial",
   :doc "",
   :argslists ({:object nil, :data nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "getInitial"))
+ (r-interop.core/->clj-pos-kw-fn "getInitial"))
 
 (def glm
  ^{:name-r "glm",
@@ -939,13 +939,13 @@
     :x false,
     :data nil,
     :model true})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "glm"))
+ (r-interop.core/->clj-pos-kw-fn "glm"))
 
 (def glm-control
  ^{:name-r "glm.control",
   :doc "",
   :argslists ({:epsilon 1.0E-8, :maxit 25, :trace false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "glm.control"))
+ (r-interop.core/->clj-pos-kw-fn "glm.control"))
 
 (def glm-fit
  ^{:name-r "glm.fit",
@@ -962,25 +962,25 @@
     :weights {},
     :control {},
     :x nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "glm.fit"))
+ (r-interop.core/->clj-pos-kw-fn "glm.fit"))
 
 (def has-tsp
  ^{:name-r "hasTsp", :doc "", :argslists ({:x nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "hasTsp"))
+ (r-interop.core/->clj-pos-kw-fn "hasTsp"))
 
 (def hat
  ^{:name-r "hat", :doc "", :argslists ({:x nil, :intercept true})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "hat"))
+ (r-interop.core/->clj-pos-kw-fn "hat"))
 
 (def hatvalues
  ^{:name-r "hatvalues", :doc "", :argslists ({:model nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "hatvalues"))
+ (r-interop.core/->clj-pos-kw-fn "hatvalues"))
 
 (def hclust
  ^{:name-r "hclust",
   :doc "",
   :argslists ({:d nil, :method "complete", :members nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "hclust"))
+ (r-interop.core/->clj-pos-kw-fn "hclust"))
 
 (def heatmap
  ^{:name-r "heatmap",
@@ -1010,7 +1010,7 @@
     :Rowv nil,
     :main nil,
     :keep.dendro false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "heatmap"))
+ (r-interop.core/->clj-pos-kw-fn "heatmap"))
 
 (def holt-winters
  ^{:name-r "HoltWinters",
@@ -1027,15 +1027,15 @@
     :x nil,
     :l.start nil,
     :optim.control {}})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "HoltWinters"))
+ (r-interop.core/->clj-pos-kw-fn "HoltWinters"))
 
 (def influence
  ^{:name-r "influence", :doc "", :argslists ({:model nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "influence"))
+ (r-interop.core/->clj-pos-kw-fn "influence"))
 
 (def influence-measures
  ^{:name-r "influence.measures", :doc "", :argslists ({:model nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "influence.measures"))
+ (r-interop.core/->clj-pos-kw-fn "influence.measures"))
 
 (def integrate
  ^{:name-r "integrate",
@@ -1051,7 +1051,7 @@
     :subdivisions 100,
     :f nil,
     :rel.tol {}})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "integrate"))
+ (r-interop.core/->clj-pos-kw-fn "integrate"))
 
 (def interaction-plot
  ^{:name-r "interaction.plot",
@@ -1078,77 +1078,77 @@
     :trace.factor nil,
     :x.factor nil,
     :leg.bty "n"})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "interaction.plot"))
+ (r-interop.core/->clj-pos-kw-fn "interaction.plot"))
 
 (def inverse-gaussian
  ^{:name-r "inverse.gaussian", :doc "", :argslists ({:link "1/mu^2"})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "inverse.gaussian"))
+ (r-interop.core/->clj-pos-kw-fn "inverse.gaussian"))
 
 (def iqr
  ^{:name-r "IQR", :doc "", :argslists ({:x nil, :na.rm false, :type 7})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "IQR"))
+ (r-interop.core/->clj-pos-kw-fn "IQR"))
 
 (def is-empty-model
  ^{:name-r "is.empty.model", :doc "", :argslists ({:x nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "is.empty.model"))
+ (r-interop.core/->clj-pos-kw-fn "is.empty.model"))
 
 (def is-leaf
  ^{:name-r "is.leaf", :doc "", :argslists ({:object nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "is.leaf"))
+ (r-interop.core/->clj-pos-kw-fn "is.leaf"))
 
 (def is-mts
  ^{:name-r "is.mts", :doc "", :argslists ({:x nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "is.mts"))
+ (r-interop.core/->clj-pos-kw-fn "is.mts"))
 
 (def is-stepfun
  ^{:name-r "is.stepfun", :doc "", :argslists ({:x nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "is.stepfun"))
+ (r-interop.core/->clj-pos-kw-fn "is.stepfun"))
 
 (def is-ts
  ^{:name-r "is.ts", :doc "", :argslists ({:x nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "is.ts"))
+ (r-interop.core/->clj-pos-kw-fn "is.ts"))
 
 (def is-tskernel
  ^{:name-r "is.tskernel", :doc "", :argslists ({:k nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "is.tskernel"))
+ (r-interop.core/->clj-pos-kw-fn "is.tskernel"))
 
 (def isoreg
  ^{:name-r "isoreg", :doc "", :argslists ({:x nil, :y nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "isoreg"))
+ (r-interop.core/->clj-pos-kw-fn "isoreg"))
 
 (def kalman-forecast
  ^{:name-r "KalmanForecast",
   :doc "",
   :argslists ({:n.ahead 10, :mod nil, :update false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "KalmanForecast"))
+ (r-interop.core/->clj-pos-kw-fn "KalmanForecast"))
 
 (def kalman-like
  ^{:name-r "KalmanLike",
   :doc "",
   :argslists ({:y nil, :mod nil, :nit 0, :update false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "KalmanLike"))
+ (r-interop.core/->clj-pos-kw-fn "KalmanLike"))
 
 (def kalman-run
  ^{:name-r "KalmanRun",
   :doc "",
   :argslists ({:y nil, :mod nil, :nit 0, :update false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "KalmanRun"))
+ (r-interop.core/->clj-pos-kw-fn "KalmanRun"))
 
 (def kalman-smooth
  ^{:name-r "KalmanSmooth",
   :doc "",
   :argslists ({:y nil, :mod nil, :nit 0})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "KalmanSmooth"))
+ (r-interop.core/->clj-pos-kw-fn "KalmanSmooth"))
 
 (def kernapply
  ^{:name-r "kernapply", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "kernapply"))
+ (r-interop.core/->clj-pos-kw-fn "kernapply"))
 
 (def kernel
  ^{:name-r "kernel",
   :doc "",
   :argslists ({:coef nil, :m 2, :r nil, :name "unknown"})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "kernel"))
+ (r-interop.core/->clj-pos-kw-fn "kernel"))
 
 (def kmeans
  ^{:name-r "kmeans",
@@ -1160,21 +1160,21 @@
     :nstart 1,
     :algorithm {},
     :trace false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "kmeans"))
+ (r-interop.core/->clj-pos-kw-fn "kmeans"))
 
 (def knots
  ^{:name-r "knots", :doc "", :argslists ({:Fn nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "knots"))
+ (r-interop.core/->clj-pos-kw-fn "knots"))
 
 (def kruskal-test
  ^{:name-r "kruskal.test", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "kruskal.test"))
+ (r-interop.core/->clj-pos-kw-fn "kruskal.test"))
 
 (def ks-test
  ^{:name-r "ks.test",
   :doc "",
   :argslists ({:x nil, :y nil, :... nil, :alternative {}, :exact nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "ks.test"))
+ (r-interop.core/->clj-pos-kw-fn "ks.test"))
 
 (def ksmooth
  ^{:name-r "ksmooth",
@@ -1187,11 +1187,11 @@
     :range.x {},
     :n.points {},
     :x.points nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "ksmooth"))
+ (r-interop.core/->clj-pos-kw-fn "ksmooth"))
 
 (def lag
  ^{:name-r "lag", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "lag"))
+ (r-interop.core/->clj-pos-kw-fn "lag"))
 
 (def lag-plot
  ^{:name-r "lag.plot",
@@ -1211,11 +1211,11 @@
     :lags 1,
     :ask nil,
     :diag true})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "lag.plot"))
+ (r-interop.core/->clj-pos-kw-fn "lag.plot"))
 
 (def line
  ^{:name-r "line", :doc "", :argslists ({:x nil, :y nil, :iter 1})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "line"))
+ (r-interop.core/->clj-pos-kw-fn "line"))
 
 (def lm
  ^{:name-r "lm",
@@ -1235,7 +1235,7 @@
     :x false,
     :data nil,
     :model true})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "lm"))
+ (r-interop.core/->clj-pos-kw-fn "lm"))
 
 (def lm-fit
  ^{:name-r "lm.fit",
@@ -1248,13 +1248,13 @@
     :tol 1.0E-7,
     :singular.ok true,
     :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "lm.fit"))
+ (r-interop.core/->clj-pos-kw-fn "lm.fit"))
 
 (def lm-influence
  ^{:name-r "lm.influence",
   :doc "",
   :argslists ({:model nil, :do.coef true})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "lm.influence"))
+ (r-interop.core/->clj-pos-kw-fn "lm.influence"))
 
 (def lm-wfit
  ^{:name-r "lm.wfit",
@@ -1268,11 +1268,11 @@
     :tol 1.0E-7,
     :singular.ok true,
     :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "lm.wfit"))
+ (r-interop.core/->clj-pos-kw-fn "lm.wfit"))
 
 (def loadings
  ^{:name-r "loadings", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "loadings"))
+ (r-interop.core/->clj-pos-kw-fn "loadings"))
 
 (def loess
  ^{:name-r "loess",
@@ -1294,7 +1294,7 @@
     :span 0.75,
     :data nil,
     :model false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "loess"))
+ (r-interop.core/->clj-pos-kw-fn "loess"))
 
 (def loess-control
  ^{:name-r "loess.control",
@@ -1307,7 +1307,7 @@
     :iterations 4,
     :iterTrace false,
     :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "loess.control"))
+ (r-interop.core/->clj-pos-kw-fn "loess.control"))
 
 (def loess-smooth
  ^{:name-r "loess.smooth",
@@ -1320,11 +1320,11 @@
     :family {},
     :evaluation 50,
     :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "loess.smooth"))
+ (r-interop.core/->clj-pos-kw-fn "loess.smooth"))
 
 (def log-lik
  ^{:name-r "logLik", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "logLik"))
+ (r-interop.core/->clj-pos-kw-fn "logLik"))
 
 (def loglin
  ^{:name-r "loglin",
@@ -1338,23 +1338,23 @@
     :iter 20,
     :param false,
     :print true})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "loglin"))
+ (r-interop.core/->clj-pos-kw-fn "loglin"))
 
 (def lowess
  ^{:name-r "lowess",
   :doc "",
   :argslists ({:x nil, :y nil, :f {}, :iter 3, :delta {}})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "lowess"))
+ (r-interop.core/->clj-pos-kw-fn "lowess"))
 
 (def ls-diag
  ^{:name-r "ls.diag", :doc "", :argslists ({:ls.out nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "ls.diag"))
+ (r-interop.core/->clj-pos-kw-fn "ls.diag"))
 
 (def ls-print
  ^{:name-r "ls.print",
   :doc "",
   :argslists ({:ls.out nil, :digits 4, :print.it true})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "ls.print"))
+ (r-interop.core/->clj-pos-kw-fn "ls.print"))
 
 (def lsfit
  ^{:name-r "lsfit",
@@ -1366,7 +1366,7 @@
     :intercept true,
     :tolerance 1.0E-7,
     :yname nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "lsfit"))
+ (r-interop.core/->clj-pos-kw-fn "lsfit"))
 
 (def mad
  ^{:name-r "mad",
@@ -1378,18 +1378,18 @@
     :na.rm false,
     :low false,
     :high false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "mad"))
+ (r-interop.core/->clj-pos-kw-fn "mad"))
 
 (def mahalanobis
  ^{:name-r "mahalanobis",
   :doc "",
   :argslists
   ({:x nil, :center nil, :cov nil, :inverted false, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "mahalanobis"))
+ (r-interop.core/->clj-pos-kw-fn "mahalanobis"))
 
 (def make-link
  ^{:name-r "make.link", :doc "", :argslists ({:link nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "make.link"))
+ (r-interop.core/->clj-pos-kw-fn "make.link"))
 
 (def make-arima
  ^{:name-r "makeARIMA",
@@ -1401,17 +1401,17 @@
     :kappa 1000000,
     :SSinit {},
     :tol {}})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "makeARIMA"))
+ (r-interop.core/->clj-pos-kw-fn "makeARIMA"))
 
 (def makepredictcall
  ^{:name-r "makepredictcall",
   :doc "",
   :argslists ({:var nil, :call nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "makepredictcall"))
+ (r-interop.core/->clj-pos-kw-fn "makepredictcall"))
 
 (def manova
  ^{:name-r "manova", :doc "", :argslists ({:... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "manova"))
+ (r-interop.core/->clj-pos-kw-fn "manova"))
 
 (def mantelhaen-test
  ^{:name-r "mantelhaen.test",
@@ -1424,50 +1424,50 @@
     :correct true,
     :exact false,
     :conf.level 0.95})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "mantelhaen.test"))
+ (r-interop.core/->clj-pos-kw-fn "mantelhaen.test"))
 
 (def mauchly-test
  ^{:name-r "mauchly.test",
   :doc "",
   :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "mauchly.test"))
+ (r-interop.core/->clj-pos-kw-fn "mauchly.test"))
 
 (def mcnemar-test
  ^{:name-r "mcnemar.test",
   :doc "",
   :argslists ({:x nil, :y nil, :correct true})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "mcnemar.test"))
+ (r-interop.core/->clj-pos-kw-fn "mcnemar.test"))
 
 (def median
  ^{:name-r "median",
   :doc "",
   :argslists ({:x nil, :na.rm false, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "median"))
+ (r-interop.core/->clj-pos-kw-fn "median"))
 
 (def median-default
  ^{:name-r "median.default",
   :doc "",
   :argslists ({:x nil, :na.rm false, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "median.default"))
+ (r-interop.core/->clj-pos-kw-fn "median.default"))
 
 (def medpolish
  ^{:name-r "medpolish",
   :doc "",
   :argslists
   ({:x nil, :eps 0.01, :maxiter 10, :trace.iter true, :na.rm false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "medpolish"))
+ (r-interop.core/->clj-pos-kw-fn "medpolish"))
 
 (def model-extract
  ^{:name-r "model.extract",
   :doc "",
   :argslists ({:frame nil, :component nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "model.extract"))
+ (r-interop.core/->clj-pos-kw-fn "model.extract"))
 
 (def model-frame
  ^{:name-r "model.frame",
   :doc "",
   :argslists ({:formula nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "model.frame"))
+ (r-interop.core/->clj-pos-kw-fn "model.frame"))
 
 (def model-frame-default
  ^{:name-r "model.frame.default",
@@ -1480,102 +1480,102 @@
     :drop.unused.levels false,
     :xlev nil,
     :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "model.frame.default"))
+ (r-interop.core/->clj-pos-kw-fn "model.frame.default"))
 
 (def model-matrix
  ^{:name-r "model.matrix",
   :doc "",
   :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "model.matrix"))
+ (r-interop.core/->clj-pos-kw-fn "model.matrix"))
 
 (def model-matrix-default
  ^{:name-r "model.matrix.default",
   :doc "",
   :argslists
   ({:object nil, :data {}, :contrasts.arg nil, :xlev nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "model.matrix.default"))
+ (r-interop.core/->clj-pos-kw-fn "model.matrix.default"))
 
 (def model-matrix-lm
  ^{:name-r "model.matrix.lm",
   :doc "",
   :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "model.matrix.lm"))
+ (r-interop.core/->clj-pos-kw-fn "model.matrix.lm"))
 
 (def model-offset
  ^{:name-r "model.offset", :doc "", :argslists ({:x nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "model.offset"))
+ (r-interop.core/->clj-pos-kw-fn "model.offset"))
 
 (def model-response
  ^{:name-r "model.response",
   :doc "",
   :argslists ({:data nil, :type "any"})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "model.response"))
+ (r-interop.core/->clj-pos-kw-fn "model.response"))
 
 (def model-tables
  ^{:name-r "model.tables", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "model.tables"))
+ (r-interop.core/->clj-pos-kw-fn "model.tables"))
 
 (def model-weights
  ^{:name-r "model.weights", :doc "", :argslists ({:x nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "model.weights"))
+ (r-interop.core/->clj-pos-kw-fn "model.weights"))
 
 (def monthplot
  ^{:name-r "monthplot", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "monthplot"))
+ (r-interop.core/->clj-pos-kw-fn "monthplot"))
 
 (def mood-test
  ^{:name-r "mood.test", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "mood.test"))
+ (r-interop.core/->clj-pos-kw-fn "mood.test"))
 
 (def mvfft
  ^{:name-r "mvfft", :doc "", :argslists ({:z nil, :inverse false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "mvfft"))
+ (r-interop.core/->clj-pos-kw-fn "mvfft"))
 
 (def na-action
  ^{:name-r "na.action", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "na.action"))
+ (r-interop.core/->clj-pos-kw-fn "na.action"))
 
 (def na-contiguous
  ^{:name-r "na.contiguous",
   :doc "",
   :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "na.contiguous"))
+ (r-interop.core/->clj-pos-kw-fn "na.contiguous"))
 
 (def na-exclude
  ^{:name-r "na.exclude", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "na.exclude"))
+ (r-interop.core/->clj-pos-kw-fn "na.exclude"))
 
 (def na-fail
  ^{:name-r "na.fail", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "na.fail"))
+ (r-interop.core/->clj-pos-kw-fn "na.fail"))
 
 (def na-omit
  ^{:name-r "na.omit", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "na.omit"))
+ (r-interop.core/->clj-pos-kw-fn "na.omit"))
 
 (def na-pass
  ^{:name-r "na.pass", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "na.pass"))
+ (r-interop.core/->clj-pos-kw-fn "na.pass"))
 
 (def napredict
  ^{:name-r "napredict",
   :doc "",
   :argslists ({:omit nil, :x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "napredict"))
+ (r-interop.core/->clj-pos-kw-fn "napredict"))
 
 (def naprint
  ^{:name-r "naprint", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "naprint"))
+ (r-interop.core/->clj-pos-kw-fn "naprint"))
 
 (def naresid
  ^{:name-r "naresid",
   :doc "",
   :argslists ({:omit nil, :x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "naresid"))
+ (r-interop.core/->clj-pos-kw-fn "naresid"))
 
 (def nextn
  ^{:name-r "nextn", :doc "", :argslists ({:n nil, :factors {}})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "nextn"))
+ (r-interop.core/->clj-pos-kw-fn "nextn"))
 
 (def nlm
  ^{:name-r "nlm",
@@ -1594,7 +1594,7 @@
     :iterlim 100,
     :p nil,
     :print.level 0})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "nlm"))
+ (r-interop.core/->clj-pos-kw-fn "nlm"))
 
 (def nlminb
  ^{:name-r "nlminb",
@@ -1609,7 +1609,7 @@
     :lower {},
     :gradient nil,
     :objective nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "nlminb"))
+ (r-interop.core/->clj-pos-kw-fn "nlminb"))
 
 (def nls
  ^{:name-r "nls",
@@ -1628,7 +1628,7 @@
     :formula nil,
     :data {},
     :model false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "nls"))
+ (r-interop.core/->clj-pos-kw-fn "nls"))
 
 (def nls-control
  ^{:name-r "nls.control",
@@ -1639,21 +1639,21 @@
     :minFactor {},
     :printEval false,
     :warnOnly false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "nls.control"))
+ (r-interop.core/->clj-pos-kw-fn "nls.control"))
 
 (def nobs
  ^{:name-r "nobs", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "nobs"))
+ (r-interop.core/->clj-pos-kw-fn "nobs"))
 
 (def numeric-deriv
  ^{:name-r "numericDeriv",
   :doc "",
   :argslists ({:expr nil, :theta nil, :rho {}, :dir 1})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "numericDeriv"))
+ (r-interop.core/->clj-pos-kw-fn "numericDeriv"))
 
 (def offset
  ^{:name-r "offset", :doc "", :argslists ({:object nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "offset"))
+ (r-interop.core/->clj-pos-kw-fn "offset"))
 
 (def oneway-test
  ^{:name-r "oneway.test",
@@ -1664,7 +1664,7 @@
     :subset nil,
     :na.action nil,
     :var.equal false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "oneway.test"))
+ (r-interop.core/->clj-pos-kw-fn "oneway.test"))
 
 (def optim
  ^{:name-r "optim",
@@ -1679,13 +1679,13 @@
     :... nil,
     :control {},
     :lower {}})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "optim"))
+ (r-interop.core/->clj-pos-kw-fn "optim"))
 
 (def optim-hess
  ^{:name-r "optimHess",
   :doc "",
   :argslists ({:par nil, :fn nil, :gr nil, :... nil, :control {}})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "optimHess"))
+ (r-interop.core/->clj-pos-kw-fn "optimHess"))
 
 (def optimise
  ^{:name-r "optimise",
@@ -1698,7 +1698,7 @@
     :upper {},
     :maximum false,
     :tol {}})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "optimise"))
+ (r-interop.core/->clj-pos-kw-fn "optimise"))
 
 (def optimize
  ^{:name-r "optimize",
@@ -1711,30 +1711,30 @@
     :upper {},
     :maximum false,
     :tol {}})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "optimize"))
+ (r-interop.core/->clj-pos-kw-fn "optimize"))
 
 (def order-dendrogram
  ^{:name-r "order.dendrogram", :doc "", :argslists ({:x nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "order.dendrogram"))
+ (r-interop.core/->clj-pos-kw-fn "order.dendrogram"))
 
 (def p-adjust
  ^{:name-r "p.adjust",
   :doc "",
   :argslists ({:p nil, :method nil, :n {}})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "p.adjust"))
+ (r-interop.core/->clj-pos-kw-fn "p.adjust"))
 
 (def pacf
  ^{:name-r "pacf",
   :doc "",
   :argslists
   ({:x nil, :lag.max nil, :plot nil, :na.action nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "pacf"))
+ (r-interop.core/->clj-pos-kw-fn "pacf"))
 
 (def pairwise-prop-test
  ^{:name-r "pairwise.prop.test",
   :doc "",
   :argslists ({:x nil, :n nil, :p.adjust.method nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "pairwise.prop.test"))
+ (r-interop.core/->clj-pos-kw-fn "pairwise.prop.test"))
 
 (def pairwise-t-test
  ^{:name-r "pairwise.t.test",
@@ -1747,21 +1747,21 @@
     :paired false,
     :alternative {},
     :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "pairwise.t.test"))
+ (r-interop.core/->clj-pos-kw-fn "pairwise.t.test"))
 
 (def pairwise-table
  ^{:name-r "pairwise.table",
   :doc "",
   :argslists
   ({:compare.levels nil, :level.names nil, :p.adjust.method nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "pairwise.table"))
+ (r-interop.core/->clj-pos-kw-fn "pairwise.table"))
 
 (def pairwise-wilcox-test
  ^{:name-r "pairwise.wilcox.test",
   :doc "",
   :argslists
   ({:x nil, :g nil, :p.adjust.method nil, :paired false, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "pairwise.wilcox.test"))
+ (r-interop.core/->clj-pos-kw-fn "pairwise.wilcox.test"))
 
 (def pbeta
  ^{:name-r "pbeta",
@@ -1773,40 +1773,40 @@
     :ncp 0,
     :lower.tail true,
     :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "pbeta"))
+ (r-interop.core/->clj-pos-kw-fn "pbeta"))
 
 (def pbinom
  ^{:name-r "pbinom",
   :doc "",
   :argslists
   ({:q nil, :size nil, :prob nil, :lower.tail true, :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "pbinom"))
+ (r-interop.core/->clj-pos-kw-fn "pbinom"))
 
 (def pbirthday
  ^{:name-r "pbirthday",
   :doc "",
   :argslists ({:n nil, :classes 365, :coincident 2})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "pbirthday"))
+ (r-interop.core/->clj-pos-kw-fn "pbirthday"))
 
 (def pcauchy
  ^{:name-r "pcauchy",
   :doc "",
   :argslists
   ({:q nil, :location 0, :scale 1, :lower.tail true, :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "pcauchy"))
+ (r-interop.core/->clj-pos-kw-fn "pcauchy"))
 
 (def pchisq
  ^{:name-r "pchisq",
   :doc "",
   :argslists
   ({:q nil, :df nil, :ncp 0, :lower.tail true, :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "pchisq"))
+ (r-interop.core/->clj-pos-kw-fn "pchisq"))
 
 (def pexp
  ^{:name-r "pexp",
   :doc "",
   :argslists ({:q nil, :rate 1, :lower.tail true, :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "pexp"))
+ (r-interop.core/->clj-pos-kw-fn "pexp"))
 
 (def pf
  ^{:name-r "pf",
@@ -1818,7 +1818,7 @@
     :ncp nil,
     :lower.tail true,
     :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "pf"))
+ (r-interop.core/->clj-pos-kw-fn "pf"))
 
 (def pgamma
  ^{:name-r "pgamma",
@@ -1830,20 +1830,20 @@
     :scale {},
     :lower.tail true,
     :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "pgamma"))
+ (r-interop.core/->clj-pos-kw-fn "pgamma"))
 
 (def pgeom
  ^{:name-r "pgeom",
   :doc "",
   :argslists ({:q nil, :prob nil, :lower.tail true, :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "pgeom"))
+ (r-interop.core/->clj-pos-kw-fn "pgeom"))
 
 (def phyper
  ^{:name-r "phyper",
   :doc "",
   :argslists
   ({:q nil, :m nil, :n nil, :k nil, :lower.tail true, :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "phyper"))
+ (r-interop.core/->clj-pos-kw-fn "phyper"))
 
 (def plclust
  ^{:name-r "plclust",
@@ -1864,21 +1864,21 @@
     :main "",
     :plot. true,
     :frame.plot false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "plclust"))
+ (r-interop.core/->clj-pos-kw-fn "plclust"))
 
 (def plnorm
  ^{:name-r "plnorm",
   :doc "",
   :argslists
   ({:q nil, :meanlog 0, :sdlog 1, :lower.tail true, :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "plnorm"))
+ (r-interop.core/->clj-pos-kw-fn "plnorm"))
 
 (def plogis
  ^{:name-r "plogis",
   :doc "",
   :argslists
   ({:q nil, :location 0, :scale 1, :lower.tail true, :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "plogis"))
+ (r-interop.core/->clj-pos-kw-fn "plogis"))
 
 (def plot-ecdf
  ^{:name-r "plot.ecdf",
@@ -1890,7 +1890,7 @@
     :verticals false,
     :col.01line "gray70",
     :pch 19})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "plot.ecdf"))
+ (r-interop.core/->clj-pos-kw-fn "plot.ecdf"))
 
 (def plot-spec-coherency
  ^{:name-r "plot.spec.coherency",
@@ -1906,7 +1906,7 @@
     :... nil,
     :x nil,
     :main nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "plot.spec.coherency"))
+ (r-interop.core/->clj-pos-kw-fn "plot.spec.coherency"))
 
 (def plot-spec-phase
  ^{:name-r "plot.spec.phase",
@@ -1922,7 +1922,7 @@
     :... nil,
     :x nil,
     :main nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "plot.spec.phase"))
+ (r-interop.core/->clj-pos-kw-fn "plot.spec.phase"))
 
 (def plot-stepfun
  ^{:name-r "plot.stepfun",
@@ -1947,7 +1947,7 @@
     :main nil,
     :lwd {},
     :do.points {}})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "plot.stepfun"))
+ (r-interop.core/->clj-pos-kw-fn "plot.stepfun"))
 
 (def plot-ts
  ^{:name-r "plot.ts",
@@ -1965,7 +1965,7 @@
     :... nil,
     :yax.flip false,
     :x nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "plot.ts"))
+ (r-interop.core/->clj-pos-kw-fn "plot.ts"))
 
 (def pnbinom
  ^{:name-r "pnbinom",
@@ -1977,24 +1977,24 @@
     :mu nil,
     :lower.tail true,
     :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "pnbinom"))
+ (r-interop.core/->clj-pos-kw-fn "pnbinom"))
 
 (def pnorm
  ^{:name-r "pnorm",
   :doc "",
   :argslists
   ({:q nil, :mean 0, :sd 1, :lower.tail true, :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "pnorm"))
+ (r-interop.core/->clj-pos-kw-fn "pnorm"))
 
 (def poisson
  ^{:name-r "poisson", :doc "", :argslists ({:link "log"})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "poisson"))
+ (r-interop.core/->clj-pos-kw-fn "poisson"))
 
 (def poisson-test
  ^{:name-r "poisson.test",
   :doc "",
   :argslists ({:x nil, :T 1, :r 1, :alternative {}, :conf.level 0.95})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "poisson.test"))
+ (r-interop.core/->clj-pos-kw-fn "poisson.test"))
 
 (def poly
  ^{:name-r "poly",
@@ -2006,17 +2006,17 @@
     :coefs nil,
     :raw false,
     :simple false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "poly"))
+ (r-interop.core/->clj-pos-kw-fn "poly"))
 
 (def polym
  ^{:name-r "polym",
   :doc "",
   :argslists ({:... nil, :degree 1, :coefs nil, :raw false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "polym"))
+ (r-interop.core/->clj-pos-kw-fn "polym"))
 
 (def power
  ^{:name-r "power", :doc "", :argslists ({:lambda 1})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "power"))
+ (r-interop.core/->clj-pos-kw-fn "power"))
 
 (def power-anova-test
  ^{:name-r "power.anova.test",
@@ -2028,7 +2028,7 @@
     :within.var nil,
     :sig.level 0.05,
     :power nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "power.anova.test"))
+ (r-interop.core/->clj-pos-kw-fn "power.anova.test"))
 
 (def power-prop-test
  ^{:name-r "power.prop.test",
@@ -2042,7 +2042,7 @@
     :alternative {},
     :strict false,
     :tol {}})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "power.prop.test"))
+ (r-interop.core/->clj-pos-kw-fn "power.prop.test"))
 
 (def power-t-test
  ^{:name-r "power.t.test",
@@ -2057,33 +2057,33 @@
     :sig.level 0.05,
     :delta nil,
     :sd 1})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "power.t.test"))
+ (r-interop.core/->clj-pos-kw-fn "power.t.test"))
 
 (def pp-test
  ^{:name-r "PP.test", :doc "", :argslists ({:x nil, :lshort true})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "PP.test"))
+ (r-interop.core/->clj-pos-kw-fn "PP.test"))
 
 (def ppoints
  ^{:name-r "ppoints", :doc "", :argslists ({:n nil, :a {}})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "ppoints"))
+ (r-interop.core/->clj-pos-kw-fn "ppoints"))
 
 (def ppois
  ^{:name-r "ppois",
   :doc "",
   :argslists ({:q nil, :lambda nil, :lower.tail true, :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "ppois"))
+ (r-interop.core/->clj-pos-kw-fn "ppois"))
 
 (def ppr
  ^{:name-r "ppr", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "ppr"))
+ (r-interop.core/->clj-pos-kw-fn "ppr"))
 
 (def prcomp
  ^{:name-r "prcomp", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "prcomp"))
+ (r-interop.core/->clj-pos-kw-fn "prcomp"))
 
 (def predict
  ^{:name-r "predict", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "predict"))
+ (r-interop.core/->clj-pos-kw-fn "predict"))
 
 (def predict-glm
  ^{:name-r "predict.glm",
@@ -2097,7 +2097,7 @@
     :terms nil,
     :na.action nil,
     :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "predict.glm"))
+ (r-interop.core/->clj-pos-kw-fn "predict.glm"))
 
 (def predict-lm
  ^{:name-r "predict.lm",
@@ -2116,15 +2116,15 @@
     :se.fit false,
     :object nil,
     :pred.var {}})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "predict.lm"))
+ (r-interop.core/->clj-pos-kw-fn "predict.lm"))
 
 (def preplot
  ^{:name-r "preplot", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "preplot"))
+ (r-interop.core/->clj-pos-kw-fn "preplot"))
 
 (def princomp
  ^{:name-r "princomp", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "princomp"))
+ (r-interop.core/->clj-pos-kw-fn "princomp"))
 
 (def print-coefmat
  ^{:name-r "printCoefmat",
@@ -2145,19 +2145,19 @@
     :tst.ind {},
     :eps.Pvalue {},
     :na.print "NA"})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "printCoefmat"))
+ (r-interop.core/->clj-pos-kw-fn "printCoefmat"))
 
 (def profile
  ^{:name-r "profile", :doc "", :argslists ({:fitted nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "profile"))
+ (r-interop.core/->clj-pos-kw-fn "profile"))
 
 (def proj
  ^{:name-r "proj", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "proj"))
+ (r-interop.core/->clj-pos-kw-fn "proj"))
 
 (def promax
  ^{:name-r "promax", :doc "", :argslists ({:x nil, :m 4})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "promax"))
+ (r-interop.core/->clj-pos-kw-fn "promax"))
 
 (def prop-test
  ^{:name-r "prop.test",
@@ -2169,26 +2169,26 @@
     :alternative {},
     :conf.level 0.95,
     :correct true})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "prop.test"))
+ (r-interop.core/->clj-pos-kw-fn "prop.test"))
 
 (def prop-trend-test
  ^{:name-r "prop.trend.test",
   :doc "",
   :argslists ({:x nil, :n nil, :score {}})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "prop.trend.test"))
+ (r-interop.core/->clj-pos-kw-fn "prop.trend.test"))
 
 (def psignrank
  ^{:name-r "psignrank",
   :doc "",
   :argslists ({:q nil, :n nil, :lower.tail true, :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "psignrank"))
+ (r-interop.core/->clj-pos-kw-fn "psignrank"))
 
 (def pt
  ^{:name-r "pt",
   :doc "",
   :argslists
   ({:q nil, :df nil, :ncp nil, :lower.tail true, :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "pt"))
+ (r-interop.core/->clj-pos-kw-fn "pt"))
 
 (def ptukey
  ^{:name-r "ptukey",
@@ -2200,28 +2200,28 @@
     :nranges 1,
     :lower.tail true,
     :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "ptukey"))
+ (r-interop.core/->clj-pos-kw-fn "ptukey"))
 
 (def punif
  ^{:name-r "punif",
   :doc "",
   :argslists
   ({:q nil, :min 0, :max 1, :lower.tail true, :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "punif"))
+ (r-interop.core/->clj-pos-kw-fn "punif"))
 
 (def pweibull
  ^{:name-r "pweibull",
   :doc "",
   :argslists
   ({:q nil, :shape nil, :scale 1, :lower.tail true, :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "pweibull"))
+ (r-interop.core/->clj-pos-kw-fn "pweibull"))
 
 (def pwilcox
  ^{:name-r "pwilcox",
   :doc "",
   :argslists
   ({:q nil, :m nil, :n nil, :lower.tail true, :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "pwilcox"))
+ (r-interop.core/->clj-pos-kw-fn "pwilcox"))
 
 (def qbeta
  ^{:name-r "qbeta",
@@ -2233,40 +2233,40 @@
     :ncp 0,
     :lower.tail true,
     :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "qbeta"))
+ (r-interop.core/->clj-pos-kw-fn "qbeta"))
 
 (def qbinom
  ^{:name-r "qbinom",
   :doc "",
   :argslists
   ({:p nil, :size nil, :prob nil, :lower.tail true, :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "qbinom"))
+ (r-interop.core/->clj-pos-kw-fn "qbinom"))
 
 (def qbirthday
  ^{:name-r "qbirthday",
   :doc "",
   :argslists ({:prob 0.5, :classes 365, :coincident 2})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "qbirthday"))
+ (r-interop.core/->clj-pos-kw-fn "qbirthday"))
 
 (def qcauchy
  ^{:name-r "qcauchy",
   :doc "",
   :argslists
   ({:p nil, :location 0, :scale 1, :lower.tail true, :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "qcauchy"))
+ (r-interop.core/->clj-pos-kw-fn "qcauchy"))
 
 (def qchisq
  ^{:name-r "qchisq",
   :doc "",
   :argslists
   ({:p nil, :df nil, :ncp 0, :lower.tail true, :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "qchisq"))
+ (r-interop.core/->clj-pos-kw-fn "qchisq"))
 
 (def qexp
  ^{:name-r "qexp",
   :doc "",
   :argslists ({:p nil, :rate 1, :lower.tail true, :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "qexp"))
+ (r-interop.core/->clj-pos-kw-fn "qexp"))
 
 (def qf
  ^{:name-r "qf",
@@ -2278,7 +2278,7 @@
     :ncp nil,
     :lower.tail true,
     :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "qf"))
+ (r-interop.core/->clj-pos-kw-fn "qf"))
 
 (def qgamma
  ^{:name-r "qgamma",
@@ -2290,34 +2290,34 @@
     :scale {},
     :lower.tail true,
     :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "qgamma"))
+ (r-interop.core/->clj-pos-kw-fn "qgamma"))
 
 (def qgeom
  ^{:name-r "qgeom",
   :doc "",
   :argslists ({:p nil, :prob nil, :lower.tail true, :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "qgeom"))
+ (r-interop.core/->clj-pos-kw-fn "qgeom"))
 
 (def qhyper
  ^{:name-r "qhyper",
   :doc "",
   :argslists
   ({:p nil, :m nil, :n nil, :k nil, :lower.tail true, :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "qhyper"))
+ (r-interop.core/->clj-pos-kw-fn "qhyper"))
 
 (def qlnorm
  ^{:name-r "qlnorm",
   :doc "",
   :argslists
   ({:p nil, :meanlog 0, :sdlog 1, :lower.tail true, :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "qlnorm"))
+ (r-interop.core/->clj-pos-kw-fn "qlnorm"))
 
 (def qlogis
  ^{:name-r "qlogis",
   :doc "",
   :argslists
   ({:p nil, :location 0, :scale 1, :lower.tail true, :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "qlogis"))
+ (r-interop.core/->clj-pos-kw-fn "qlogis"))
 
 (def qnbinom
  ^{:name-r "qnbinom",
@@ -2329,20 +2329,20 @@
     :mu nil,
     :lower.tail true,
     :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "qnbinom"))
+ (r-interop.core/->clj-pos-kw-fn "qnbinom"))
 
 (def qnorm
  ^{:name-r "qnorm",
   :doc "",
   :argslists
   ({:p nil, :mean 0, :sd 1, :lower.tail true, :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "qnorm"))
+ (r-interop.core/->clj-pos-kw-fn "qnorm"))
 
 (def qpois
  ^{:name-r "qpois",
   :doc "",
   :argslists ({:p nil, :lambda nil, :lower.tail true, :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "qpois"))
+ (r-interop.core/->clj-pos-kw-fn "qpois"))
 
 (def qqline
  ^{:name-r "qqline",
@@ -2354,31 +2354,31 @@
     :probs {},
     :qtype 7,
     :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "qqline"))
+ (r-interop.core/->clj-pos-kw-fn "qqline"))
 
 (def qqnorm
  ^{:name-r "qqnorm", :doc "", :argslists ({:y nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "qqnorm"))
+ (r-interop.core/->clj-pos-kw-fn "qqnorm"))
 
 (def qqplot
  ^{:name-r "qqplot",
   :doc "",
   :argslists
   ({:x nil, :y nil, :plot.it true, :xlab {}, :ylab {}, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "qqplot"))
+ (r-interop.core/->clj-pos-kw-fn "qqplot"))
 
 (def qsignrank
  ^{:name-r "qsignrank",
   :doc "",
   :argslists ({:p nil, :n nil, :lower.tail true, :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "qsignrank"))
+ (r-interop.core/->clj-pos-kw-fn "qsignrank"))
 
 (def qt
  ^{:name-r "qt",
   :doc "",
   :argslists
   ({:p nil, :df nil, :ncp nil, :lower.tail true, :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "qt"))
+ (r-interop.core/->clj-pos-kw-fn "qt"))
 
 (def qtukey
  ^{:name-r "qtukey",
@@ -2390,72 +2390,72 @@
     :nranges 1,
     :lower.tail true,
     :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "qtukey"))
+ (r-interop.core/->clj-pos-kw-fn "qtukey"))
 
 (def quade-test
  ^{:name-r "quade.test", :doc "", :argslists ({:y nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "quade.test"))
+ (r-interop.core/->clj-pos-kw-fn "quade.test"))
 
 (def quantile
  ^{:name-r "quantile", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "quantile"))
+ (r-interop.core/->clj-pos-kw-fn "quantile"))
 
 (def quasi
  ^{:name-r "quasi",
   :doc "",
   :argslists ({:link "identity", :variance "constant"})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "quasi"))
+ (r-interop.core/->clj-pos-kw-fn "quasi"))
 
 (def quasibinomial
  ^{:name-r "quasibinomial", :doc "", :argslists ({:link "logit"})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "quasibinomial"))
+ (r-interop.core/->clj-pos-kw-fn "quasibinomial"))
 
 (def quasipoisson
  ^{:name-r "quasipoisson", :doc "", :argslists ({:link "log"})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "quasipoisson"))
+ (r-interop.core/->clj-pos-kw-fn "quasipoisson"))
 
 (def qunif
  ^{:name-r "qunif",
   :doc "",
   :argslists
   ({:p nil, :min 0, :max 1, :lower.tail true, :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "qunif"))
+ (r-interop.core/->clj-pos-kw-fn "qunif"))
 
 (def qweibull
  ^{:name-r "qweibull",
   :doc "",
   :argslists
   ({:p nil, :shape nil, :scale 1, :lower.tail true, :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "qweibull"))
+ (r-interop.core/->clj-pos-kw-fn "qweibull"))
 
 (def qwilcox
  ^{:name-r "qwilcox",
   :doc "",
   :argslists
   ({:p nil, :m nil, :n nil, :lower.tail true, :log.p false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "qwilcox"))
+ (r-interop.core/->clj-pos-kw-fn "qwilcox"))
 
 (def rbeta
  ^{:name-r "rbeta",
   :doc "",
   :argslists ({:n nil, :shape1 nil, :shape2 nil, :ncp 0})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "rbeta"))
+ (r-interop.core/->clj-pos-kw-fn "rbeta"))
 
 (def rbinom
  ^{:name-r "rbinom",
   :doc "",
   :argslists ({:n nil, :size nil, :prob nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "rbinom"))
+ (r-interop.core/->clj-pos-kw-fn "rbinom"))
 
 (def rcauchy
  ^{:name-r "rcauchy",
   :doc "",
   :argslists ({:n nil, :location 0, :scale 1})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "rcauchy"))
+ (r-interop.core/->clj-pos-kw-fn "rcauchy"))
 
 (def rchisq
  ^{:name-r "rchisq", :doc "", :argslists ({:n nil, :df nil, :ncp 0})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "rchisq"))
+ (r-interop.core/->clj-pos-kw-fn "rchisq"))
 
 (def read-ftable
  ^{:name-r "read.ftable",
@@ -2467,7 +2467,7 @@
     :row.var.names nil,
     :col.vars nil,
     :skip 0})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "read.ftable"))
+ (r-interop.core/->clj-pos-kw-fn "read.ftable"))
 
 (def rect-hclust
  ^{:name-r "rect.hclust",
@@ -2480,29 +2480,29 @@
     :h nil,
     :border 2,
     :cluster nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "rect.hclust"))
+ (r-interop.core/->clj-pos-kw-fn "rect.hclust"))
 
 (def reformulate
  ^{:name-r "reformulate",
   :doc "",
   :argslists ({:termlabels nil, :response nil, :intercept true})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "reformulate"))
+ (r-interop.core/->clj-pos-kw-fn "reformulate"))
 
 (def relevel
  ^{:name-r "relevel",
   :doc "",
   :argslists ({:x nil, :ref nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "relevel"))
+ (r-interop.core/->clj-pos-kw-fn "relevel"))
 
 (def reorder
  ^{:name-r "reorder", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "reorder"))
+ (r-interop.core/->clj-pos-kw-fn "reorder"))
 
 (def replications
  ^{:name-r "replications",
   :doc "",
   :argslists ({:formula nil, :data nil, :na.action nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "replications"))
+ (r-interop.core/->clj-pos-kw-fn "replications"))
 
 (def reshape
  ^{:name-r "reshape",
@@ -2520,128 +2520,128 @@
     :timevar "time",
     :direction nil,
     :data nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "reshape"))
+ (r-interop.core/->clj-pos-kw-fn "reshape"))
 
 (def resid
  ^{:name-r "resid", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "resid"))
+ (r-interop.core/->clj-pos-kw-fn "resid"))
 
 (def residuals
  ^{:name-r "residuals", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "residuals"))
+ (r-interop.core/->clj-pos-kw-fn "residuals"))
 
 (def residuals-glm
  ^{:name-r "residuals.glm",
   :doc "",
   :argslists ({:object nil, :type {}, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "residuals.glm"))
+ (r-interop.core/->clj-pos-kw-fn "residuals.glm"))
 
 (def residuals-lm
  ^{:name-r "residuals.lm",
   :doc "",
   :argslists ({:object nil, :type {}, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "residuals.lm"))
+ (r-interop.core/->clj-pos-kw-fn "residuals.lm"))
 
 (def rexp
  ^{:name-r "rexp", :doc "", :argslists ({:n nil, :rate 1})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "rexp"))
+ (r-interop.core/->clj-pos-kw-fn "rexp"))
 
 (def rf
  ^{:name-r "rf",
   :doc "",
   :argslists ({:n nil, :df1 nil, :df2 nil, :ncp nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "rf"))
+ (r-interop.core/->clj-pos-kw-fn "rf"))
 
 (def rgamma
  ^{:name-r "rgamma",
   :doc "",
   :argslists ({:n nil, :shape nil, :rate 1, :scale {}})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "rgamma"))
+ (r-interop.core/->clj-pos-kw-fn "rgamma"))
 
 (def rgeom
  ^{:name-r "rgeom", :doc "", :argslists ({:n nil, :prob nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "rgeom"))
+ (r-interop.core/->clj-pos-kw-fn "rgeom"))
 
 (def rhyper
  ^{:name-r "rhyper",
   :doc "",
   :argslists ({:nn nil, :m nil, :n nil, :k nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "rhyper"))
+ (r-interop.core/->clj-pos-kw-fn "rhyper"))
 
 (def rlnorm
  ^{:name-r "rlnorm",
   :doc "",
   :argslists ({:n nil, :meanlog 0, :sdlog 1})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "rlnorm"))
+ (r-interop.core/->clj-pos-kw-fn "rlnorm"))
 
 (def rlogis
  ^{:name-r "rlogis",
   :doc "",
   :argslists ({:n nil, :location 0, :scale 1})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "rlogis"))
+ (r-interop.core/->clj-pos-kw-fn "rlogis"))
 
 (def rmultinom
  ^{:name-r "rmultinom",
   :doc "",
   :argslists ({:n nil, :size nil, :prob nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "rmultinom"))
+ (r-interop.core/->clj-pos-kw-fn "rmultinom"))
 
 (def rnbinom
  ^{:name-r "rnbinom",
   :doc "",
   :argslists ({:n nil, :size nil, :prob nil, :mu nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "rnbinom"))
+ (r-interop.core/->clj-pos-kw-fn "rnbinom"))
 
 (def rnorm
  ^{:name-r "rnorm", :doc "", :argslists ({:n nil, :mean 0, :sd 1})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "rnorm"))
+ (r-interop.core/->clj-pos-kw-fn "rnorm"))
 
 (def rpois
  ^{:name-r "rpois", :doc "", :argslists ({:n nil, :lambda nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "rpois"))
+ (r-interop.core/->clj-pos-kw-fn "rpois"))
 
 (def rsignrank
  ^{:name-r "rsignrank", :doc "", :argslists ({:nn nil, :n nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "rsignrank"))
+ (r-interop.core/->clj-pos-kw-fn "rsignrank"))
 
 (def rstandard
  ^{:name-r "rstandard", :doc "", :argslists ({:model nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "rstandard"))
+ (r-interop.core/->clj-pos-kw-fn "rstandard"))
 
 (def rstudent
  ^{:name-r "rstudent", :doc "", :argslists ({:model nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "rstudent"))
+ (r-interop.core/->clj-pos-kw-fn "rstudent"))
 
 (def rt
  ^{:name-r "rt", :doc "", :argslists ({:n nil, :df nil, :ncp nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "rt"))
+ (r-interop.core/->clj-pos-kw-fn "rt"))
 
 (def runif
  ^{:name-r "runif", :doc "", :argslists ({:n nil, :min 0, :max 1})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "runif"))
+ (r-interop.core/->clj-pos-kw-fn "runif"))
 
 (def runmed
  ^{:name-r "runmed",
   :doc "",
   :argslists
   ({:x nil, :k nil, :endrule {}, :algorithm nil, :print.level 0})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "runmed"))
+ (r-interop.core/->clj-pos-kw-fn "runmed"))
 
 (def rweibull
  ^{:name-r "rweibull",
   :doc "",
   :argslists ({:n nil, :shape nil, :scale 1})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "rweibull"))
+ (r-interop.core/->clj-pos-kw-fn "rweibull"))
 
 (def rwilcox
  ^{:name-r "rwilcox", :doc "", :argslists ({:nn nil, :m nil, :n nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "rwilcox"))
+ (r-interop.core/->clj-pos-kw-fn "rwilcox"))
 
 (def r-wishart
  ^{:name-r "rWishart",
   :doc "",
   :argslists ({:n nil, :df nil, :Sigma nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "rWishart"))
+ (r-interop.core/->clj-pos-kw-fn "rWishart"))
 
 (def scatter-smooth
  ^{:name-r "scatter.smooth",
@@ -2658,51 +2658,51 @@
     :degree 1,
     :x nil,
     :span {}})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "scatter.smooth"))
+ (r-interop.core/->clj-pos-kw-fn "scatter.smooth"))
 
 (def screeplot
  ^{:name-r "screeplot", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "screeplot"))
+ (r-interop.core/->clj-pos-kw-fn "screeplot"))
 
 (def sd
  ^{:name-r "sd", :doc "", :argslists ({:x nil, :na.rm false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "sd"))
+ (r-interop.core/->clj-pos-kw-fn "sd"))
 
 (def se-contrast
  ^{:name-r "se.contrast", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "se.contrast"))
+ (r-interop.core/->clj-pos-kw-fn "se.contrast"))
 
 (def self-start
  ^{:name-r "selfStart",
   :doc "",
   :argslists
   ({:model nil, :initial nil, :parameters nil, :template nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "selfStart"))
+ (r-interop.core/->clj-pos-kw-fn "selfStart"))
 
 (def set-names
  ^{:name-r "setNames", :doc "", :argslists ({:object nil, :nm nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "setNames"))
+ (r-interop.core/->clj-pos-kw-fn "setNames"))
 
 (def shapiro-test
  ^{:name-r "shapiro.test", :doc "", :argslists ({:x nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "shapiro.test"))
+ (r-interop.core/->clj-pos-kw-fn "shapiro.test"))
 
 (def sigma
  ^{:name-r "sigma", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "sigma"))
+ (r-interop.core/->clj-pos-kw-fn "sigma"))
 
 (def simulate
  ^{:name-r "simulate",
   :doc "",
   :argslists ({:object nil, :nsim 1, :seed nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "simulate"))
+ (r-interop.core/->clj-pos-kw-fn "simulate"))
 
 (def smooth
  ^{:name-r "smooth",
   :doc "",
   :argslists
   ({:x nil, :kind {}, :twiceit false, :endrule {}, :do.ends false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "smooth"))
+ (r-interop.core/->clj-pos-kw-fn "smooth"))
 
 (def smooth-spline
  ^{:name-r "smooth.spline",
@@ -2723,17 +2723,17 @@
     :df.offset 0,
     :keep.stuff false,
     :all.knots false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "smooth.spline"))
+ (r-interop.core/->clj-pos-kw-fn "smooth.spline"))
 
 (def smooth-ends
  ^{:name-r "smoothEnds", :doc "", :argslists ({:y nil, :k 3})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "smoothEnds"))
+ (r-interop.core/->clj-pos-kw-fn "smoothEnds"))
 
 (def sorted-xy-data
  ^{:name-r "sortedXyData",
   :doc "",
   :argslists ({:x nil, :y nil, :data nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "sortedXyData"))
+ (r-interop.core/->clj-pos-kw-fn "sortedXyData"))
 
 (def spec-ar
  ^{:name-r "spec.ar",
@@ -2746,7 +2746,7 @@
     :na.action nil,
     :method "yule-walker",
     :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "spec.ar"))
+ (r-interop.core/->clj-pos-kw-fn "spec.ar"))
 
 (def spec-pgram
  ^{:name-r "spec.pgram",
@@ -2763,17 +2763,17 @@
     :detrend true,
     :kernel nil,
     :x nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "spec.pgram"))
+ (r-interop.core/->clj-pos-kw-fn "spec.pgram"))
 
 (def spec-taper
  ^{:name-r "spec.taper", :doc "", :argslists ({:x nil, :p 0.1})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "spec.taper"))
+ (r-interop.core/->clj-pos-kw-fn "spec.taper"))
 
 (def spectrum
  ^{:name-r "spectrum",
   :doc "",
   :argslists ({:x nil, :... nil, :method {}})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "spectrum"))
+ (r-interop.core/->clj-pos-kw-fn "spectrum"))
 
 (def spline
  ^{:name-r "spline",
@@ -2787,32 +2787,32 @@
     :xmax {},
     :xout nil,
     :ties nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "spline"))
+ (r-interop.core/->clj-pos-kw-fn "spline"))
 
 (def splinefun
  ^{:name-r "splinefun",
   :doc "",
   :argslists ({:x nil, :y nil, :method {}, :ties nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "splinefun"))
+ (r-interop.core/->clj-pos-kw-fn "splinefun"))
 
 (def splinefun-h
  ^{:name-r "splinefunH", :doc "", :argslists ({:x nil, :y nil, :m nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "splinefunH"))
+ (r-interop.core/->clj-pos-kw-fn "splinefunH"))
 
 (def ssd
  ^{:name-r "SSD", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "SSD"))
+ (r-interop.core/->clj-pos-kw-fn "SSD"))
 
 (def start
  ^{:name-r "start", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "start"))
+ (r-interop.core/->clj-pos-kw-fn "start"))
 
 (def stat-anova
  ^{:name-r "stat.anova",
   :doc "",
   :argslists
   ({:table nil, :test {}, :scale nil, :df.scale nil, :n nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "stat.anova"))
+ (r-interop.core/->clj-pos-kw-fn "stat.anova"))
 
 (def step
  ^{:name-r "step",
@@ -2827,13 +2827,13 @@
     :object nil,
     :direction {},
     :keep nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "step"))
+ (r-interop.core/->clj-pos-kw-fn "step"))
 
 (def stepfun
  ^{:name-r "stepfun",
   :doc "",
   :argslists ({:x nil, :y nil, :f {}, :ties "ordered", :right false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "stepfun"))
+ (r-interop.core/->clj-pos-kw-fn "stepfun"))
 
 (def stl
  ^{:name-r "stl",
@@ -2853,14 +2853,14 @@
     :s.degree 0,
     :outer {},
     :t.degree 1})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "stl"))
+ (r-interop.core/->clj-pos-kw-fn "stl"))
 
 (def struct-ts
  ^{:name-r "StructTS",
   :doc "",
   :argslists
   ({:x nil, :type {}, :init nil, :fixed nil, :optim.control nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "StructTS"))
+ (r-interop.core/->clj-pos-kw-fn "StructTS"))
 
 (def summary-aov
  ^{:name-r "summary.aov",
@@ -2872,7 +2872,7 @@
     :expand.split true,
     :keep.zero.df true,
     :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "summary.aov"))
+ (r-interop.core/->clj-pos-kw-fn "summary.aov"))
 
 (def summary-glm
  ^{:name-r "summary.glm",
@@ -2883,27 +2883,27 @@
     :correlation false,
     :symbolic.cor false,
     :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "summary.glm"))
+ (r-interop.core/->clj-pos-kw-fn "summary.glm"))
 
 (def summary-lm
  ^{:name-r "summary.lm",
   :doc "",
   :argslists
   ({:object nil, :correlation false, :symbolic.cor false, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "summary.lm"))
+ (r-interop.core/->clj-pos-kw-fn "summary.lm"))
 
 (def summary-manova
  ^{:name-r "summary.manova",
   :doc "",
   :argslists
   ({:object nil, :test {}, :intercept false, :tol 1.0E-7, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "summary.manova"))
+ (r-interop.core/->clj-pos-kw-fn "summary.manova"))
 
 (def summary-stepfun
  ^{:name-r "summary.stepfun",
   :doc "",
   :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "summary.stepfun"))
+ (r-interop.core/->clj-pos-kw-fn "summary.stepfun"))
 
 (def supsmu
  ^{:name-r "supsmu",
@@ -2916,7 +2916,7 @@
     :periodic false,
     :bass 0,
     :trace false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "supsmu"))
+ (r-interop.core/->clj-pos-kw-fn "supsmu"))
 
 (def symnum
  ^{:name-r "symnum",
@@ -2935,11 +2935,11 @@
     :x nil,
     :symbols {},
     :eps 1.0E-5})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "symnum"))
+ (r-interop.core/->clj-pos-kw-fn "symnum"))
 
 (def t-test
  ^{:name-r "t.test", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "t.test"))
+ (r-interop.core/->clj-pos-kw-fn "t.test"))
 
 (def termplot
  ^{:name-r "termplot",
@@ -2973,11 +2973,11 @@
     :rug false,
     :data nil,
     :model nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "termplot"))
+ (r-interop.core/->clj-pos-kw-fn "termplot"))
 
 (def terms
  ^{:name-r "terms", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "terms"))
+ (r-interop.core/->clj-pos-kw-fn "terms"))
 
 (def terms-formula
  ^{:name-r "terms.formula",
@@ -2992,15 +2992,15 @@
     :allowDotAsName false,
     :x nil,
     :data nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "terms.formula"))
+ (r-interop.core/->clj-pos-kw-fn "terms.formula"))
 
 (def time
  ^{:name-r "time", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "time"))
+ (r-interop.core/->clj-pos-kw-fn "time"))
 
 (def toeplitz
  ^{:name-r "toeplitz", :doc "", :argslists ({:x nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "toeplitz"))
+ (r-interop.core/->clj-pos-kw-fn "toeplitz"))
 
 (def ts
  ^{:name-r "ts",
@@ -3014,42 +3014,42 @@
     :ts.eps {},
     :class {},
     :names {}})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "ts"))
+ (r-interop.core/->clj-pos-kw-fn "ts"))
 
 (def ts-intersect
  ^{:name-r "ts.intersect",
   :doc "",
   :argslists ({:... nil, :dframe false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "ts.intersect"))
+ (r-interop.core/->clj-pos-kw-fn "ts.intersect"))
 
 (def ts-plot
  ^{:name-r "ts.plot", :doc "", :argslists ({:... nil, :gpars {}})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "ts.plot"))
+ (r-interop.core/->clj-pos-kw-fn "ts.plot"))
 
 (def ts-union
  ^{:name-r "ts.union", :doc "", :argslists ({:... nil, :dframe false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "ts.union"))
+ (r-interop.core/->clj-pos-kw-fn "ts.union"))
 
 (def tsdiag
  ^{:name-r "tsdiag",
   :doc "",
   :argslists ({:object nil, :gof.lag nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "tsdiag"))
+ (r-interop.core/->clj-pos-kw-fn "tsdiag"))
 
 (def tsp
  ^{:name-r "tsp", :doc "", :argslists ({:x nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "tsp"))
+ (r-interop.core/->clj-pos-kw-fn "tsp"))
 
 (def ts-smooth
  ^{:name-r "tsSmooth", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "tsSmooth"))
+ (r-interop.core/->clj-pos-kw-fn "tsSmooth"))
 
 (def tukey-hsd
  ^{:name-r "TukeyHSD",
   :doc "",
   :argslists
   ({:x nil, :which nil, :ordered false, :conf.level 0.95, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "TukeyHSD"))
+ (r-interop.core/->clj-pos-kw-fn "TukeyHSD"))
 
 (def uniroot
  ^{:name-r "uniroot",
@@ -3067,73 +3067,73 @@
     :f nil,
     :f.lower {},
     :interval nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "uniroot"))
+ (r-interop.core/->clj-pos-kw-fn "uniroot"))
 
 (def update
  ^{:name-r "update", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "update"))
+ (r-interop.core/->clj-pos-kw-fn "update"))
 
 (def update-default
  ^{:name-r "update.default",
   :doc "",
   :argslists ({:object nil, :formula. nil, :... nil, :evaluate true})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "update.default"))
+ (r-interop.core/->clj-pos-kw-fn "update.default"))
 
 (def update-formula
  ^{:name-r "update.formula",
   :doc "",
   :argslists ({:old nil, :new nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "update.formula"))
+ (r-interop.core/->clj-pos-kw-fn "update.formula"))
 
 (def var
  ^{:name-r "var",
   :doc "",
   :argslists ({:x nil, :y nil, :na.rm false, :use nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "var"))
+ (r-interop.core/->clj-pos-kw-fn "var"))
 
 (def var-test
  ^{:name-r "var.test", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "var.test"))
+ (r-interop.core/->clj-pos-kw-fn "var.test"))
 
 (def variable-names
  ^{:name-r "variable.names",
   :doc "",
   :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "variable.names"))
+ (r-interop.core/->clj-pos-kw-fn "variable.names"))
 
 (def varimax
  ^{:name-r "varimax",
   :doc "",
   :argslists ({:x nil, :normalize true, :eps 1.0E-5})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "varimax"))
+ (r-interop.core/->clj-pos-kw-fn "varimax"))
 
 (def vcov
  ^{:name-r "vcov", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "vcov"))
+ (r-interop.core/->clj-pos-kw-fn "vcov"))
 
 (def weighted-mean
  ^{:name-r "weighted.mean",
   :doc "",
   :argslists ({:x nil, :w nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "weighted.mean"))
+ (r-interop.core/->clj-pos-kw-fn "weighted.mean"))
 
 (def weighted-residuals
  ^{:name-r "weighted.residuals",
   :doc "",
   :argslists ({:obj nil, :drop0 true})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "weighted.residuals"))
+ (r-interop.core/->clj-pos-kw-fn "weighted.residuals"))
 
 (def weights
  ^{:name-r "weights", :doc "", :argslists ({:object nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "weights"))
+ (r-interop.core/->clj-pos-kw-fn "weights"))
 
 (def wilcox-test
  ^{:name-r "wilcox.test", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "wilcox.test"))
+ (r-interop.core/->clj-pos-kw-fn "wilcox.test"))
 
 (def window
  ^{:name-r "window", :doc "", :argslists ({:x nil, :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "window"))
+ (r-interop.core/->clj-pos-kw-fn "window"))
 
 (def write-ftable
  ^{:name-r "write.ftable",
@@ -3145,7 +3145,7 @@
     :append false,
     :digits {},
     :... nil})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "write.ftable"))
+ (r-interop.core/->clj-pos-kw-fn "write.ftable"))
 
 (def xtabs
  ^{:name-r "xtabs",
@@ -3159,4 +3159,4 @@
     :addNA false,
     :exclude {},
     :drop.unused.levels false})}
- (r-interop.core/->clj-pos-kw-fn-polyglot "xtabs"))
+ (r-interop.core/->clj-pos-kw-fn "xtabs"))
