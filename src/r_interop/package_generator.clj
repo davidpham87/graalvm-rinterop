@@ -8,7 +8,8 @@
    [r-interop.gen-packages.mgcv]
    [r-interop.gen-packages.nlme]
    [r-interop.gen-packages.splines]
-   [r-interop.gen-packages.stats]))
+   [r-interop.gen-packages.stats]
+   [r-interop.gen-packages.utils]))
 
 (create-package-bindings r-interop.gen-packages.base/config)
 (create-package-bindings r-interop.gen-packages.boot/config)
@@ -17,3 +18,4 @@
 (create-package-bindings r-interop.gen-packages.nlme/config)
 (create-package-bindings r-interop.gen-packages.splines/config)
 (create-package-bindings r-interop.gen-packages.stats/config)
+(create-package-bindings r-interop.gen-packages.utils/config)

@@ -15,3 +15,8 @@ Write example on how to export a package to create a clojure file.
 All packages are here.
 
 https://stat.ethz.ch/R-manual/R-devel/library/
+
+## Manual aliases as def
+
+In automatic packages conversion, convert the manual defn-r into similar `def`
+with meta data as the usual package.
